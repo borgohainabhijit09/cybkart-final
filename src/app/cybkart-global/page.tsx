@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
     Phone,
     ArrowRight,
@@ -37,6 +37,14 @@ export default function CybkartGlobalLanding() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+            (window as any).gtag('event', 'conversion', {
+                'send_to': 'AW-17893861115/ZXWPCPyU-O4bEPvNutRC'
+            });
+        }
+    }, []);
 
     const reviews = [
         {
