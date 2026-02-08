@@ -13,8 +13,21 @@ import {
 import CTASection from '@/components/CTASection';
 
 export const metadata: Metadata = {
-    title: 'About CYBKART GLOBAL | Systems Architects',
-    description: 'We are a global team of engineers and strategists building the infrastructure for the next generation of business.',
+    title: 'About CYBKART GLOBAL | Systems Architects & Digital Engineers',
+    description: 'We are a global team of US strategists and Bangalore engineers building the infrastructure for the next generation of business. Learn about our "Follow the Sun" model.',
+    openGraph: {
+        title: 'About CYBKART GLOBAL | Systems Architects & Digital Engineers',
+        description: 'We are a global team of US strategists and Bangalore engineers building the infrastructure for the next generation of business.',
+        url: 'https://cybkartglobal.com/about',
+        siteName: 'CYBKART GLOBAL',
+        locale: 'en_US',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'About CYBKART GLOBAL | Systems Architects & Digital Engineers',
+        description: 'We are a global team of US strategists and Bangalore engineers building the infrastructure for the next generation of business.',
+    },
 };
 
 export default function AboutPage() {

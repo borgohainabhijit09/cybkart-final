@@ -12,8 +12,21 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-    title: 'Start Your Technical Project | CYBKART GLOBAL',
-    description: 'Book a discovery call with our systems architects. No sales fluff, just technical planning.',
+    title: 'Start Your Project - Contact Architects | CYBKART GLOBAL',
+    description: 'Book a discovery call with our systems architects. No sales fluff, just technical planning. Get a response from a senior partner within 24 hours.',
+    openGraph: {
+        title: 'Start Your Project - Contact Architects | CYBKART GLOBAL',
+        description: 'Book a discovery call with our systems architects. No sales fluff, just technical planning.',
+        url: 'https://cybkartglobal.com/contact',
+        siteName: 'CYBKART GLOBAL',
+        locale: 'en_US',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Start Your Project - Contact Architects | CYBKART GLOBAL',
+        description: 'Book a discovery call with our systems architects. No sales fluff, just technical planning.',
+    },
 };
 
 export default function ContactPage() {

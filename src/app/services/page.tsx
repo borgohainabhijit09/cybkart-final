@@ -4,8 +4,21 @@ import { Brain, Globe, ShoppingCart, TrendingUp, Palette, ArrowRight, Check } fr
 import CTASection from '@/components/CTASection';
 
 export const metadata: Metadata = {
-    title: 'Our Capabilities | CYBKART GLOBAL',
-    description: 'Enterprise-grade digital services including AI automation, web development, e-commerce, digital marketing, and branding.',
+    title: 'Enterprise AI & Digital Services | CYBKART GLOBAL',
+    description: 'Explore our enterprise-grade services: AI Automation, Custom Web Architecture, E-Commerce Engineering, and Digital Marketing Science.',
+    openGraph: {
+        title: 'Enterprise AI & Digital Services | CYBKART GLOBAL',
+        description: 'Explore our enterprise-grade services: AI Automation, Custom Web Architecture, E-Commerce Engineering, and Digital Marketing Science.',
+        url: 'https://cybkartglobal.com/services',
+        siteName: 'CYBKART GLOBAL',
+        locale: 'en_US',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Enterprise AI & Digital Services | CYBKART GLOBAL',
+        description: 'Explore our enterprise-grade services: AI Automation, Custom Web Architecture, E-Commerce Engineering, and Digital Marketing Science.',
+    },
 };
 
 const services = [
