@@ -334,66 +334,108 @@ export default function CybkartGlobalLanding() {
 
 
 
-            {/* 🟢 SECTION 2: TRUST SNAPSHOT (FAST CONFIDENCE) */}
-            <section className="bg-slate-900 py-16 border-t border-slate-800">
+            {/* 🟢 SECTION 2: WHY BUSINESSES CHOOSE US */}
+            <section className="bg-white py-20 border-t border-slate-200">
                 <div className="container mx-auto px-6">
-                    <div className="max-w-4xl mx-auto bg-slate-800/50 rounded-3xl p-8 md:p-10 border border-slate-700/50 shadow-2xl relative overflow-hidden">
-                        {/* Subtle background glow */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    <div className="max-w-6xl mx-auto">
+                        {/* Section Header */}
+                        <div className="text-center mb-16">
+                            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                                Everything You Need in a Modern,<br />High-Performing Website
+                            </h2>
+                            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                                Every website we build is designed to look professional, work flawlessly, and support real business growth — not just exist online.
+                            </p>
+                        </div>
 
-                        <h2 className="text-3xl font-bold text-white mb-10 text-center relative z-10">Why businesses choose us</h2>
-
-                        <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 relative z-10">
-                            <div className="flex items-center gap-5 group">
-                                <div className="w-12 h-12 rounded-xl bg-slate-700/50 border border-slate-600 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-500 transition-all duration-300 shadow-lg">
-                                    <MapPin className="w-6 h-6" />
+                        {/* Features Grid */}
+                        <div className="grid md:grid-cols-2 gap-8">
+                            {/* Feature 1 */}
+                            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all group">
+                                <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+                                    <Layout className="w-7 h-7 text-blue-600 group-hover:text-white transition-colors" />
                                 </div>
-                                <div>
-                                    <div className="text-white font-bold text-lg">Sheridan, WY</div>
-                                    <div className="text-slate-400 text-sm">US-Based Company</div>
-                                </div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-3">Custom Website Design</h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Tailored layouts that match your brand, industry, and business goals — no cookie-cutter templates.
+                                </p>
                             </div>
 
-                            <div className="flex items-center gap-5 group">
-                                <div className="w-12 h-12 rounded-xl bg-slate-700/50 border border-slate-600 flex items-center justify-center text-indigo-400 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-500 transition-all duration-300 shadow-lg">
-                                    <Globe className="w-6 h-6" />
+                            {/* Feature 2 */}
+                            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-emerald-300 hover:shadow-lg transition-all group">
+                                <div className="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 transition-colors">
+                                    <Smartphone className="w-7 h-7 text-emerald-600 group-hover:text-white transition-colors" />
                                 </div>
-                                <div>
-                                    <div className="text-white font-bold text-lg">US & Canada</div>
-                                    <div className="text-slate-400 text-sm">Serving Clients</div>
-                                </div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-3">Mobile-First & Fast Loading</h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Optimized for phones, tablets, and desktops, ensuring a smooth experience for every visitor.
+                                </p>
                             </div>
 
-                            <div className="flex items-center gap-5 group">
-                                <div className="w-12 h-12 rounded-xl bg-slate-700/50 border border-slate-600 flex items-center justify-center text-amber-400 group-hover:scale-110 group-hover:bg-amber-600 group-hover:text-white group-hover:border-amber-500 transition-all duration-300 shadow-lg">
-                                    <Zap className="w-6 h-6" />
+                            {/* Feature 3 */}
+                            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-purple-300 hover:shadow-lg transition-all group">
+                                <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors">
+                                    <TrendingUp className="w-7 h-7 text-purple-600 group-hover:text-white transition-colors" />
                                 </div>
-                                <div>
-                                    <div className="text-white font-bold text-lg">5 Business Days</div>
-                                    <div className="text-slate-400 text-sm">Fast Turnaround</div>
-                                </div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-3">Conversion-Focused Structure</h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Clear messaging, strong calls-to-action, and user flows designed to drive enquiries, calls, bookings, or sales.
+                                </p>
                             </div>
 
-                            <div className="flex items-center gap-5 group">
-                                <div className="w-12 h-12 rounded-xl bg-slate-700/50 border border-slate-600 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-500 transition-all duration-300 shadow-lg">
-                                    <DollarSign className="w-6 h-6" />
+                            {/* Feature 4 */}
+                            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-amber-300 hover:shadow-lg transition-all group">
+                                <div className="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-600 transition-colors">
+                                    <Zap className="w-7 h-7 text-amber-600 group-hover:text-white transition-colors" />
                                 </div>
-                                <div>
-                                    <div className="text-white font-bold text-lg">Transparent Pricing</div>
-                                    <div className="text-slate-400 text-sm">No Hidden Fees</div>
-                                </div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-3">SEO-Ready Foundation</h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Clean structure and best practices to help your website perform better on Google search from day one.
+                                </p>
                             </div>
 
-                            <div className="md:col-span-2 pt-6 border-t border-slate-700/50 flex justify-center">
-                                <div className="flex items-center gap-5 group">
-                                    <div className="w-12 h-12 rounded-xl bg-slate-700/50 border border-slate-600 flex items-center justify-center text-purple-400 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white group-hover:border-purple-500 transition-all duration-300 shadow-lg">
-                                        <Smartphone className="w-6 h-6" />
-                                    </div>
-                                    <div>
-                                        <div className="text-white font-bold text-lg">100% Mobile-Friendly</div>
-                                        <div className="text-slate-400 text-sm">Optimized for Conversion</div>
-                                    </div>
+                            {/* Feature 5 */}
+                            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all group">
+                                <div className="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors">
+                                    <MessageCircle className="w-7 h-7 text-indigo-600 group-hover:text-white transition-colors" />
                                 </div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-3">Lead Forms, Booking & Contact Integrations</h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Capture leads easily through forms, scheduling tools, or direct contact options.
+                                </p>
+                            </div>
+
+                            {/* Feature 6 */}
+                            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-rose-300 hover:shadow-lg transition-all group">
+                                <div className="w-14 h-14 bg-rose-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-rose-600 transition-colors">
+                                    <Store className="w-7 h-7 text-rose-600 group-hover:text-white transition-colors" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-3">E-commerce & Product Capabilities</h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Sell products, showcase catalogs, accept payments, and manage orders with scalable solutions.
+                                </p>
+                            </div>
+
+                            {/* Feature 7 */}
+                            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-cyan-300 hover:shadow-lg transition-all group">
+                                <div className="w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-cyan-600 transition-colors">
+                                    <Globe className="w-7 h-7 text-cyan-600 group-hover:text-white transition-colors" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-3">CRM & Third-Party Integrations</h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Connect your website with CRMs, email tools, analytics, and other business systems.
+                                </p>
+                            </div>
+
+                            {/* Feature 8 */}
+                            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 hover:border-teal-300 hover:shadow-lg transition-all group">
+                                <div className="w-14 h-14 bg-teal-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors">
+                                    <Hammer className="w-7 h-7 text-teal-600 group-hover:text-white transition-colors" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-3">Easy to Update & Scale</h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Built so your website can grow with your business — add pages, features, or integrations anytime.
+                                </p>
                             </div>
                         </div>
                     </div>
