@@ -691,34 +691,111 @@ export default function CybkartGlobalLanding() {
             </section>
 
 
-            {/* 🟢 SECTION 6: HOW IT WORKS (KEEP IT SIMPLE) */}
-            <section className="py-24 bg-white">
-                <div className="container mx-auto px-6">
+            {/* 🟢 SECTION 6: HOW IT WORKS (REDESIGNED) */}
+            <section className="py-24 bg-slate-50 relative overflow-hidden">
+                {/* Background pattern */}
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#475569 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
+
+                <div className="container mx-auto px-6 relative z-10">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-slate-900 mb-4">How It Works</h2>
-                        <p className="text-xl text-slate-600">That's it.</p>
+                        <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider">Simple Process</span>
+                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mt-4 mb-6">From Idea to Launch in 4 Steps</h2>
+                        <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+                            We handle everything. You just approve the strategy and watch your new site go live.
+                        </p>
                     </div>
 
-                    <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
-                            { step: '1', title: 'View a demo', icon: Layout },
-                            { step: '2', title: 'Quick discussion', icon: Phone },
-                            { step: '3', title: 'We build & deliver', icon: Hammer },
-                            { step: '4', title: 'You start getting leads', icon: TrendingUp },
+                            {
+                                step: '01',
+                                title: 'Strategy & Demo',
+                                desc: 'We research your niche and show you a demo of what’s possible.',
+                                icon: MessageCircle
+                            },
+                            {
+                                step: '02',
+                                title: 'Design & Build',
+                                desc: 'We craft a custom, high-converting design tailored to your brand.',
+                                icon: Layout
+                            },
+                            {
+                                step: '03',
+                                title: 'Review & Refine',
+                                desc: 'You review the site. We make tweaks until it’s perfect.',
+                                icon: CheckCircle2
+                            },
+                            {
+                                step: '04',
+                                title: 'Launch & Grow',
+                                desc: 'We go live, set up SEO, and hand over the keys to you.',
+                                icon: TrendingUp
+                            },
                         ].map((item, i) => (
-                            <div key={i} className="text-center relative">
-                                <div className="w-20 h-20 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-6 relative z-10">
-                                    <span className="text-3xl font-bold text-blue-600">{item.step}</span>
+                            <div key={i} className="bg-white rounded-2xl p-8 border border-slate-200 shadow-lg hover:shadow-2xl hover:border-blue-400 transition-all duration-300 group relative overflow-hidden">
+                                {/* Watermark Number */}
+                                <div className="absolute -right-4 -bottom-6 text-9xl font-bold text-slate-100 opacity-80 group-hover:opacity-100 group-hover:text-blue-50 transition-all select-none">
+                                    {item.step}
                                 </div>
-                                <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
-                                {i < 3 && (
-                                    <div className="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-slate-100 -z-0"></div>
-                                )}
+
+                                <div className="relative z-10">
+                                    <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                                        <item.icon className="w-7 h-7" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                                    <p className="text-slate-600 leading-relaxed text-sm">
+                                        {item.desc}
+                                    </p>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
+
+            {/* 🟢 SECTION 6.5: THE PROBLEM (Compact Vibrant Dark Redesign) */}
+            <section className="py-16 bg-white">
+                <div className="container mx-auto px-6">
+                    <div className="max-w-3xl mx-auto rounded-3xl p-8 md:p-10 relative overflow-hidden bg-slate-900 text-white shadow-xl shadow-slate-900/20">
+                        {/* Decorative background elements */}
+                        <div className="absolute top-0 right-0 w-80 h-80 bg-red-600 rounded-full blur-[80px] -mr-24 -mt-24 opacity-20 pointer-events-none"></div>
+                        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-600 rounded-full blur-[80px] -ml-24 -mb-24 opacity-20 pointer-events-none"></div>
+
+                        <div className="relative z-10 text-center">
+                            <h2 className="text-2xl md:text-4xl font-bold mb-8 leading-tight">
+                                Most Service Business Websites <span className="text-red-400">Fail Because:</span>
+                            </h2>
+
+                            <div className="grid gap-3 text-left max-w-xl mx-auto mb-8">
+                                {[
+                                    "They look good but don’t convert",
+                                    "They confuse visitors instead of guiding them",
+                                    "They’re slow and not mobile-friendly",
+                                    "They don’t work well with Google Ads or SEO",
+                                    "They were built by agencies that don’t understand service businesses"
+                                ].map((item, i) => (
+                                    <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-slate-800/50 border border-slate-700 hover:border-red-500/30 hover:bg-slate-800 transition-colors backdrop-blur-sm group">
+                                        <div className="shrink-0 w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center text-red-400 group-hover:text-red-300 transition-colors">
+                                            <XCircle className="w-4 h-4" />
+                                        </div>
+                                        <span className="text-base md:text-lg text-slate-200 font-medium group-hover:text-white transition-colors">{item}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="inline-block relative group cursor-default">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-500"></div>
+                                <div className="relative px-6 py-2 bg-slate-900 rounded-full leading-none flex items-center border border-slate-700">
+                                    <span className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400">
+                                        We fix that.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
 
             {/* 🟢 SECTION 7: WHY WE’RE DIFFERENT (POSITIONING) */}
             <section className="py-24 bg-slate-50 overflow-hidden">
@@ -726,14 +803,15 @@ export default function CybkartGlobalLanding() {
                     <div className="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto">
                         <div className="w-full md:w-1/2">
                             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
-                                We Build Websites That Are <span className="text-blue-600">Meant to Convert</span>
+                                What Your Website <span className="text-blue-600">Will Do for You</span>
                             </h2>
-                            <ul className="space-y-6">
+                            <ul className="space-y-6 mb-10">
                                 {[
-                                    'Built for real businesses, not templates',
-                                    'Designed to turn visitors into callers',
-                                    'No long forms, no distractions',
-                                    'Optimized for Google, Tablet and Mobile users'
+                                    'Convert visitors into calls & enquiries',
+                                    'Build instant trust with local customers',
+                                    'Load fast on mobile & desktop',
+                                    'Work perfectly with Google Ads & search traffic',
+                                    'Scale easily as your business grows'
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-center gap-4">
                                         <div className="w-10 h-10 rounded-lg bg-blue-600 text-white flex items-center justify-center flex-shrink-0">
@@ -743,6 +821,12 @@ export default function CybkartGlobalLanding() {
                                     </li>
                                 ))}
                             </ul>
+
+                            <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-xl">
+                                <p className="text-lg text-slate-700 font-medium leading-relaxed">
+                                    We don’t just “build websites” — we build <span className="font-bold text-blue-700">lead-focused websites</span> for service businesses
+                                </p>
+                            </div>
                         </div>
                         <div className="w-full md:w-1/2 relative">
                             <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-3xl transform rotate-3 scale-105 opacity-20"></div>
@@ -763,47 +847,7 @@ export default function CybkartGlobalLanding() {
                 </div>
             </section>
 
-            {/* 🟢 SECTION 8: PHILOSOPHY (WHY US) */}
-            <section className="py-24 bg-slate-900 text-white">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">More Than Just Pixel Pushing</h2>
-                        <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-                            We don't just build websites; we build assets that grow your business.
-                        </p>
-                    </div>
 
-                    <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                        <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:bg-slate-800 transition-colors">
-                            <div className="w-12 h-12 bg-blue-900/50 rounded-lg flex items-center justify-center mb-6 text-blue-400">
-                                <TrendingUp className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-xl font-bold mb-3">Conversion Obsessed</h3>
-                            <p className="text-slate-400 leading-relaxed">
-                                Every pixel is placed with one goal: turning a visitor into a paying customer. No fluff, just results.
-                            </p>
-                        </div>
-                        <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:bg-slate-800 transition-colors">
-                            <div className="w-12 h-12 bg-purple-900/50 rounded-lg flex items-center justify-center mb-6 text-purple-400">
-                                <Zap className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-xl font-bold mb-3">Blazing Fast Speed</h3>
-                            <p className="text-slate-400 leading-relaxed">
-                                We optimize for 90+ Google PageSpeed scores. Fast sites rank better and sell more. Period.
-                            </p>
-                        </div>
-                        <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:bg-slate-800 transition-colors">
-                            <div className="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-6 text-emerald-400">
-                                <ShieldCheck className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-xl font-bold mb-3">Built to Scale</h3>
-                            <p className="text-slate-400 leading-relaxed">
-                                Your business will grow, and your website should too. Our systems are built on Next.js for infinite scalability.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* 🟢 SECTION 8.5: TESTIMONIALS (SOCIAL PROOF CAROUSEL) */}
             <section className="py-24 bg-slate-50 overflow-hidden">
@@ -879,30 +923,172 @@ export default function CybkartGlobalLanding() {
                 </div>
             </section>
 
-            {/* 🟢 SECTION 9: FINAL CTA (CLOSE THE LOOP) */}
-            <section className="py-24 bg-gradient-to-br from-blue-600 to-indigo-700 text-white text-center">
-                <div className="container mx-auto px-6">
-                    <h2 className="text-4xl md:text-6xl font-bold mb-8">
-                        Ready to See Your Website Before You Decide?
-                    </h2>
+            {/* 🟢 SECTION 8.6: BRANDS (SOCIAL PROOF) */}
+            <section className="py-16 bg-white border-b border-slate-100 overflow-hidden">
+                <div className="container mx-auto px-6 text-center mb-10">
+                    <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest">Trusted by innovative companies</p>
+                </div>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <button
-                            onClick={scrollToDemos}
-                            className="w-full sm:w-auto px-10 py-5 bg-white text-blue-700 text-xl font-bold rounded-xl hover:bg-blue-50 transition-all shadow-2xl cursor-pointer"
-                        >
-                            👉 See Demo Website
-                        </button>
-                        <button
-                            onClick={() => setIsBookingModalOpen(true)}
-                            className="w-full sm:w-auto px-10 py-5 bg-blue-800 text-white border border-blue-400/30 text-xl font-bold rounded-xl hover:bg-blue-900 transition-all flex items-center justify-center gap-2 cursor-pointer"
-                        >
-                            <Calendar className="w-6 h-6" /> Book Strategy Call
-                        </button>
+                <div className="flex overflow-hidden w-full mask-gradient-x">
+                    <div className="animate-marquee flex items-center gap-20 px-8 shrink-0 min-w-full justify-around">
+                        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                            <div key={i} className="opacity-40 hover:opacity-100 transition-opacity duration-300">
+                                {i === 1 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 100 30" fill="currentColor">
+                                        <path d="M15 15a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm25 0h40v5h-40v-5zm0-10h25v5h-25v-5z" />
+                                        <text x="35" y="22" className="text-2xl font-bold font-sans">NexGen</text>
+                                    </svg>
+                                )}
+                                {i === 2 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 120 30" fill="currentColor">
+                                        <circle cx="15" cy="15" r="10" />
+                                        <rect x="35" y="5" width="10" height="20" />
+                                        <text x="55" y="22" className="text-2xl font-bold font-serif">Vertex</text>
+                                    </svg>
+                                )}
+                                {i === 3 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 110 30" fill="currentColor">
+                                        <path d="M15 5L25 25H5L15 5Z" />
+                                        <text x="35" y="22" className="text-2xl font-bold font-mono">Prism</text>
+                                    </svg>
+                                )}
+                                {i === 4 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 120 30" fill="currentColor">
+                                        <rect x="5" y="5" width="20" height="20" rx="5" />
+                                        <text x="35" y="22" className="text-2xl font-bold font-sans">EchoSys</text>
+                                    </svg>
+                                )}
+                                {i === 5 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 130 30" fill="currentColor">
+                                        <path d="M5 15Q15 5 25 15T45 15" stroke="currentColor" strokeWidth="4" fill="none" />
+                                        <text x="55" y="22" className="text-2xl font-bold font-sans">Flow</text>
+                                    </svg>
+                                )}
+                                {i === 6 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 120 30" fill="currentColor">
+                                        <circle cx="10" cy="15" r="5" />
+                                        <circle cx="25" cy="15" r="5" />
+                                        <text x="40" y="22" className="text-2xl font-bold font-serif">Duo</text>
+                                    </svg>
+                                )}
+                                {i === 7 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 120 30" fill="currentColor">
+                                        <path d="M5 25L15 5L25 25" stroke="currentColor" strokeWidth="4" fill="none" />
+                                        <text x="35" y="22" className="text-2xl font-bold font-mono">Apex</text>
+                                    </svg>
+                                )}
+                                {i === 8 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 120 30" fill="currentColor">
+                                        <rect x="5" y="10" width="10" height="10" />
+                                        <rect x="20" y="5" width="10" height="20" />
+                                        <text x="40" y="22" className="text-2xl font-bold font-sans">BarCo</text>
+                                    </svg>
+                                )}
+                            </div>
+                        ))}
                     </div>
+                    <div className="animate-marquee flex items-center gap-20 px-8 shrink-0 min-w-full justify-around">
+                        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                            <div key={i} className="opacity-40 hover:opacity-100 transition-opacity duration-300">
+                                {i === 1 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 100 30" fill="currentColor">
+                                        <path d="M15 15a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm25 0h40v5h-40v-5zm0-10h25v5h-25v-5z" />
+                                        <text x="35" y="22" className="text-2xl font-bold font-sans">NexGen</text>
+                                    </svg>
+                                )}
+                                {i === 2 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 120 30" fill="currentColor">
+                                        <circle cx="15" cy="15" r="10" />
+                                        <rect x="35" y="5" width="10" height="20" />
+                                        <text x="55" y="22" className="text-2xl font-bold font-serif">Vertex</text>
+                                    </svg>
+                                )}
+                                {i === 3 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 110 30" fill="currentColor">
+                                        <path d="M15 5L25 25H5L15 5Z" />
+                                        <text x="35" y="22" className="text-2xl font-bold font-mono">Prism</text>
+                                    </svg>
+                                )}
+                                {i === 4 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 120 30" fill="currentColor">
+                                        <rect x="5" y="5" width="20" height="20" rx="5" />
+                                        <text x="35" y="22" className="text-2xl font-bold font-sans">EchoSys</text>
+                                    </svg>
+                                )}
+                                {i === 5 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 130 30" fill="currentColor">
+                                        <path d="M5 15Q15 5 25 15T45 15" stroke="currentColor" strokeWidth="4" fill="none" />
+                                        <text x="55" y="22" className="text-2xl font-bold font-sans">Flow</text>
+                                    </svg>
+                                )}
+                                {i === 6 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 120 30" fill="currentColor">
+                                        <circle cx="10" cy="15" r="5" />
+                                        <circle cx="25" cy="15" r="5" />
+                                        <text x="40" y="22" className="text-2xl font-bold font-serif">Duo</text>
+                                    </svg>
+                                )}
+                                {i === 7 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 120 30" fill="currentColor">
+                                        <path d="M5 25L15 5L25 25" stroke="currentColor" strokeWidth="4" fill="none" />
+                                        <text x="35" y="22" className="text-2xl font-bold font-mono">Apex</text>
+                                    </svg>
+                                )}
+                                {i === 8 && (
+                                    <svg className="h-8 md:h-10 w-auto text-slate-600" viewBox="0 0 120 30" fill="currentColor">
+                                        <rect x="5" y="10" width="10" height="10" />
+                                        <rect x="20" y="5" width="10" height="20" />
+                                        <text x="40" y="22" className="text-2xl font-bold font-sans">BarCo</text>
+                                    </svg>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                    <div className="mt-12 text-blue-200/60 text-sm">
-                        © {new Date().getFullYear()} Cybkart Global. All rights reserved.
+            {/* 🟢 SECTION 9: FINAL CTA (CLOSE THE LOOP) */}
+            <section className="py-32 bg-slate-950 relative overflow-hidden">
+                {/* Background Glows */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
+                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px] mix-blend-screen"></div>
+                    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] mix-blend-screen"></div>
+                </div>
+
+                <div className="container mx-auto px-6 relative z-10 text-center">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-4xl md:text-6xl font-bold mb-8 text-white tracking-tight leading-tight">
+                            Ready to See Your Website <br className="hidden md:block" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Before You Decide?</span>
+                        </h2>
+
+                        <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto">
+                            Stop imagining and start experiencing. Get a live demo of your future high-converting website today.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                            <button
+                                onClick={scrollToDemos}
+                                className="group relative px-8 py-5 bg-white text-slate-900 text-xl font-bold rounded-2xl hover:bg-blue-50 transition-all shadow-2xl shadow-blue-900/20 cursor-pointer overflow-hidden"
+                            >
+                                <span className="relative z-10 flex items-center gap-2">
+                                    👉 See Demo Website
+                                </span>
+                            </button>
+                            <button
+                                onClick={() => setIsBookingModalOpen(true)}
+                                className="group px-8 py-5 bg-blue-600 text-white text-xl font-bold rounded-2xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 cursor-pointer border border-blue-500"
+                            >
+                                <Calendar className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                                Get a Free Quote & Demo
+                            </button>
+                        </div>
+
+                        <div className="mt-16 pt-8 border-t border-slate-800/50 flex flex-col md:flex-row items-center justify-center gap-4 text-slate-500 text-sm">
+                            <span>© {new Date().getFullYear()} Cybkart Global. All rights reserved.</span>
+                            <span className="hidden md:block">•</span>
+                            <span className="flex items-center gap-1"><ShieldCheck className="w-4 h-4" /> Secure & Private</span>
+                        </div>
                     </div>
                 </div>
             </section>
