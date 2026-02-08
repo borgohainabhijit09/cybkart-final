@@ -18,7 +18,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         contactPreference: 'phone',
         phone: '',
         email: '',
-        budgetConfirmed: false
+        description: '',
+        budget: ''
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
     const router = useRouter();
@@ -34,7 +35,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 contactPreference: 'phone',
                 phone: '',
                 email: '',
-                budgetConfirmed: false
+                description: '',
+                budget: ''
             });
         } else {
             document.body.style.overflow = 'unset';
@@ -88,7 +90,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
             ></div>
 
             {/* Modal Content */}
-            <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200 my-auto border border-slate-100">
+            <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200 my-auto border border-slate-100">
                 <div className="flex items-center justify-end p-4 absolute top-0 right-0 z-10">
                     <button
                         onClick={onClose}
@@ -108,26 +110,26 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                             </p>
                         </div>
 
-                        <form onSubmit={handleSubmit} className="space-y-4">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <form onSubmit={handleSubmit} className="space-y-3">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-2">Business Name</label>
+                                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">Business Name</label>
                                     <input
                                         type="text"
                                         required
                                         placeholder="Enter your business name"
-                                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-slate-50 text-slate-900"
+                                        className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-slate-50 text-slate-900"
                                         value={formData.businessName}
                                         onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-semibold text-slate-700 mb-2">Business Type</label>
+                                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">Business Type</label>
                                     <div className="relative">
                                         <select
                                             required
-                                            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-slate-50 appearance-none text-slate-900"
+                                            className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-slate-50 appearance-none text-slate-900"
                                             value={formData.businessType}
                                             onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
                                         >
@@ -138,28 +140,28 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                                             <option value="local">Local Business</option>
                                             <option value="other">Other</option>
                                         </select>
-                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+                                        <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-slate-700 mb-2">City & State</label>
+                                <label className="block text-xs font-semibold text-slate-700 mb-1.5">City & State</label>
                                 <input
                                     type="text"
                                     required
                                     placeholder="City, State"
-                                    className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-slate-50 text-slate-900"
+                                    className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-slate-50 text-slate-900"
                                     value={formData.location}
                                     onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-slate-700 mb-3">Preferred Contact Method</label>
-                                <div className="grid grid-cols-3 gap-3 mb-4">
+                                <label className="block text-xs font-semibold text-slate-700 mb-2">Preferred Contact Method</label>
+                                <div className="grid grid-cols-3 gap-2 mb-3">
                                     {[
                                         { id: 'phone', label: 'Phone', icon: Phone },
                                         { id: 'whatsapp', label: 'WhatsApp', icon: MessageCircle },
@@ -168,7 +170,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                                         <label
                                             key={method.id}
                                             className={`
-                                                flex flex-col items-center justify-center p-3 rounded-xl border cursor-pointer transition-all
+                                                flex flex-col items-center justify-center p-2 rounded-lg border cursor-pointer transition-all
                                                 ${formData.contactPreference === method.id
                                                     ? 'border-blue-500 bg-blue-50 text-blue-700'
                                                     : 'border-slate-200 hover:border-blue-200 hover:bg-slate-50 text-slate-600'}
@@ -182,31 +184,31 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                                                 checked={formData.contactPreference === method.id}
                                                 onChange={(e) => setFormData({ ...formData, contactPreference: e.target.value })}
                                             />
-                                            <method.icon className="w-5 h-5 mb-1" />
+                                            <method.icon className="w-4 h-4 mb-1" />
                                             <span className="text-xs font-medium">{method.label}</span>
                                         </label>
                                     ))}
                                 </div>
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                     <div>
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
+                                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">Phone Number</label>
                                         <input
                                             type="tel"
                                             required
                                             placeholder="(555) 123-4567"
-                                            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-slate-50 text-slate-900"
+                                            className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-slate-50 text-slate-900"
                                             value={formData.phone}
                                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
+                                        <label className="block text-xs font-semibold text-slate-700 mb-1.5">Email Address</label>
                                         <input
                                             type="email"
                                             required
                                             placeholder="you@company.com"
-                                            className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-slate-50 text-slate-900"
+                                            className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-slate-50 text-slate-900"
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         />
@@ -214,15 +216,27 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                                 </div>
                             </div>
 
-                            <label className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-100 transition-colors">
-                                <input
-                                    type="checkbox"
-                                    className="w-5 h-5 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
-                                    checked={formData.budgetConfirmed}
-                                    onChange={(e) => setFormData({ ...formData, budgetConfirmed: e.target.checked })}
+                            <div>
+                                <label className="block text-xs font-semibold text-slate-700 mb-1.5">Tell us about your project (optional)</label>
+                                <textarea
+                                    placeholder="Share any details about your business needs, goals, or questions..."
+                                    rows={3}
+                                    className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-slate-50 text-slate-900 resize-none"
+                                    value={formData.description}
+                                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                 />
-                                <span className="text-sm font-medium text-slate-700">My budget is around $499 – $2,500</span>
-                            </label>
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-semibold text-slate-700 mb-1.5">Budget (Optional)</label>
+                                <input
+                                    type="text"
+                                    placeholder="e.g. $1,500 - $3,000"
+                                    className="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-slate-50 text-slate-900"
+                                    value={formData.budget}
+                                    onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                                />
+                            </div>
 
                             {errorMessage && (
                                 <div className="p-3 bg-red-50 text-red-600 text-sm rounded-lg border border-red-100 mb-4">
@@ -233,11 +247,11 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className={`w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl text-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all flex items-center justify-center gap-2 cursor-pointer ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:scale-[1.02] active:scale-[0.98]'}`}
+                                className={`w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-lg text-base hover:shadow-lg hover:shadow-blue-500/30 transition-all flex items-center justify-center gap-2 cursor-pointer ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:scale-[1.02] active:scale-[0.98]'}`}
                             >
                                 {isSubmitting ? (
                                     <>
-                                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <svg className="animate-spin -ml-1 mr-3 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                         </svg>
@@ -248,7 +262,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                                 )}
                             </button>
 
-                            <div className="flex items-center justify-center gap-2 text-xs text-slate-400 mt-4">
+                            <div className="flex items-center justify-center gap-2 text-xs text-slate-400 mt-3">
                                 <Lock className="w-3 h-3" /> No spam. No obligation. Just clear next steps.
                             </div>
                         </form>
