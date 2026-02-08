@@ -283,81 +283,26 @@ export default function CybkartGlobalLanding() {
                             </div>
                         </div>
 
-                        {/* Right Column - Website Mockup */}
+                        {/* Right Column - Website Preview */}
                         <div className="relative hidden md:block">
-                            {/* Browser Window Mockup */}
-                            <div className="relative bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden">
-
-                                {/* Browser Chrome */}
-                                <div className="bg-slate-700/80 px-4 py-3 flex items-center gap-2 border-b border-slate-600/50">
-                                    {/* Traffic Lights */}
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                                    </div>
-                                    {/* URL Bar */}
-                                    <div className="flex-1 ml-4 bg-slate-600/50 rounded-md px-3 py-1.5 text-xs text-slate-300 flex items-center gap-2">
-                                        <svg className="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                        </svg>
-                                        <span>www.yourbusiness.com</span>
-                                    </div>
-                                </div>
-
-                                {/* Website Content */}
-                                <div className="bg-gradient-to-br from-white to-slate-50 p-6">
-
-                                    {/* Mock Navigation */}
-                                    <div className="flex items-center justify-between mb-6 pb-3 border-b border-slate-200">
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-8 h-8 bg-blue-600 rounded-lg"></div>
-                                            <div className="h-3 w-20 bg-slate-800 rounded"></div>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <div className="h-2 w-12 bg-slate-300 rounded"></div>
-                                            <div className="h-2 w-12 bg-slate-300 rounded"></div>
-                                            <div className="h-2 w-12 bg-slate-300 rounded"></div>
-                                            <div className="h-6 w-20 bg-blue-600 rounded"></div>
-                                        </div>
-                                    </div>
-
-                                    {/* Mock Hero Section */}
-                                    <div className="space-y-3 mb-6">
-                                        <div className="h-4 w-3/4 bg-slate-800 rounded"></div>
-                                        <div className="h-4 w-2/3 bg-slate-800 rounded"></div>
-                                        <div className="h-2 w-full bg-slate-300 rounded mt-4"></div>
-                                        <div className="h-2 w-5/6 bg-slate-300 rounded"></div>
-                                        <div className="flex items-center gap-3 mt-4">
-                                            <div className="h-8 w-28 bg-blue-600 rounded-lg"></div>
-                                            <div className="h-8 w-28 bg-slate-200 rounded-lg border border-slate-300"></div>
-                                        </div>
-                                    </div>
-
-                                    {/* Mock Image/Content Grid */}
-                                    <div className="grid grid-cols-3 gap-3 mt-6">
-                                        <div className="h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg"></div>
-                                        <div className="h-20 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-lg"></div>
-                                        <div className="h-20 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg"></div>
-                                    </div>
-
-                                    {/* Mock Content Sections */}
-                                    <div className="mt-6 space-y-2">
-                                        <div className="h-2 w-full bg-slate-200 rounded"></div>
-                                        <div className="h-2 w-full bg-slate-200 rounded"></div>
-                                        <div className="h-2 w-4/5 bg-slate-200 rounded"></div>
-                                    </div>
-
+                            <div className="relative">
+                                {/* Multi-Device Mockup Image */}
+                                <div className="relative">
+                                    <img
+                                        src="/images/hero-img.png"
+                                        alt="Cybkart website on multiple devices"
+                                        className="w-full h-auto object-contain"
+                                    />
                                 </div>
 
                                 {/* Floating "Live Preview" Badge */}
-                                <div className="absolute top-20 -right-3 bg-emerald-500 text-white px-3 py-1.5 rounded-lg shadow-lg text-xs font-bold flex items-center gap-1.5 rotate-3">
+                                <div className="absolute top-6 -right-3 bg-emerald-500 text-white px-3 py-1.5 rounded-lg shadow-lg text-xs font-bold flex items-center gap-1.5 rotate-3 z-40">
                                     <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                                     Live Preview
                                 </div>
 
-                                {/* Floating Stats */}
-                                <div className="absolute bottom-6 -left-4 bg-white rounded-xl shadow-xl p-3 border border-slate-200">
+                                {/* Floating Stats Badge */}
+                                <div className="absolute bottom-12 -left-6 bg-white rounded-xl shadow-xl p-3 border border-slate-200 z-40">
                                     <div className="flex items-center gap-2">
                                         <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                                             <TrendingUp className="w-4 h-4 text-blue-600" />
@@ -369,21 +314,20 @@ export default function CybkartGlobalLanding() {
                                     </div>
                                 </div>
 
-                                {/* Mobile Responsive Badge */}
-                                <div className="absolute top-1/2 -right-4 bg-white rounded-xl shadow-xl p-3 border border-slate-200 -rotate-6">
-                                    <div className="flex items-center gap-2">
-                                        <Smartphone className="w-5 h-5 text-purple-600" />
-                                        <div className="text-xs font-bold text-slate-900">Mobile<br />Ready</div>
+                                {/* Mobile Ready Badge */}
+                                <div className="absolute top-1/2 -right-8 bg-white rounded-xl shadow-xl px-3 py-2 border border-slate-200 z-40">
+                                    <div className="flex items-center gap-1.5">
+                                        <Smartphone className="w-4 h-4 text-purple-600" />
+                                        <div className="text-[10px] font-bold text-slate-900 leading-tight">Mobile<br />Ready</div>
                                     </div>
                                 </div>
 
+                                {/* Decorative Elements */}
+                                <div className="absolute -top-8 -right-8 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
+                                <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl"></div>
                             </div>
 
-                            {/* Decorative Elements */}
-                            <div className="absolute -top-8 -right-8 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
-                            <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl"></div>
                         </div>
-
                     </div>
                 </div>
             </section>
