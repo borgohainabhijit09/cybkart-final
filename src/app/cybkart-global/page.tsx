@@ -177,88 +177,214 @@ export default function CybkartGlobalLanding() {
                 </div>
             </header>
 
-            {/* 🟢 SECTION 1: HERO (REDESIGNED) */}
-            {/* 🟢 SECTION 1: HERO (REDESIGNED - IMMERSIVE DARK) */}
-            <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-slate-900">
+            {/* 🟢 SECTION 1: HERO (REDESIGNED - CYBKART GROWTH) */}
+            <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900">
 
-                {/* Background Image & Overlay */}
+                {/* Background City Image */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80"
-                        alt="Background"
-                        className="w-full h-full object-cover opacity-60"
+                        src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&q=80&w=2000"
+                        alt="City skyline"
+                        className="w-full h-full object-cover opacity-40"
                     />
-                    {/* Dark Blue/Slate Overlay for text contrast */}
-                    <div className="absolute inset-0 bg-slate-900/90 bg-gradient-to-b from-slate-900/95 via-slate-900/80 to-slate-900"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-blue-900/90"></div>
 
-                    {/* Animated Glow Effects */}
-                    <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] animate-pulse"></div>
-                    <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
+                    {/* Animated Background Elements */}
+                    <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-float"></div>
+                    <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-float-delayed"></div>
+                    <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-float-slow"></div>
+
+                    {/* Animated Particles */}
+                    <div className="absolute inset-0 overflow-hidden">
+                        {/* Particle 1 */}
+                        <div className="absolute top-1/4 left-0 w-2 h-2 bg-blue-400/40 rounded-full animate-particle-1"></div>
+                        {/* Particle 2 */}
+                        <div className="absolute top-1/3 left-1/4 w-1.5 h-1.5 bg-cyan-400/30 rounded-full animate-particle-2"></div>
+                        {/* Particle 3 */}
+                        <div className="absolute top-1/2 left-1/2 w-2.5 h-2.5 bg-emerald-400/40 rounded-full animate-particle-3"></div>
+                        {/* Particle 4 */}
+                        <div className="absolute top-2/3 left-3/4 w-1 h-1 bg-blue-300/50 rounded-full animate-particle-4"></div>
+                        {/* Particle 5 */}
+                        <div className="absolute top-3/4 left-1/3 w-2 h-2 bg-cyan-300/40 rounded-full animate-particle-5"></div>
+                        {/* Particle 6 */}
+                        <div className="absolute top-1/4 right-1/4 w-1.5 h-1.5 bg-emerald-300/30 rounded-full animate-particle-6"></div>
+                        {/* Particle 7 */}
+                        <div className="absolute bottom-1/4 right-1/3 w-2 h-2 bg-blue-400/35 rounded-full animate-particle-1"></div>
+                        {/* Particle 8 */}
+                        <div className="absolute bottom-1/3 left-1/4 w-1 h-1 bg-cyan-400/40 rounded-full animate-particle-3"></div>
+                    </div>
+
+                    {/* Moving Grid Lines */}
+                    <div className="absolute inset-0 opacity-20">
+                        <div className="absolute h-px w-full bg-gradient-to-r from-transparent via-blue-400 to-transparent top-1/4 animate-slide-right"></div>
+                        <div className="absolute h-px w-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent top-1/2 animate-slide-left"></div>
+                        <div className="absolute h-px w-full bg-gradient-to-r from-transparent via-emerald-400 to-transparent top-3/4 animate-slide-right-delayed"></div>
+                    </div>
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl">
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
 
-                    {/* Status Badge */}
-                    <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-blue-100 text-sm font-medium mb-8 shadow-lg animate-fade-in-up hover:bg-white/20 transition-all cursor-default">
-                        <span className="relative flex h-2.5 w-2.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                        </span>
-                        Accepting New Clients for 2026
-                    </div>
-
-                    {/* Headline */}
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-[1.1] mb-8 drop-shadow-xl">
-                        Websites That Turn <br className="hidden md:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400 animate-gradient-x">
-                            Visitors Into Callers.
-                        </span>
-                    </h1>
-
-                    {/* Subheadline */}
-                    <p className="text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
-                        Stop losing leads to outdated designs. We build professional, high-converting websites for service businesses in <span className="text-white font-bold underline decoration-blue-500 decoration-4 underline-offset-4">5 Business Days.</span>
-                    </p>
-
-                    {/* Value Prop Box */}
-                    <div className="mb-12 inline-block">
-                        <div className="bg-gradient-to-r from-blue-600/20 to-emerald-600/20 border border-blue-500/30 backdrop-blur-sm px-6 py-3 rounded-xl">
-                            <span className="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-emerald-200">
-                                We design websites that get you more calls and customers — guaranteed
-                            </span>
-                        </div>
-                    </div>
-
-                    {/* CTAs */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-16">
-                        <button
-                            onClick={scrollToDemos}
-                            className="w-full sm:w-auto px-10 py-5 bg-blue-600 text-white text-lg font-bold rounded-2xl hover:bg-blue-500 hover:shadow-2xl hover:shadow-blue-500/40 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group cursor-pointer border-t border-white/20"
-                        >
-                            View Live Demos <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </button>
-                        <button
-                            onClick={() => setIsBookingModalOpen(true)}
-                            className="w-full sm:w-auto px-10 py-5 bg-white/10 text-white backdrop-blur-md border border-white/10 text-lg font-bold rounded-2xl hover:bg-white/20 hover:border-white/20 transition-all flex items-center justify-center gap-3 group cursor-pointer"
-                        >
-                            <div className="w-8 h-8 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500/30 transition-colors">
-                                <Calendar className="w-4 h-4 fill-current" />
+                        {/* Left Column - Text Content */}
+                        <div className="text-left">
+                            {/* Accepting Clients Badge */}
+                            <div className="inline-flex items-center gap-2 bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 rounded-full px-4 py-2 mb-6">
+                                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                                <span className="text-sm text-slate-200 font-medium">Accepting New Clients for 2026</span>
                             </div>
-                            Book Strategy Call
-                        </button>
-                    </div>
 
-                    {/* Trust Indicators */}
-                    <div className="flex items-center justify-center gap-6 md:gap-10 text-sm font-medium text-slate-400 mb-16">
-                        <div className="flex items-center gap-2">
-                            <CheckCircle2 className="w-5 h-5 text-emerald-500" /> No Monthly Retainers
+                            {/* Headline */}
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.2] mb-6">
+                                We Build Websites That<br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4A9EFF] via-[#5DC4E8] to-[#4ADE80] animate-gradient-x" style={{ backgroundSize: '200% 200%' }}>
+                                    Turn Visitors Into Callers
+                                </span>
+                            </h1>
+
+                            {/* Subheadline */}
+                            <p className="text-base md:text-lg text-slate-300 mb-8 max-w-lg leading-relaxed">
+                                We design high-converting, mobile-friendly websites for contractors, clinics, and local businesses across the US & Canada — built specifically for Google Search & Ads traffic.
+                            </p>
+
+                            {/* CTA Button */}
+                            <button
+                                onClick={() => setIsBookingModalOpen(true)}
+                                className="px-8 py-4 bg-blue-600 text-white text-base font-semibold rounded-lg hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/30 hover:-translate-y-0.5 transition-all inline-flex items-center gap-2 cursor-pointer mb-8"
+                            >
+                                Get a Free Website Quote <ArrowRight className="w-5 h-5" />
+                            </button>
+
+                            {/* Trust Badges */}
+                            <div className="space-y-3">
+                                <p className="text-sm text-slate-400 font-medium">Trusted Partner for Sustainable Growth</p>
+                                <div className="flex items-center gap-4 flex-wrap">
+                                    {/* BBB Accredited Badge */}
+                                    <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-3 py-2 rounded-lg">
+                                        <ShieldCheck className="w-5 h-5 text-blue-400" />
+                                        <span className="text-xs text-white font-semibold">ACCREDITED<br />BUSINESS</span>
+                                    </div>
+
+                                    {/* Top Rated Badge */}
+                                    <div className="flex items-center gap-2 bg-blue-600/20 backdrop-blur-sm border border-blue-500/30 px-3 py-2 rounded-lg">
+                                        <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
+                                        <span className="text-xs text-white font-semibold">Top Rated</span>
+                                    </div>
+
+                                    {/* Rating */}
+                                    <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-3 py-2 rounded-lg">
+                                        <span className="text-lg font-bold text-white">5.0</span>
+                                        <div className="flex text-amber-400">
+                                            {[...Array(5)].map((_, i) => (
+                                                <Star key={i} className="w-3 h-3 fill-current" />
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <CheckCircle2 className="w-5 h-5 text-emerald-500" /> 100% Mobile Optimized
+
+                        {/* Right Column - Website Mockup */}
+                        <div className="relative hidden md:block">
+                            {/* Browser Window Mockup */}
+                            <div className="relative bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 rounded-2xl shadow-2xl overflow-hidden">
+
+                                {/* Browser Chrome */}
+                                <div className="bg-slate-700/80 px-4 py-3 flex items-center gap-2 border-b border-slate-600/50">
+                                    {/* Traffic Lights */}
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                                    </div>
+                                    {/* URL Bar */}
+                                    <div className="flex-1 ml-4 bg-slate-600/50 rounded-md px-3 py-1.5 text-xs text-slate-300 flex items-center gap-2">
+                                        <svg className="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                        </svg>
+                                        <span>www.yourbusiness.com</span>
+                                    </div>
+                                </div>
+
+                                {/* Website Content */}
+                                <div className="bg-gradient-to-br from-white to-slate-50 p-6">
+
+                                    {/* Mock Navigation */}
+                                    <div className="flex items-center justify-between mb-6 pb-3 border-b border-slate-200">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-8 h-8 bg-blue-600 rounded-lg"></div>
+                                            <div className="h-3 w-20 bg-slate-800 rounded"></div>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-2 w-12 bg-slate-300 rounded"></div>
+                                            <div className="h-2 w-12 bg-slate-300 rounded"></div>
+                                            <div className="h-2 w-12 bg-slate-300 rounded"></div>
+                                            <div className="h-6 w-20 bg-blue-600 rounded"></div>
+                                        </div>
+                                    </div>
+
+                                    {/* Mock Hero Section */}
+                                    <div className="space-y-3 mb-6">
+                                        <div className="h-4 w-3/4 bg-slate-800 rounded"></div>
+                                        <div className="h-4 w-2/3 bg-slate-800 rounded"></div>
+                                        <div className="h-2 w-full bg-slate-300 rounded mt-4"></div>
+                                        <div className="h-2 w-5/6 bg-slate-300 rounded"></div>
+                                        <div className="flex items-center gap-3 mt-4">
+                                            <div className="h-8 w-28 bg-blue-600 rounded-lg"></div>
+                                            <div className="h-8 w-28 bg-slate-200 rounded-lg border border-slate-300"></div>
+                                        </div>
+                                    </div>
+
+                                    {/* Mock Image/Content Grid */}
+                                    <div className="grid grid-cols-3 gap-3 mt-6">
+                                        <div className="h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg"></div>
+                                        <div className="h-20 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-lg"></div>
+                                        <div className="h-20 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg"></div>
+                                    </div>
+
+                                    {/* Mock Content Sections */}
+                                    <div className="mt-6 space-y-2">
+                                        <div className="h-2 w-full bg-slate-200 rounded"></div>
+                                        <div className="h-2 w-full bg-slate-200 rounded"></div>
+                                        <div className="h-2 w-4/5 bg-slate-200 rounded"></div>
+                                    </div>
+
+                                </div>
+
+                                {/* Floating "Live Preview" Badge */}
+                                <div className="absolute top-20 -right-3 bg-emerald-500 text-white px-3 py-1.5 rounded-lg shadow-lg text-xs font-bold flex items-center gap-1.5 rotate-3">
+                                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                                    Live Preview
+                                </div>
+
+                                {/* Floating Stats */}
+                                <div className="absolute bottom-6 -left-4 bg-white rounded-xl shadow-xl p-3 border border-slate-200">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                            <TrendingUp className="w-4 h-4 text-blue-600" />
+                                        </div>
+                                        <div>
+                                            <div className="text-xs text-slate-500">Conversions</div>
+                                            <div className="text-sm font-bold text-slate-900">+127%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Mobile Responsive Badge */}
+                                <div className="absolute top-1/2 -right-4 bg-white rounded-xl shadow-xl p-3 border border-slate-200 -rotate-6">
+                                    <div className="flex items-center gap-2">
+                                        <Smartphone className="w-5 h-5 text-purple-600" />
+                                        <div className="text-xs font-bold text-slate-900">Mobile<br />Ready</div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            {/* Decorative Elements */}
+                            <div className="absolute -top-8 -right-8 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
+                            <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl"></div>
                         </div>
+
                     </div>
-
-
                 </div>
             </section>
 
