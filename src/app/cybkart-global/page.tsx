@@ -753,44 +753,59 @@ export default function CybkartGlobalLanding() {
                 </div>
             </section>
 
-            {/* 🟢 SECTION 6.5: THE PROBLEM (Compact Vibrant Dark Redesign) */}
-            <section className="py-16 bg-white">
-                <div className="container mx-auto px-6">
-                    <div className="max-w-3xl mx-auto rounded-3xl p-8 md:p-10 relative overflow-hidden bg-slate-900 text-white shadow-xl shadow-slate-900/20">
-                        {/* Decorative background elements */}
-                        <div className="absolute top-0 right-0 w-80 h-80 bg-red-600 rounded-full blur-[80px] -mr-24 -mt-24 opacity-20 pointer-events-none"></div>
-                        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-600 rounded-full blur-[80px] -ml-24 -mb-24 opacity-20 pointer-events-none"></div>
+            {/* 🟢 SECTION 6.5: THE PROBLEM (Dark Modern Redesign) */}
+            <section className="py-20 bg-slate-900 text-white border-t border-slate-800 relative overflow-hidden">
+                {/* Background Elements */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/5 rounded-full blur-3xl pointer-events-none -mr-32 -mt-32"></div>
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none -ml-32 -mb-32"></div>
 
-                        <div className="relative z-10 text-center">
-                            <h2 className="text-2xl md:text-4xl font-bold mb-8 leading-tight">
-                                Most Service Business Websites <span className="text-red-400">Fail Because:</span>
-                            </h2>
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="text-center mb-12">
+                        <span className="bg-red-500/10 text-red-400 px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider border border-red-500/20">The Reality</span>
+                        <h2 className="text-3xl md:text-5xl font-bold mt-6 mb-6">
+                            Most Service Websites <span className="text-red-500 decoration-red-900 underline decoration-wavy underline-offset-4">Fail</span> Because...
+                        </h2>
+                        <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+                            They look pretty but lack the engine to drive real business results.
+                        </p>
+                    </div>
 
-                            <div className="grid gap-3 text-left max-w-xl mx-auto mb-8">
-                                {[
-                                    "They look good but don’t convert",
-                                    "They confuse visitors instead of guiding them",
-                                    "They’re slow and not mobile-friendly",
-                                    "They don’t work well with Google Ads or SEO",
-                                    "They were built by agencies that don’t understand service businesses"
-                                ].map((item, i) => (
-                                    <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-slate-800/50 border border-slate-700 hover:border-red-500/30 hover:bg-slate-800 transition-colors backdrop-blur-sm group">
-                                        <div className="shrink-0 w-6 h-6 rounded-full bg-red-500/10 flex items-center justify-center text-red-400 group-hover:text-red-300 transition-colors">
-                                            <XCircle className="w-4 h-4" />
-                                        </div>
-                                        <span className="text-base md:text-lg text-slate-200 font-medium group-hover:text-white transition-colors">{item}</span>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+                        {[
+                            { title: "No Clear Conversion Path", desc: "Visitors browse and leave without taking action because there's no clear next step." },
+                            { title: "Slow & Clunky", desc: "Frustrating mobile experiences and slow load times drive potential customers away." },
+                            { title: "Invisible to Google", desc: "Poor SEO structure and technical errors mean you stay stuck on page 2." },
+                            { title: "Generic Messaging", desc: "Cookie-cutter templates that don't speak to your specific customer needs." },
+                            { title: "Zero Lead Capture", desc: "Missing the essential forms, booking tools, and automation to catch leads." },
+                            { title: "Hard to Update", desc: "You're stuck waiting weeks for developers just to change a simple text." }
+                        ].map((item, i) => (
+                            <div key={i} className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-red-500/40 hover:bg-slate-800 transition-all group backdrop-blur-sm shadow-lg shadow-black/20">
+                                <div className="flex items-start gap-4">
+                                    <div className="shrink-0 w-10 h-10 bg-slate-700/50 rounded-full flex items-center justify-center text-red-400 shadow-sm border border-slate-600 group-hover:scale-110 transition-transform group-hover:bg-red-500/20 group-hover:text-red-300">
+                                        <XCircle className="w-5 h-5" />
                                     </div>
-                                ))}
-                            </div>
-
-                            <div className="inline-block relative group cursor-default">
-                                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-500"></div>
-                                <div className="relative px-6 py-2 bg-slate-900 rounded-full leading-none flex items-center border border-slate-700">
-                                    <span className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400">
-                                        We fix that.
-                                    </span>
+                                    <div>
+                                        <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                                        <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                                    </div>
                                 </div>
                             </div>
+                        ))}
+                    </div>
+
+                    {/* The Solution Bridge */}
+                    <div className="max-w-3xl mx-auto bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-0.5 shadow-2xl shadow-blue-900/20 transform hover:-translate-y-1 transition-transform duration-300 relative z-10">
+                        <div className="bg-slate-900 rounded-xl p-8 text-center h-full w-full bg-opacity-95 backdrop-blur-xl">
+                            <h3 className="text-2xl font-bold text-white mb-2">We Fix This.</h3>
+                            <p className="text-slate-400 mb-6">
+                                We build systems that solve every single one of these problems from day one.
+                            </p>
+                            <button
+                                onClick={scrollToDemos}
+                                className="inline-flex items-center justify-center gap-2 text-white font-bold hover:gap-3 transition-all cursor-pointer bg-blue-600 px-6 py-3 rounded-xl hover:bg-blue-500 border border-blue-500 shadow-lg shadow-blue-600/20"
+                            >
+                                See How We Do It <ArrowRight className="w-4 h-4" />
+                            </button>
                         </div>
                     </div>
                 </div>
