@@ -223,7 +223,7 @@ export default function CybkartGlobalLanding() {
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
-                    <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
+                    <div className="grid md:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
 
                         {/* Left Column - Text Content */}
                         <div className="text-left">
@@ -235,15 +235,15 @@ export default function CybkartGlobalLanding() {
 
                             {/* Headline */}
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.2] mb-6">
-                                We Build Websites That<br />
+                                Websites Built in the USA to<br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4A9EFF] via-[#5DC4E8] to-[#4ADE80] animate-gradient-x" style={{ backgroundSize: '200% 200%' }}>
-                                    Turn Visitors Into Callers
+                                    Rule Your Local Market
                                 </span>
                             </h1>
 
                             {/* Subheadline */}
                             <p className="text-base md:text-lg text-slate-300 mb-8 max-w-lg leading-relaxed">
-                                We design high-converting, mobile-friendly websites for contractors, clinics, and local businesses across the US & Canada — built specifically for Google Search & Ads traffic.
+                                We are a US-Based Company who design high-converting, mobile-friendly websites for contractors, clinics, and local businesses across the US & Canada — built specifically for Google Search & Ads traffic.
                             </p>
 
                             {/* CTA Button */}
@@ -594,10 +594,18 @@ export default function CybkartGlobalLanding() {
             {/* 🟢 SECTION 5: PRICING (REMOVE CONFUSION) */}
             <section className="py-24 bg-slate-50">
                 <div className="container mx-auto px-6">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-12">
                         <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Have a budget in mind?</h2>
                         <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                             Share your budget range and a few details about your business, and we'll prepare a custom demo website layout tailored to your needs.
+                        </p>
+                    </div>
+
+                    {/* Bonus Offer */}
+                    <div className="max-w-4xl mx-auto mb-16 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-6 text-center shadow-sm relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+                        <p className="text-blue-900 font-medium text-lg md:text-xl relative z-10">
+                            <span className="font-bold text-blue-600">🎁 Exclusive Bonus:</span> Every website engagement includes <span className="font-semibold underline decoration-blue-300 decoration-2 underline-offset-4">complimentary visiting card and brochure design</span> to ensure your brand looks professional across all customer touchpoints.
                         </p>
                     </div>
 
@@ -870,14 +878,12 @@ export default function CybkartGlobalLanding() {
                     <div className="text-center mb-12">
                         <h2 className="text-4xl font-bold text-slate-900 mb-4">Don't Just Take Our Word For It</h2>
                         <div className="flex items-center justify-center gap-3 mb-4">
-                            <span className="text-3xl font-bold text-slate-900">4.8</span>
+                            <span className="text-3xl font-bold text-slate-900">5.0</span>
                             <div className="flex flex-col items-start">
                                 <div className="flex text-amber-400">
-                                    <Star className="w-5 h-5 fill-current" />
-                                    <Star className="w-5 h-5 fill-current" />
-                                    <Star className="w-5 h-5 fill-current" />
-                                    <Star className="w-5 h-5 fill-current" />
-                                    <Star className="w-5 h-5 fill-current text-amber-400/30" />
+                                    {[...Array(5)].map((_, i) => (
+                                        <Star key={i} className="w-5 h-5 fill-current" />
+                                    ))}
                                 </div>
                                 <span className="text-slate-500 text-xs font-medium">Average Client Rating</span>
                             </div>
