@@ -375,11 +375,11 @@ export default function CybkartGlobalLanding() {
 
                             <div className="flex items-center gap-5 group">
                                 <div className="w-12 h-12 rounded-xl bg-slate-700/50 border border-slate-600 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-500 transition-all duration-300 shadow-lg">
-                                    <DollarSign className="w-6 h-6" />
+                                    <Calendar className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <div className="text-white font-bold text-lg">Affordable Pricing</div>
-                                    <div className="text-slate-400 text-sm">No Hidden Fees</div>
+                                    <div className="text-white font-bold text-lg">Free Strategy Call</div>
+                                    <div className="text-slate-400 text-sm">No Obligation Consultation</div>
                                 </div>
                             </div>
 
@@ -595,8 +595,10 @@ export default function CybkartGlobalLanding() {
             <section className="py-24 bg-slate-50">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-slate-900 mb-4">Simple, Transparent Pricing</h2>
-                        <p className="text-xl text-slate-600">Everything you need to get online and start generating leads.</p>
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Have a budget in mind?</h2>
+                        <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                            Share your budget range and a few details about your business, and we'll prepare a custom demo website layout tailored to your needs.
+                        </p>
                     </div>
 
                     <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
@@ -609,22 +611,17 @@ export default function CybkartGlobalLanding() {
                                 </div>
 
                                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Starter Website</h3>
-                                <div className="flex items-baseline gap-2 mb-6">
-                                    <span className="text-5xl font-extrabold text-slate-900">$499</span>
-                                    <span className="text-slate-500 font-medium">/ one-time</span>
-                                </div>
                                 <p className="text-slate-600 mb-8 pb-8 border-b border-slate-100">
-                                    Perfect for service businesses ready to upgrade from social media or DIY sites.
+                                    Perfect for service businesses ready to upgrade from social media or DIY sites. Get a custom quote tailored to your needs.
                                 </p>
 
                                 <ul className="space-y-4 mb-8">
                                     {[
-                                        'Up to 3 Custom Pages',
-                                        'Mobile-First Responsiveness',
-                                        'Click-to-Call & Lead Forms',
-                                        'Basic SEO Setup & Indexing',
-                                        '7–10 Day Delivery',
-                                        '30 Days of Free Support'
+                                        'Custom website design (no templates)',
+                                        'Mobile-friendly, fast-loading pages',
+                                        'Lead forms & contact',
+                                        'SEO-ready structure',
+                                        'Clean, professional UI built for trust'
                                     ].map((feature, i) => (
                                         <li key={i} className="flex items-center gap-3">
                                             <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
@@ -639,7 +636,7 @@ export default function CybkartGlobalLanding() {
                                     onClick={() => setIsBookingModalOpen(true)}
                                     className="w-full py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2 cursor-pointer"
                                 >
-                                    Book Strategy Call <ArrowRight className="w-4 h-4" />
+                                    Get a Free Quote & Demo <ArrowRight className="w-4 h-4" />
                                 </button>
                                 <p className="text-center text-xs text-slate-400 mt-4">No monthly fees. No hidden costs.</p>
                             </div>
@@ -677,10 +674,18 @@ export default function CybkartGlobalLanding() {
                                     onClick={() => setIsBookingModalOpen(true)}
                                     className="w-full py-4 bg-white text-slate-900 border-2 border-slate-200 font-bold rounded-xl hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer"
                                 >
-                                    Contact for Custom Quote
+                                    Get a Free Quote & Demo
                                 </button>
                             </div>
                         </div>
+                    </div>
+
+                    {/* Privacy Reassurance */}
+                    <div className="text-center mt-12">
+                        <p className="text-slate-500 text-sm flex items-center justify-center gap-2">
+                            <ShieldCheck className="w-4 h-4" />
+                            We respect your privacy. No spam. No hard sales.
+                        </p>
                     </div>
                 </div>
             </section>
