@@ -178,16 +178,28 @@ export default function CybkartGlobalLanding() {
             </header>
 
             {/* 🟢 SECTION 1: HERO (REDESIGNED) */}
-            <section className="pt-24 pb-10 md:pt-32 md:pb-16 bg-slate-50 relative overflow-hidden">
-                {/* Background Decor */}
-                <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-                    <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-3xl mix-blend-multiply opacity-70 animate-blob"></div>
-                    <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-purple-100/40 rounded-full blur-3xl mix-blend-multiply opacity-70 animate-blob animation-delay-2000"></div>
-                    <div className="absolute top-[20%] left-[20%] w-[400px] h-[400px] bg-indigo-100/40 rounded-full blur-3xl mix-blend-multiply opacity-70 animate-blob animation-delay-4000"></div>
+            {/* 🟢 SECTION 1: HERO (REDESIGNED - IMMERSIVE DARK) */}
+            <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-slate-900">
+
+                {/* Background Image & Overlay */}
+                <div className="absolute inset-0 z-0">
+                    <img
+                        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80"
+                        alt="Background"
+                        className="w-full h-full object-cover opacity-60"
+                    />
+                    {/* Dark Blue/Slate Overlay for text contrast */}
+                    <div className="absolute inset-0 bg-slate-900/90 bg-gradient-to-b from-slate-900/95 via-slate-900/80 to-slate-900"></div>
+
+                    {/* Animated Glow Effects */}
+                    <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] animate-pulse"></div>
+                    <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10 text-center max-w-5xl">
-                    <div className="inline-flex items-center gap-2 bg-white border border-slate-200 px-4 py-2 rounded-full text-slate-600 text-sm font-semibold mb-8 shadow-sm animate-fade-in-up hover:scale-105 transition-transform cursor-default">
+
+                    {/* Status Badge */}
+                    <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-blue-100 text-sm font-medium mb-8 shadow-lg animate-fade-in-up hover:bg-white/20 transition-all cursor-default">
                         <span className="relative flex h-2.5 w-2.5">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
@@ -195,44 +207,58 @@ export default function CybkartGlobalLanding() {
                         Accepting New Clients for 2026
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-slate-900 tracking-tight leading-[1.05] mb-8 drop-shadow-sm">
+                    {/* Headline */}
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-[1.1] mb-8 drop-shadow-xl">
                         Websites That Turn <br className="hidden md:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Visitors Into Callers.</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400 animate-gradient-x">
+                            Visitors Into Callers.
+                        </span>
                     </h1>
 
-                    <p className="text-xl md:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-                        Stop losing leads to outdated designs. We build professional, high-converting websites for service businesses in <span className="text-slate-900 font-bold underline decoration-blue-400/50 decoration-4 underline-offset-4">5 Business Days.</span>
-                        <span className="block mt-4 text-blue-600 font-bold bg-blue-50/50 inline-block px-4 py-1 rounded-full border border-blue-100">
-                            ✨ Packages starting at just $499
-                        </span>
+                    {/* Subheadline */}
+                    <p className="text-xl md:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
+                        Stop losing leads to outdated designs. We build professional, high-converting websites for service businesses in <span className="text-white font-bold underline decoration-blue-500 decoration-4 underline-offset-4">5 Business Days.</span>
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-12">
+                    {/* Value Prop Box */}
+                    <div className="mb-12 inline-block">
+                        <div className="bg-gradient-to-r from-blue-600/20 to-emerald-600/20 border border-blue-500/30 backdrop-blur-sm px-6 py-3 rounded-xl">
+                            <span className="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-emerald-200">
+                                We design websites that get you more calls and customers — guaranteed
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* CTAs */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-16">
                         <button
                             onClick={scrollToDemos}
-                            className="w-full sm:w-auto px-10 py-5 bg-blue-600 text-white text-lg font-bold rounded-2xl hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-600/30 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group cursor-pointer"
+                            className="w-full sm:w-auto px-10 py-5 bg-blue-600 text-white text-lg font-bold rounded-2xl hover:bg-blue-500 hover:shadow-2xl hover:shadow-blue-500/40 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 group cursor-pointer border-t border-white/20"
                         >
                             View Live Demos <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </button>
                         <button
                             onClick={() => setIsBookingModalOpen(true)}
-                            className="w-full sm:w-auto px-10 py-5 bg-white text-slate-900 border border-slate-200 text-lg font-bold rounded-2xl hover:bg-slate-50 hover:border-slate-300 hover:shadow-xl transition-all flex items-center justify-center gap-3 group cursor-pointer"
+                            className="w-full sm:w-auto px-10 py-5 bg-white/10 text-white backdrop-blur-md border border-white/10 text-lg font-bold rounded-2xl hover:bg-white/20 hover:border-white/20 transition-all flex items-center justify-center gap-3 group cursor-pointer"
                         >
-                            <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 group-hover:bg-green-200 transition-colors">
+                            <div className="w-8 h-8 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500/30 transition-colors">
                                 <Calendar className="w-4 h-4 fill-current" />
                             </div>
                             Book Strategy Call
                         </button>
                     </div>
 
-                    <div className="flex items-center justify-center gap-8 text-sm font-medium text-slate-500 opacity-80 hover:opacity-100 transition-opacity">
+                    {/* Trust Indicators */}
+                    <div className="flex items-center justify-center gap-6 md:gap-10 text-sm font-medium text-slate-400 mb-16">
                         <div className="flex items-center gap-2">
-                            <CheckCircle2 className="w-5 h-5 text-blue-600" /> No Monthly Retainers
+                            <CheckCircle2 className="w-5 h-5 text-emerald-500" /> No Monthly Retainers
                         </div>
                         <div className="flex items-center gap-2">
-                            <CheckCircle2 className="w-5 h-5 text-blue-600" /> 100% Mobile Optimized
+                            <CheckCircle2 className="w-5 h-5 text-emerald-500" /> 100% Mobile Optimized
                         </div>
                     </div>
+
+
                 </div>
             </section>
 
