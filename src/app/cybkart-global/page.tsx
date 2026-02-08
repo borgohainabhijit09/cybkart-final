@@ -235,14 +235,14 @@ export default function CybkartGlobalLanding() {
 
                             {/* Headline */}
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.2] mb-6">
-                                Websites Built in the USA to<br />
+                                We Build Websites That<br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4A9EFF] via-[#5DC4E8] to-[#4ADE80] animate-gradient-x" style={{ backgroundSize: '200% 200%' }}>
-                                    Rule Your Local Market
+                                    Turn Visitors Into Callers
                                 </span>
                             </h1>
 
                             {/* Subheadline */}
-                            <p className="text-base md:text-lg text-slate-300 mb-8 max-w-lg leading-relaxed">
+                            <p className="text-base md:text-lg text-slate-300 mb-8 leading-relaxed">
                                 We are a US-Based Company who design high-converting, mobile-friendly websites for contractors, clinics, and local businesses across the US & Canada — built specifically for Google Search & Ads traffic.
                             </p>
 
