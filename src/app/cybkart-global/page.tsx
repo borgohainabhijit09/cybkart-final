@@ -527,9 +527,9 @@ export default function CybkartGlobalLanding() {
 
                     <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
                         {[
-                            { name: 'Service Business Demo', icon: Briefcase, url: 'https://mediumpurple-hedgehog-134737.hostingersite.com/' },
-                            { name: 'Contractor Demo', icon: Hammer, url: 'https://mediumpurple-hedgehog-134737.hostingersite.com/' },
-                            { name: 'Small Business Demo', icon: Store, url: 'https://mediumpurple-hedgehog-134737.hostingersite.com/' },
+                            { name: 'Construction Site Demo', icon: Briefcase, url: 'https://rjb-construction.vercel.app/' },
+                            { name: 'Small Business Demo', icon: Hammer, url: 'https://contractorsite.vercel.app/' },
+                            { name: 'Landscape Artist Demo', icon: Store, url: 'https://mediumpurple-hedgehog-134737.hostingersite.com/' },
                         ].map((demo, i) => (
                             <a
                                 key={i}
