@@ -378,7 +378,7 @@ export default function CybkartGlobalLanding() {
                                     <DollarSign className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <div className="text-white font-bold text-lg">Transparent Pricing</div>
+                                    <div className="text-white font-bold text-lg">Affordable Pricing</div>
                                     <div className="text-slate-400 text-sm">No Hidden Fees</div>
                                 </div>
                             </div>
@@ -406,8 +406,12 @@ export default function CybkartGlobalLanding() {
                     <div className="max-w-7xl mx-auto">
                         {/* Section Header */}
                         <div className="text-center mb-12">
-                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                                Everything You Need in a Modern, High-Performing Website
+                            <div className="inline-block mb-4">
+                                <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">What's Included</span>
+                            </div>
+                            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                                Everything You Need in a<br />
+                                <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Modern, High-Performing</span> Website
                             </h2>
                             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
                                 Every website we build is designed to look professional, work flawlessly, and support real business growth.
@@ -508,71 +512,6 @@ export default function CybkartGlobalLanding() {
                 </div>
             </section>
 
-
-
-            {/* 🟢 SECTION 3: WHO THIS IS FOR (FILTER BAD LEADS) */}
-            <section className="py-24 bg-white">
-                <div className="container mx-auto px-6">
-                    <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                        {/* Perfect For */}
-                        <div className="bg-emerald-50/50 rounded-2xl p-8 border border-emerald-100">
-                            <h3 className="text-2xl font-bold text-emerald-900 mb-6 flex items-center gap-3">
-                                <CheckCircle2 className="w-8 h-8 text-emerald-600" />
-                                Perfect for:
-                            </h3>
-                            <ul className="space-y-4">
-                                <li className="flex items-start gap-4">
-                                    <div className="w-6 h-6 rounded-full bg-emerald-200 text-emerald-700 flex items-center justify-center font-bold text-xs mt-0.5">✓</div>
-                                    <div>
-                                        <span className="font-bold text-slate-900 block text-lg">Contractors & Home Services</span>
-                                        <span className="text-emerald-800/80">Landscapers, plumbers, electricians, roofers</span>
-                                    </div>
-                                </li>
-                                <li className="flex items-start gap-4">
-                                    <div className="w-6 h-6 rounded-full bg-emerald-200 text-emerald-700 flex items-center justify-center font-bold text-xs mt-0.5">✓</div>
-                                    <div>
-                                        <span className="font-bold text-slate-900 block text-lg">Clinics & Consultants</span>
-                                        <span className="text-emerald-800/80">Medical, legal, financial, coaching</span>
-                                    </div>
-                                </li>
-                                <li className="flex items-start gap-4">
-                                    <div className="w-6 h-6 rounded-full bg-emerald-200 text-emerald-700 flex items-center justify-center font-bold text-xs mt-0.5">✓</div>
-                                    <div>
-                                        <span className="font-bold text-slate-900 block text-lg">Local Businesses</span>
-                                        <span className="text-emerald-800/80">Companies relying on referrals & local Google search</span>
-                                    </div>
-                                </li>
-                                <li className="flex items-start gap-4">
-                                    <div className="w-6 h-6 rounded-full bg-emerald-200 text-emerald-700 flex items-center justify-center font-bold text-xs mt-0.5">✓</div>
-                                    <div>
-                                        <span className="font-bold text-slate-900 block text-lg">E-commerce & Retail</span>
-                                        <span className="text-emerald-800/80">Online stores, boutiques, product catalogs</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        {/* Not Ideal For */}
-                        <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 opacity-90">
-                            <h3 className="text-2xl font-bold text-slate-700 mb-6 flex items-center gap-3">
-                                <XCircle className="w-8 h-8 text-slate-500" />
-                                Not ideal for:
-                            </h3>
-                            <ul className="space-y-4">
-                                <li className="flex items-center gap-4 text-slate-600">
-                                    <div className="w-6 h-6 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-xs">✕</div>
-                                    <span className="text-lg">Free or DIY websites</span>
-                                </li>
-                                <li className="flex items-center gap-4 text-slate-600">
-                                    <div className="w-6 h-6 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center font-bold text-xs">✕</div>
-                                    <span className="text-lg">Large enterprise portals</span>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* 🟢 SECTION 4: DEMO FIRST (YOUR SECRET WEAPON) */}
             <section id="demo-section" className="py-24 bg-slate-900 text-white relative overflow-hidden">
