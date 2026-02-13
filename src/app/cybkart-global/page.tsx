@@ -251,7 +251,7 @@ export default function CybkartGlobalLanding() {
                                 onClick={() => setIsBookingModalOpen(true)}
                                 className="px-8 py-4 bg-blue-600 text-white text-base font-semibold rounded-lg hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/30 hover:-translate-y-0.5 transition-all inline-flex items-center gap-2 cursor-pointer mb-8"
                             >
-                                Get a Free Website Quote <ArrowRight className="w-5 h-5" />
+                                Get a Free Website Demo <ArrowRight className="w-5 h-5" />
                             </button>
 
                             {/* Trust Badges */}
