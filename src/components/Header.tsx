@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [servicesOpen, setServicesOpen] = useState(false);
+    const [portfolioOpen, setPortfolioOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Check pathname to hide header on landing page
@@ -24,6 +25,11 @@ export default function Header() {
         { name: 'E-Commerce Development', href: '/services/ecommerce' },
         { name: 'Digital Marketing Services', href: '/services/digital-marketing' },
         { name: 'Branding & Graphic Design', href: '/services/branding-design' },
+    ];
+
+    const portfolio = [
+        { name: 'Customer Sites', href: '/portfolio/customer-sites' },
+        { name: 'Demo Websites', href: '/portfolio/demo-websites' },
     ];
 
     return (
@@ -83,6 +89,35 @@ export default function Header() {
                                 </div>
                             </div>
 
+                            {/* Portfolio Dropdown */}
+                            <div
+                                className="relative"
+                                onMouseEnter={() => setPortfolioOpen(true)}
+                                onMouseLeave={() => setPortfolioOpen(false)}
+                            >
+                                <button className="flex items-center space-x-1 text-slate-600 hover:text-blue-600 transition-colors font-medium text-sm h-20">
+                                    <span>Portfolio</span>
+                                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${portfolioOpen ? 'rotate-180' : ''}`} />
+                                </button>
+
+                                <div
+                                    className={`absolute top-[80%] left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-slate-100 py-2 transition-all duration-300 ease-out origin-top ${portfolioOpen
+                                        ? 'opacity-100 translate-y-0 visible'
+                                        : 'opacity-0 -translate-y-2 invisible'
+                                        }`}
+                                >
+                                    {portfolio.map((item) => (
+                                        <Link
+                                            key={item.href}
+                                            href={item.href}
+                                            className="block px-6 py-3 text-sm text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors"
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+
                             <Link href="/case-scenarios" className="text-slate-600 hover:text-blue-600 transition-colors font-medium text-sm">
                                 Case Scenarios
                             </Link>
@@ -118,6 +153,15 @@ export default function Header() {
                                 {services.map((service) => (
                                     <Link key={service.href} href={service.href} className="block pl-4 py-3 text-slate-600 text-sm border-l-2 border-transparent hover:border-blue-500 hover:bg-slate-50" onClick={() => setMobileMenuOpen(false)}>
                                         {service.name}
+                                    </Link>
+                                ))}
+                            </div>
+
+                            <div className="space-y-1">
+                                <div className="font-semibold text-slate-900 pb-2 border-b border-slate-100 mb-2 mt-4">Portfolio</div>
+                                {portfolio.map((item) => (
+                                    <Link key={item.href} href={item.href} className="block pl-4 py-3 text-slate-600 text-sm border-l-2 border-transparent hover:border-blue-500 hover:bg-slate-50" onClick={() => setMobileMenuOpen(false)}>
+                                        {item.name}
                                     </Link>
                                 ))}
                             </div>
