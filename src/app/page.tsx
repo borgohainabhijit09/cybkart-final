@@ -38,11 +38,7 @@ const HERO_SLIDES = [
   {
     type: 'website',
     badge: 'Limited Offer: $0 Setup',
-<<<<<<< Updated upstream
     headline: ['Get a Professional', 'Website for $0', 'Today'],
-=======
-    headline: ['Premium Design,', 'Zero Upfront', 'Investment'],
->>>>>>> Stashed changes
     highlightIndex: 1,
     highlightColor: 'text-yellow-400',
     body: 'Launch a high-converting website for your business with hosting, updates, support, and ongoing improvements included. Use it free for the first month and pay only if you continue.',
