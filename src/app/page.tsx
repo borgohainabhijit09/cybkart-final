@@ -47,18 +47,17 @@ const HERO_SLIDES = [
     secondaryHref: '/portfolio/customer-sites',
     visual: {
       slides: [
-        { label: 'Auto Spa', bg: 'bg-blue-500/10', btn: 'bg-blue-500', grad: 'from-blue-600/30 to-blue-400/10' },
-        { label: 'Clinic', bg: 'bg-indigo-500/10', btn: 'bg-indigo-500', grad: 'from-indigo-600/30 to-purple-400/10' },
-        { label: 'Legal', bg: 'bg-slate-500/10', btn: 'bg-slate-700', grad: 'from-slate-600/30 to-slate-400/10' },
+        { label: 'Auto Spa',    bg: 'bg-blue-500/10',    btn: 'bg-blue-500',    grad: 'from-blue-600/30 to-blue-400/10' },
+        { label: 'Clinic',      bg: 'bg-indigo-500/10',  btn: 'bg-indigo-500',  grad: 'from-indigo-600/30 to-purple-400/10' },
+        { label: 'Legal',       bg: 'bg-slate-500/10',   btn: 'bg-slate-700',   grad: 'from-slate-600/30 to-slate-400/10' },
       ],
       badge: { amount: '$0', label: 'First Month', sub: 'No hidden fees' },
     },
-    blob: 'bg-yellow-500/20',
   },
   {
     type: 'analytics',
     badge: 'Growth Focused',
-    headline: ['Go Live Fast.', 'Scale Even', 'Faster'],
+    headline: ['Go Live Fast.', 'Scale Even', 'Faster.'],
     highlightIndex: 2,
     highlightColor: 'text-cyan-400',
     body: 'Launch in just 3-5 days. Our sites are engineered for speed and conversion, helping you capture more leads and outpace your competition instantly.',
@@ -67,18 +66,17 @@ const HERO_SLIDES = [
     secondaryHref: '/services',
     visual: {
       slides: [
-        { label: 'Conversions', bg: 'bg-cyan-500/10', btn: 'bg-cyan-500', grad: 'from-cyan-600/30 to-blue-400/10', val: '+124%' },
-        { label: 'Traffic', bg: 'bg-emerald-500/10', btn: 'bg-emerald-500', grad: 'from-emerald-600/30 to-teal-400/10', val: '4.2k' },
-        { label: 'Leads', bg: 'bg-blue-500/10', btn: 'bg-blue-500', grad: 'from-blue-600/30 to-cyan-400/10', val: '86' },
+        { label: 'Conversions', bg: 'bg-cyan-500/10',    btn: 'bg-cyan-500',    grad: 'from-cyan-600/30 to-blue-400/10', val: '+124%' },
+        { label: 'Traffic',     bg: 'bg-emerald-500/10', btn: 'bg-emerald-500', grad: 'from-emerald-600/30 to-teal-400/10', val: '4.2k' },
+        { label: 'Leads',       bg: 'bg-blue-500/10',    btn: 'bg-blue-500',    grad: 'from-blue-600/30 to-cyan-400/10', val: '86' },
       ],
       badge: { amount: '3-5', label: 'Days Live', sub: 'Rapid deployment' },
     },
-    blob: 'bg-cyan-500/20',
   },
   {
     type: 'managed',
     badge: 'Fully Managed',
-    headline: ['Zero Friction.', '100% Peace', 'of Mind'],
+    headline: ['Zero Friction.', '100% Peace', 'of Mind.'],
     highlightIndex: 1,
     highlightColor: 'text-purple-400',
     body: 'Never worry about updates, bugs, or hosting again. Our team manages your entire digital ecosystem 24/7, so your business never misses a beat.',
@@ -87,13 +85,12 @@ const HERO_SLIDES = [
     secondaryHref: '/services',
     visual: {
       slides: [
-        { label: 'Security', bg: 'bg-purple-500/10', btn: 'bg-purple-500', grad: 'from-purple-600/30 to-violet-400/10', status: 'Active' },
-        { label: 'Support', bg: 'bg-rose-500/10', btn: 'bg-rose-500', grad: 'from-rose-600/30 to-pink-400/10', status: 'Online' },
-        { label: 'Uptime', bg: 'bg-emerald-500/10', btn: 'bg-emerald-500', grad: 'from-emerald-600/30 to-green-400/10', status: '99.9%' },
+        { label: 'Security',    bg: 'bg-purple-500/10',  btn: 'bg-purple-500',  grad: 'from-purple-600/30 to-violet-400/10', status: 'Active' },
+        { label: 'Support',     bg: 'bg-rose-500/10',    btn: 'bg-rose-500',    grad: 'from-rose-600/30 to-pink-400/10', status: 'Online' },
+        { label: 'Uptime',      bg: 'bg-emerald-500/10', btn: 'bg-emerald-500', grad: 'from-emerald-600/30 to-green-400/10', status: '99.9%' },
       ],
       badge: { amount: '24/7', label: 'Monitoring', sub: 'Always optimized' },
     },
-    blob: 'bg-purple-500/20',
   },
 ];
 
@@ -106,35 +103,21 @@ const TRUST_ITEMS = [
 
 function CheckIcon() {
   return (
-    <svg className="w-4 h-4 text-emerald-400" viewBox="0 0 12 12" fill="none">
-      <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 12 12" fill="none">
+      <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
 }
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [heroSlide, setHeroSlide] = useState(0);
-  const [mockSlide, setMockSlide] = useState(0);
-  const [animating, setAnimating] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [heroSlide, setHeroSlide]     = useState(0);
+  const [mockSlide, setMockSlide]     = useState(0);
+  const [animating, setAnimating]     = useState(false);
 
-  /* Auto-advance progress bar */
+  /* Auto-advance hero every 6 s */
   useEffect(() => {
-    const duration = 6000;
-    const interval = 50;
-    const step = (interval / duration) * 100;
-
-    const t = setInterval(() => {
-      setProgress(p => {
-        if (p >= 100) {
-          goTo((heroSlide + 1) % HERO_SLIDES.length);
-          return 0;
-        }
-        return p + step;
-      });
-    }, interval);
-
+    const t = setInterval(() => goTo((heroSlide + 1) % HERO_SLIDES.length), 6000);
     return () => clearInterval(t);
   }, [heroSlide, animating]);
 
@@ -150,278 +133,308 @@ export default function Home() {
     setAnimating(true);
     setHeroSlide(index);
     setMockSlide(0);
-    setProgress(0);
-    setTimeout(() => setAnimating(false), 800);
+    setTimeout(() => setAnimating(false), 700);
   }
 
   return (
     <>
       <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
-      {/* ══════════════════════════════════════════
-          CINEMATIC HERO — Immersive 3-slide slider
-         ══════════════════════════════════════════ */}
-      <section className="relative bg-[#050B1A] overflow-hidden min-h-[95vh] flex items-center">
+      {/* ────────────────────────────────────────────────────────
+          HERO SECTION — 3-slide full-section carousel
+      ──────────────────────────────────────────────────────────── */}
+      <section className="relative bg-[#0F172A] overflow-hidden border-b border-slate-800" style={{ minHeight: '90vh' }}>
+        {/* Animated Background Grid */}
+        <div className="absolute inset-0 dark-grid-bg opacity-20 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0F172A]/70 to-[#0F172A] pointer-events-none"></div>
 
-        {/* Immersive Background Layers */}
-        <div className="absolute inset-0 dark-grid-bg opacity-10 pointer-events-none"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050B1A]/80 to-[#050B1A] z-10 pointer-events-none"></div>
-
-        {/* Animated Background Blobs */}
-        <div className={`absolute top-[-10%] left-[-5%] w-[60%] h-[60%] rounded-full blur-[140px] mix-blend-screen animate-blob transition-all duration-1000 opacity-20 ${HERO_SLIDES[heroSlide].blob}`}></div>
-        <div className={`absolute bottom-[-10%] right-[-5%] w-[50%] h-[50%] rounded-full blur-[140px] mix-blend-screen animate-blob animation-delay-2000 transition-all duration-1000 opacity-20 ${HERO_SLIDES[heroSlide].blob}`}></div>
-
-        <div className="container mx-auto px-6 relative z-20">
-          <div className="relative w-full h-full min-h-[700px]">
-
-            {HERO_SLIDES.map((slide, si) => {
-              const vis = slide.visual;
-              const isActive = heroSlide === si;
-              return (
+        {/* ── Slide track ─────────────────────────── */}
+        <div className="relative w-full h-full" style={{ minHeight: '90vh' }}>
+          {HERO_SLIDES.map((slide, si) => {
+            const vis = slide.visual;
+            const isActive = heroSlide === si;
+            return (
+              <div
+                key={si}
+                aria-hidden={!isActive}
+                className={`absolute inset-0 flex flex-col justify-center transition-all duration-700 ease-in-out
+                  ${isActive ? 'opacity-100 translate-x-0 pointer-events-auto' : si < heroSlide ? 'opacity-0 -translate-x-full pointer-events-none' : 'opacity-0 translate-x-full pointer-events-none'}`}
+              >
+                {/* Coloured radial glow */}
                 <div
-                  key={si}
-                  className={`absolute inset-0 flex flex-col items-center transition-all duration-1000 ease-in-out py-20
-                    ${isActive ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95 pointer-events-none'}`}
-                >
+                  className={`absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none transition-opacity duration-700
+                    ${isActive ? 'opacity-10' : 'opacity-0'}
+                    ${si === 0 ? 'bg-yellow-500' : si === 1 ? 'bg-cyan-500' : 'bg-purple-500'}`}
+                ></div>
 
-                  {/* Content Area */}
-                  <div className="w-full text-center mb-16 space-y-8 animate-fade-in-up">
+                <div className="container mx-auto px-6 pt-32 pb-24 relative z-10">
+                  <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-                    {/* Badge */}
-                    <div className={`inline-flex items-center gap-3 px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-[0.2em] border backdrop-blur-md mx-auto
-                      ${si === 0 ? 'bg-yellow-500/10 border-yellow-500/30 text-yellow-500'
-                        : si === 1 ? 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400'
+                    {/* ── LEFT — copy ───────────────────── */}
+                    <div className="space-y-8 max-w-xl">
+
+                      {/* Badge */}
+                      <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border
+                        ${si === 0 ? 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400'
+                          : si === 1 ? 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400'
                           : 'bg-purple-500/10 border-purple-500/30 text-purple-400'}`}>
-                      <span className={`w-2 h-2 rounded-full animate-pulse
-                        ${si === 0 ? 'bg-yellow-400' : si === 1 ? 'bg-cyan-400' : 'bg-purple-400'}`}></span>
-                      {slide.badge}
-                    </div>
+                        <span className={`w-2 h-2 rounded-full animate-pulse
+                          ${si === 0 ? 'bg-yellow-400' : si === 1 ? 'bg-cyan-400' : 'bg-purple-400'}`}></span>
+                        {slide.badge}
+                      </div>
 
-                    {/* Bold Centered Headline */}
-                    <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.9] max-w-5xl mx-auto italic uppercase">
-                      {slide.headline.map((line, li) => (
-                        <span key={li} className={`block drop-shadow-2xl ${li === slide.highlightIndex ? slide.highlightColor : ''}`}>{line}</span>
-                      ))}
-                    </h1>
+                      {/* Headline */}
+                      <h1 className="text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.07]">
+                        {slide.headline.map((line, li) => (
+                          <span key={li} className={`block ${li === slide.highlightIndex ? slide.highlightColor : ''}`}>{line}</span>
+                        ))}
+                      </h1>
 
-                    {/* Balanced Subtext */}
-                    <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto leading-relaxed text-balance">
-                      {slide.body}
-                    </p>
+                      {/* Body */}
+                      <p className="text-lg text-slate-400 leading-relaxed">{slide.body}</p>
 
-                    {/* Impact CTAs */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-4">
-                      <button
-                        onClick={() => setIsModalOpen(true)}
-                        className={`group relative inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl font-black text-lg transition-all shadow-2xl overflow-hidden cursor-pointer
-                          ${si === 0 ? 'bg-yellow-500 text-slate-950 hover:bg-yellow-400'
-                            : si === 1 ? 'bg-cyan-500 text-slate-950 hover:bg-cyan-400'
-                              : 'bg-purple-600 text-white hover:bg-purple-500'}`}
-                      >
-                        <div className="absolute inset-0 w-1/2 h-full bg-white/20 skew-x-[-30deg] -translate-x-full group-hover:translate-x-[250%] transition-transform duration-700"></div>
-                        {slide.primaryCta}
-                        <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                      </button>
+                      {/* CTAs */}
+                      <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                        <button
+                          onClick={() => setIsModalOpen(true)}
+                          className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-base transition-all shadow-lg cursor-pointer
+                            ${si === 0 ? 'bg-yellow-500 text-slate-900 hover:bg-yellow-400 shadow-yellow-500/25'
+                              : si === 1 ? 'bg-cyan-500 text-slate-900 hover:bg-cyan-400 shadow-cyan-500/25'
+                              : 'bg-purple-600 text-white hover:bg-purple-500 shadow-purple-500/25'}`}
+                        >
+                          {slide.primaryCta}
+                          <ArrowRight className="w-5 h-5" />
+                        </button>
+                        <Link
+                          href={slide.secondaryHref}
+                          className="inline-flex items-center justify-center gap-2 bg-white/5 text-white border border-slate-600 px-8 py-4 rounded-xl font-semibold hover:bg-white/10 hover:border-white/40 transition-all"
+                        >
+                          {slide.secondaryCta}
+                        </Link>
+                      </div>
 
-                      <Link
-                        href={slide.secondaryHref}
-                        className="inline-flex items-center justify-center gap-3 bg-white/5 text-white border-2 border-slate-700/50 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white/10 hover:border-white/20 transition-all backdrop-blur-xl"
-                      >
-                        {slide.secondaryCta}
-                      </Link>
-                    </div>
-
-                    {/* Elegant Trust Row */}
-                    <div className="pt-8 flex flex-wrap justify-center gap-x-12 gap-y-4">
-                      {TRUST_ITEMS.map((item) => (
-                        <div key={item} className="flex items-center gap-2.5 group">
-                          <div className="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 group-hover:bg-emerald-500/20 transition-colors">
-                            <CheckIcon />
-                          </div>
-                          <span className="text-slate-300 font-bold uppercase tracking-widest text-xs group-hover:text-white transition-colors">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                  </div>
-
-                  {/* ── Immersive visual — floating components ── */}
-                  <div className="w-full max-w-6xl mx-auto relative flex justify-center mt-auto pb-10">
-
-                    <div className="relative w-full h-[400px] flex items-center justify-center perspective-[2000px]">
-
-                      {/* Laptop mockup — main central piece */}
-                      <div className="relative z-10 w-[500px] lg:w-[650px] transform hover:rotate-x-2 transition-transform duration-500 animate-float drop-shadow-[0_50px_100px_rgba(0,0,0,0.8)]">
-                        <div className="relative bg-[#1A1F2C] rounded-t-2xl border-[8px] border-b-0 border-[#2D3446] shadow-2xl overflow-hidden" style={{ paddingBottom: '62%' }}>
-                          <div className="absolute inset-0 flex flex-col">
-                            {/* Toolbar */}
-                            <div className="h-8 bg-[#2D3446] flex items-center px-4 gap-4 flex-shrink-0">
-                              <div className="flex gap-2">
-                                <div className="w-3 h-3 rounded-full bg-rose-500/50"></div>
-                                <div className="w-3 h-3 rounded-full bg-amber-500/50"></div>
-                                <div className="w-3 h-3 rounded-full bg-emerald-500/50"></div>
-                              </div>
-                              <div className="h-4 flex-1 bg-black/20 rounded-lg"></div>
+                      {/* Trust strip */}
+                      <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm text-slate-300 font-medium">
+                        {TRUST_ITEMS.map((item) => (
+                          <span key={item} className="flex items-center gap-2">
+                            <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                              <CheckIcon />
                             </div>
-                            {/* Inner Screen Content */}
-                            <div className="flex-1 relative overflow-hidden p-6 bg-[#0B1121]">
-                              {vis.slides.map((vs: any, vi: number) => (
-                                <div key={vi} className={`absolute inset-6 transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]
-                                    ${mockSlide === vi ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}>
-                                  {/* WEBSITE */}
-                                  {slide.type === 'website' && (
-                                    <div className="h-full flex flex-col gap-6">
-                                      <div className={`flex-1 rounded-2xl ${vs.bg} border border-white/5 p-8 flex items-center justify-center relative overflow-hidden`}>
-                                        <div className={`absolute inset-0 bg-gradient-to-br ${vs.grad} opacity-30`}></div>
-                                        <Globe className="w-20 h-20 text-white/10 relative z-10" />
-                                        <div className="absolute bottom-4 left-4 font-black uppercase tracking-widest text-white/40 text-sm">{vs.label}</div>
-                                      </div>
-                                      <div className="h-20 flex gap-6">
-                                        <div className="flex-1 rounded-xl bg-white/5 border border-white/5"></div>
-                                        <div className={`w-36 rounded-xl ${vs.btn} opacity-20`}></div>
-                                      </div>
-                                    </div>
-                                  )}
-                                  {/* ANALYTICS */}
-                                  {slide.type === 'analytics' && (
-                                    <div className="h-full grid grid-cols-5 gap-6">
-                                      <div className="col-span-3 bg-white/5 rounded-2xl p-6 border border-white/5 flex flex-col">
-                                        <div className="flex justify-between items-end mb-8">
-                                          <div className="space-y-2"><div className="w-20 h-2 bg-white/20 rounded"></div><div className="text-3xl font-black text-white italic">{vs.val}</div></div>
-                                          <div className={`w-12 h-12 rounded-xl ${vs.bg} flex items-center justify-center`}><TrendingUp className="w-6 h-6 text-white/60" /></div>
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* ── RIGHT — device mockups ───────── */}
+                    <div className="relative flex items-center justify-center mt-10 lg:mt-0">
+                      <div className="relative w-full h-[400px] sm:h-[480px] lg:h-[540px] scale-90 sm:scale-100">
+
+                        {/* Glow */}
+                        <div className={`absolute inset-0 blur-[80px] rounded-full pointer-events-none opacity-40
+                          ${si === 0 ? 'bg-yellow-500/10' : si === 1 ? 'bg-cyan-500/10' : 'bg-purple-500/10'}`}></div>
+
+                        {/* ── Laptop frame ──────────── */}
+                        <div className="absolute z-10 w-[440px] lg:w-[480px] left-0 top-6 hover:scale-[1.01] transition-transform duration-500">
+                          <div className="relative bg-slate-800 rounded-t-xl border-[5px] border-b-0 border-slate-700 shadow-2xl shadow-black/60 overflow-hidden" style={{ paddingBottom: '62%' }}>
+                            <div className="absolute inset-0 bg-slate-900 flex flex-col">
+                              {/* Browser chrome */}
+                              <div className="h-7 bg-slate-800 flex items-center px-3 gap-3 border-b border-slate-700/80 flex-shrink-0">
+                                <div className="flex gap-1.5">
+                                  <div className="w-2 h-2 rounded-full bg-rose-500"></div>
+                                  <div className="w-2 h-2 rounded-full bg-amber-400"></div>
+                                  <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
+                                </div>
+                                <div className="flex-1 h-3.5 bg-slate-700/60 rounded-md"></div>
+                              </div>
+                              {/* Slide content - BRANCHED BY TYPE */}
+                              <div className="flex-1 relative overflow-hidden p-3 pt-4">
+                                {isActive && vis.slides.map((vs: any, vi: number) => (
+                                  <div key={vi} className={`absolute inset-3 transition-transform duration-700 ease-in-out flex flex-col gap-3
+                                    ${mockSlide === vi ? 'translate-x-0' : mockSlide > vi ? '-translate-x-[110%]' : 'translate-x-[110%]'}`}>
+                                    
+                                    {/* WEBSITE TYPE */}
+                                    {slide.type === 'website' && (
+                                      <>
+                                        <div className={`w-full rounded-lg relative overflow-hidden border border-white/5 flex-[2.5] ${vs.bg}`}>
+                                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-white/5"></div>
+                                          <div className="absolute inset-0 flex items-center justify-center">
+                                            <Globe className="w-12 h-12 text-white/10" />
+                                          </div>
+                                          <div className="absolute bottom-2 left-2 bg-slate-900/60 backdrop-blur-sm px-2.5 py-1 rounded-full text-white text-[10px] font-bold border border-white/10 tracking-wide uppercase">
+                                            {vs.label}
+                                          </div>
                                         </div>
-                                        <div className="flex-1 flex items-end gap-2">
-                                          {[40, 70, 45, 90, 60, 80, 50, 65, 30].map((h, i) => (
-                                            <div key={i} className={`flex-1 rounded-t-lg bg-gradient-to-t ${vs.grad}`} style={{ height: `${h}%` }}></div>
+                                        <div className="flex gap-3 flex-[1]">
+                                          <div className="flex-1 space-y-2">
+                                            <div className="h-2.5 w-3/4 bg-slate-700 rounded-full"></div>
+                                            <div className="h-2 w-full bg-slate-700/60 rounded-full"></div>
+                                          </div>
+                                          <div className={`w-16 rounded-lg ${vs.bg} border border-white/5`}></div>
+                                        </div>
+                                        <div className="flex items-center justify-between flex-shrink-0">
+                                          <div className="flex gap-1.5">
+                                            <div className="w-4 h-4 rounded-full bg-slate-700"></div>
+                                            <div className="w-4 h-4 rounded-full bg-slate-700"></div>
+                                          </div>
+                                          <div className={`px-4 py-1.5 ${vs.btn} text-white text-[9px] font-bold uppercase tracking-wider rounded-md shadow-lg`}>View Site</div>
+                                        </div>
+                                      </>
+                                    )}
+
+                                    {/* ANALYTICS TYPE */}
+                                    {slide.type === 'analytics' && (
+                                      <>
+                                        <div className="flex-1 grid grid-cols-2 gap-3">
+                                          <div className="bg-slate-800/80 rounded-lg p-3 border border-slate-700 flex flex-col justify-center">
+                                            <div className="text-[10px] text-slate-500 mb-1">{vs.label}</div>
+                                            <div className="text-xl font-bold text-white transition-all">{vs.val}</div>
+                                            <div className={`h-1 w-full rounded-full mt-2 bg-slate-700 overflow-hidden`}>
+                                              <div className={`h-full ${vs.btn} w-[70%]`}></div>
+                                            </div>
+                                          </div>
+                                          <div className="bg-slate-800/80 rounded-lg p-3 border border-slate-700 flex items-center justify-center">
+                                            <Activity className={`w-8 h-8 ${vs.btn.replace('bg-', 'text-')}`} />
+                                          </div>
+                                        </div>
+                                        <div className="h-24 bg-slate-800/50 rounded-lg border border-slate-700 p-3 flex flex-col gap-2">
+                                          <div className="flex justify-between items-center">
+                                            <div className="h-2 w-16 bg-slate-600 rounded"></div>
+                                            <div className="h-2 w-10 bg-slate-700 rounded"></div>
+                                          </div>
+                                          <div className="flex-1 flex items-end gap-1 px-1">
+                                            {[30, 60, 45, 75, 50, 90, 65].map((h, i) => (
+                                              <div key={i} className={`flex-1 ${vs.btn} opacity-40 rounded-t-sm`} style={{ height: `${h}%` }}></div>
+                                            ))}
+                                          </div>
+                                        </div>
+                                      </>
+                                    )}
+
+                                    {/* MANAGED TYPE */}
+                                    {slide.type === 'managed' && (
+                                      <>
+                                        <div className="flex-1 flex flex-col gap-2">
+                                          {[1, 2, 3].map((item) => (
+                                            <div key={item} className="bg-slate-800/80 rounded-lg px-3 py-2 border border-slate-700 flex items-center justify-between">
+                                              <div className="flex items-center gap-2">
+                                                <div className={`w-6 h-6 rounded-lg ${vs.bg} flex items-center justify-center`}>
+                                                   <Shield className={`w-3 h-3 ${vs.btn.replace('bg-', 'text-')}`} />
+                                                </div>
+                                                <div className="h-2 w-20 bg-slate-600 rounded"></div>
+                                              </div>
+                                              <div className={`px-2 py-0.5 rounded-full text-[8px] font-bold ${vs.btn} text-white`}>{vs.status}</div>
+                                            </div>
                                           ))}
                                         </div>
-                                      </div>
-                                      <div className="col-span-2 space-y-6">
-                                        {[1, 2, 3].map(i => <div key={i} className="h-16 bg-white/5 rounded-xl border border-white/5"></div>)}
-                                      </div>
-                                    </div>
-                                  )}
-                                  {/* MANAGED */}
-                                  {slide.type === 'managed' && (
-                                    <div className="h-full grid grid-cols-2 gap-8">
-                                      <div className="relative flex items-center justify-center">
-                                        <div className={`w-40 h-40 rounded-full border-8 border-dashed border-white/5 flex items-center justify-center animate-spin-slow`}></div>
-                                        <div className={`absolute w-32 h-32 rounded-full ${vs.bg} flex items-center justify-center border border-white/10 shadow-2xl shadow-white/5`}>
-                                          <Shield className="w-12 h-12 text-white/50" />
-                                        </div>
-                                      </div>
-                                      <div className="flex flex-col gap-4 py-4">
-                                        {[1, 2, 3, 4].map(i => (
-                                          <div key={i} className="flex-1 bg-white/5 rounded-xl border border-white/5 flex items-center px-4 justify-between">
-                                            <div className="w-12 h-2 bg-white/10 rounded"></div>
-                                            <div className={`px-3 py-1 rounded-full ${vs.btn} text-[8px] font-black uppercase text-white shadow-lg`}>{vs.status}</div>
+                                        <div className="h-20 bg-slate-800/50 rounded-lg border border-slate-700 p-3 flex items-start gap-3">
+                                          <div className="w-8 h-8 rounded-full bg-slate-700 flex-shrink-0"></div>
+                                          <div className="space-y-2 flex-1">
+                                            <div className="h-2.5 w-1/3 bg-slate-600 rounded"></div>
+                                            <div className="h-2 w-full bg-slate-700 rounded"></div>
                                           </div>
-                                        ))}
+                                        </div>
+                                      </>
+                                    )}
+
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                          {/* Laptop base */}
+                          <div className="h-3 bg-slate-700 w-[108%] -ml-[4%] rounded-b-xl border-t border-slate-500/60 relative">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-slate-400/50 rounded-b"></div>
+                          </div>
+                        </div>
+
+                        {/* ── Phone frame ───────────── */}
+                        <div className="absolute z-20 w-[120px] lg:w-[130px] right-2 bottom-0 top-auto hover:scale-[1.03] transition-transform duration-500">
+                          <div className="relative bg-slate-900 rounded-[2rem] border-[5px] border-slate-800 shadow-2xl overflow-hidden" style={{ paddingBottom: '210%' }}>
+                            <div className="absolute inset-0">
+                              {/* Notch */}
+                              <div className="w-14 h-3.5 bg-slate-800 rounded-b-xl absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                              <div className="w-full h-full bg-[#0B1121] pt-6 flex flex-col overflow-hidden">
+                                <div className="relative flex-1 overflow-hidden px-2.5 mt-2">
+                                  {isActive && vis.slides.map((vs: any, vi: number) => (
+                                    <div key={vi} className={`absolute inset-x-2 transition-transform duration-700 ease-in-out flex flex-col gap-3
+                                      ${mockSlide === vi ? 'translate-x-0' : mockSlide > vi ? '-translate-x-[110%]' : 'translate-x-[110%]'}`}>
+                                      
+                                      {/* Phone content variations based on type */}
+                                      <div className={`w-full h-24 rounded-xl bg-gradient-to-br ${vs.grad} shadow-inner flex items-center justify-center`}>
+                                        {slide.type === 'website' && <Zap className="w-8 h-8 text-white/20" />}
+                                        {slide.type === 'analytics' && <BarChart3 className="w-8 h-8 text-white/20" />}
+                                        {slide.type === 'managed' && <Shield className="w-8 h-8 text-white/20" />}
                                       </div>
+                                      <div className="space-y-2">
+                                        <div className="h-2 w-3/4 bg-slate-700 rounded-full"></div>
+                                        <div className="h-1.5 w-full bg-slate-800 rounded-full"></div>
+                                      </div>
+                                      <div className={`h-8 w-full ${vs.btn} rounded-lg flex items-center justify-center shadow-lg`}>
+                                        <div className="h-1.5 w-2/5 bg-white/20 rounded-full"></div>
+                                      </div>
+                                      {slide.type === 'managed' && (
+                                        <div className="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
+                                           <div className={`h-1 w-full ${vs.btn} rounded-full`}></div>
+                                        </div>
+                                      )}
                                     </div>
-                                  )}
+                                  ))}
                                 </div>
-                              ))}
+                              </div>
                             </div>
                           </div>
                         </div>
-                        {/* Laptop Hinge Handle */}
-                        <div className="h-4 bg-[#2D3446] w-[108%] -ml-[4%] rounded-b-2xl border-t border-white/10 relative">
-                          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/10 rounded-b-xl shadow-inner"></div>
-                        </div>
-                      </div>
 
-                      {/* Floating secondary monitors (Phone/Tablet) */}
-                      <div className="absolute left-[5%] lg:left-[10%] bottom-10 z-20 animate-float-delayed">
-                        <div className="relative w-[130px] lg:w-[160px] bg-slate-900 rounded-[2.5rem] border-[6px] border-[#2D3446] shadow-[0_40px_80px_rgba(0,0,0,0.6)] overflow-hidden" style={{ paddingBottom: '210%' }}>
-                          <div className="absolute inset-0 bg-[#0B1121] pt-10 px-3 flex flex-col gap-4">
-                            <div className="w-10 h-1 bg-slate-800 rounded-full mx-auto mb-2"></div>
-                            <div className="h-24 rounded-2xl bg-white/5 relative overflow-hidden">
-                              <div className={`absolute inset-0 bg-gradient-to-br ${vis.slides[mockSlide].grad} opacity-30`}></div>
-                              <div className="absolute inset-0 flex items-center justify-center"><Zap className="w-8 h-8 text-white/20" /></div>
+                        {/* ── Pricing badge ─────────── */}
+
+                        <div className="absolute z-30 top-4 right-[-10px] bg-white p-4 rounded-2xl shadow-2xl border border-slate-100 flex flex-col gap-2 w-[190px] hover:translate-x-1 transition-transform duration-300">
+                          <div className="flex items-center gap-3">
+                            <div className={`w-12 h-12 rounded-full flex items-center justify-center font-black text-xl flex-shrink-0
+                              ${si === 0 ? 'bg-yellow-100 text-yellow-600' : si === 1 ? 'bg-cyan-100 text-cyan-700' : 'bg-purple-100 text-purple-700'}`}>
+                              {vis.badge.amount}
                             </div>
-                            <div className="space-y-2">
-                              <div className="h-2 bg-white/10 rounded w-3/4"></div>
-                              <div className="h-2 bg-white/10 rounded w-full"></div>
-                              <div className="h-2 bg-white/10 rounded w-1/2"></div>
+                            <div>
+                              <div className="text-slate-900 font-bold text-sm leading-tight">{vis.badge.label}</div>
+                              <div className="text-slate-500 text-[11px] font-medium">{vis.badge.sub}</div>
                             </div>
-                            <div className={`h-10 mt-auto mb-4 rounded-xl ${vis.slides[mockSlide].btn} opacity-30 animate-pulse`}></div>
                           </div>
                         </div>
-                      </div>
 
-                      <div className="absolute right-[5%] lg:right-[10%] top-10 z-0 animate-float-slow opacity-60 grayscale hover:grayscale-0 transition-all">
-                        <div className="relative w-[180px] lg:w-[220px] bg-slate-900 rounded-[1.5rem] border-[6px] border-[#2D3446] shadow-[0_40px_80px_rgba(0,0,0,0.4)] overflow-hidden" style={{ paddingBottom: '140%' }}>
-                          <div className="absolute inset-0 bg-[#0B1121] p-6 flex flex-col gap-4">
-                            <div className="flex justify-between items-center mb-4"><div className="w-16 h-3 bg-white/10 rounded"></div><div className="w-4 h-4 rounded-full bg-blue-500/20"></div></div>
-                            <div className="flex-1 bg-white/5 rounded-xl flex flex-col p-4 gap-2">
-                              {[1, 2, 3, 4, 5].map(i => <div key={i} className={`h-2 bg-white/10 rounded w-${(i % 3) + 1}/4`}></div>)}
-                            </div>
-                            <div className="h-12 bg-white/10 rounded-xl mt-4"></div>
-                          </div>
-                        </div>
                       </div>
-
-                      {/* Floating Badge */}
-                      <div className="absolute z-30 top-1/2 right-[2%] lg:right-[5%] -translate-y-1/2 scale-110">
-                        <div className="relative bg-white p-6 rounded-[2.5rem] shadow-[0_30px_60px_rgba(0,0,0,0.5)] border border-slate-100 flex flex-col items-center gap-1 w-[160px] animate-bounce-slow hov-3d">
-                          <div className={`w-14 h-14 rounded-full flex items-center justify-center font-black text-2xl mb-1
-                            ${si === 0 ? 'bg-yellow-100 text-yellow-600' : si === 1 ? 'bg-cyan-100 text-cyan-700' : 'bg-purple-100 text-purple-700'}`}>
-                            {vis.badge.amount}
-                          </div>
-                          <div className="text-slate-900 font-black text-sm uppercase tracking-tighter">{vis.badge.label}</div>
-                          <div className="text-slate-500 text-[10px] font-bold uppercase opacity-80">{vis.badge.sub}</div>
-                        </div>
-                      </div>
-
                     </div>
+
                   </div>
-
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* ── Segmented Progress Indicators (Linear Style) ── */}
-        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-40 flex items-center gap-8 px-8 py-4 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl">
-          {HERO_SLIDES.map((slide, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              className="group flex flex-col gap-3 min-w-[140px] text-left cursor-pointer"
-            >
-              <div className="relative w-full h-[3px] bg-white/10 rounded-full overflow-hidden">
-                <div
-                  className={`absolute left-0 top-0 h-full bg-white transition-all duration-300 ${heroSlide === i ? 'w-full' : 'w-0'}`}
-                  style={heroSlide === i ? { width: `${progress}%`, transition: 'width 50ms linear' } : {}}
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className={`text-[10px] font-black uppercase tracking-[0.2em] transition-all ${heroSlide === i ? 'text-white translate-y-0 opacity-100' : 'text-slate-500 translate-y-1 opacity-60 group-hover:opacity-100'}`}>
-                  Step 0{i + 1}
-                </span>
-                <span className={`text-xs font-bold transition-all ${heroSlide === i ? 'text-white' : 'text-slate-400 group-hover:text-slate-200'}`}>
-                  {slide.badge.split(':')[1]?.trim() || slide.badge}
-                </span>
-              </div>
-            </button>
-          ))}
-        </div>
-
-        {/* Cinematic Arrow Navigation (Minimal) */}
+        {/* ── Arrows ──────────────────── */}
         <button
           onClick={() => goTo((heroSlide - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
-          className="absolute left-10 top-1/2 -translate-y-1/2 z-40 w-16 h-16 rounded-2xl bg-white/5 hover:bg-white/10 hover:scale-110 border border-white/10 flex items-center justify-center text-white transition-all backdrop-blur-3xl hidden xl:flex group cursor-pointer"
+          className="absolute left-6 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-all backdrop-blur-md hidden md:flex"
         >
-          <svg className="w-8 h-8 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
         </button>
         <button
           onClick={() => goTo((heroSlide + 1) % HERO_SLIDES.length)}
-          className="absolute right-10 top-1/2 -translate-y-1/2 z-40 w-16 h-16 rounded-2xl bg-white/5 hover:bg-white/10 hover:scale-110 border border-white/10 flex items-center justify-center text-white transition-all backdrop-blur-3xl hidden xl:flex group cursor-pointer"
+          className="absolute right-6 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-all backdrop-blur-md hidden md:flex"
         >
-          <svg className="w-8 h-8 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
         </button>
+
+        {/* ── Indicators ────────────────── */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-40 flex items-center gap-4">
+          {HERO_SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className={`transition-all duration-500 rounded-full ${heroSlide === i ? 'w-10 h-2 bg-white' : 'w-2 h-2 bg-slate-500 hover:bg-slate-300'}`}
+            />
+          ))}
+        </div>
       </section>
 
       {/* ── SECTION 2 — Pain / Problem Section ────────────────── */}
@@ -496,6 +509,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* ── SECTION 3 — Solution Section ────────────────────── */}
       <section className="py-32 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
