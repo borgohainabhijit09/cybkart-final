@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   ArrowRight,
   Brain,
@@ -25,8 +25,43 @@ import {
 import CTASection from '@/components/CTASection';
 import BookingModal from '@/components/BookingModal';
 
+const MOCKUP_SLIDES = [
+  {
+    title: 'Auto Spa',
+    primaryBg: 'bg-blue-500',
+    lightBg: 'bg-blue-500/20',
+    gradient: 'from-blue-500/30 to-blue-600/30',
+  },
+  {
+    title: 'Landscaping',
+    primaryBg: 'bg-emerald-500',
+    lightBg: 'bg-emerald-500/20',
+    gradient: 'from-emerald-500/30 to-emerald-600/30',
+  },
+  {
+    title: 'Plumbing',
+    primaryBg: 'bg-cyan-500',
+    lightBg: 'bg-cyan-500/20',
+    gradient: 'from-cyan-500/30 to-cyan-600/30',
+  },
+  {
+    title: 'Clinic',
+    primaryBg: 'bg-indigo-500',
+    lightBg: 'bg-indigo-500/20',
+    gradient: 'from-indigo-500/30 to-purple-500/30',
+  }
+];
+
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % MOCKUP_SLIDES.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
@@ -47,106 +82,198 @@ export default function Home() {
 
             {/* Left Content */}
             <div className="space-y-8 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
-                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                System-First Agency
-              </div>
 
               <h1 className="text-5xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1]">
-                Digital Systems That <br />
-                <span className="gradient-text-light">Drive Revenue.</span>
+                Get a Professional Website for <span className="text-yellow-400">$0</span> Today
               </h1>
 
               <p className="text-xl text-slate-400 leading-relaxed max-w-lg">
-                We don't just build websites. We architect enterprise-grade AI, automation, and web ecosystems for ambitious US businesses.
+                Launch a high-converting website for your business with hosting, updates, support, and ongoing improvements included. Use it free for the first month and pay only if you continue.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-500 transition-all shadow-lg shadow-blue-900/20 cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 bg-yellow-500 text-slate-900 px-8 py-4 rounded-lg font-bold hover:bg-yellow-400 transition-all shadow-lg shadow-yellow-500/20 cursor-pointer"
                 >
-                  Book Strategy Call
+                  <span className="text-lg">Get My Free Website Demo</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
-                <Link href="/case-scenarios" className="inline-flex items-center justify-center gap-2 bg-white/5 text-white border border-white/10 px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all">
-                  View Case Studies
+                <Link href="#pricing" className="inline-flex items-center justify-center gap-2 bg-transparent text-white border border-slate-600 px-8 py-4 rounded-lg font-semibold hover:bg-white/5 hover:border-white transition-all">
+                  View Pricing Plans
                 </Link>
               </div>
 
-              <div className="pt-8 flex items-center gap-6 text-sm text-slate-500 font-medium">
+              {/* Trust Strip */}
+              <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-slate-300 font-medium">
                 <span className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-emerald-500" />
-                  Enterprise Security
+                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                    <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  No Upfront Cost
                 </span>
                 <span className="flex items-center gap-2">
-                  <Layout className="w-4 h-4 text-blue-500" />
-                  AI Native
+                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                    <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  Live in 3–5 Days
                 </span>
                 <span className="flex items-center gap-2">
-                  <Globe className="w-4 h-4 text-purple-500" />
-                  US Optimized
+                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                    <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  Fully Managed
+                </span>
+                <span className="flex items-center gap-2">
+                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                    <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  Cancel Anytime
                 </span>
               </div>
             </div>
 
-            {/* Right Visual - Abstract System Visualization */}
-            <div className="relative hidden lg:block">
-              <div className="relative rounded-xl bg-slate-900 border border-slate-700/50 shadow-2xl p-1 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 pointer-events-none"></div>
-                <div className="bg-[#0B1121] rounded-lg p-6 space-y-6 relative">
-                  {/* Mock Dashboard UI */}
-                  <div className="flex items-center justify-between mb-8 border-b border-slate-800 pb-4">
-                    <div className="flex gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500/20"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-500/20"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-500/20"></div>
-                    </div>
-                    <div className="text-xs text-slate-500 font-mono">system_status: active</div>
-                  </div>
+            {/* Right Visual - Device Mockups & Pricing Badge */}
+            <div className="relative xl:block lg:flex flex-col items-center mt-12 lg:mt-0">
+              <div className="relative h-[400px] sm:h-[500px] lg:h-[550px] w-full flex items-center justify-center cursor-default scale-[0.65] sm:scale-90 lg:scale-100 origin-center transform transition-transform">
+                
+                {/* Background glow */}
+                <div className="absolute inset-0 bg-blue-500/10 blur-[60px] lg:blur-[100px] rounded-full pointer-events-none"></div>
 
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50">
-                      <div className="text-slate-400 text-xs mb-1">Total Conversions</div>
-                      <div className="text-2xl font-bold text-white">1,284</div>
-                      <div className="text-emerald-500 text-xs flex items-center mt-1">
-                        <Activity className="w-3 h-3 mr-1" /> +12.5%
+                {/* Laptop Mockup */}
+                <div className="absolute z-10 w-[500px] transform -translate-x-4 lg:-translate-x-8 -translate-y-4 transition-transform hover:scale-[1.02] duration-500">
+                  <div className="relative pb-[62.5%] bg-slate-800 rounded-t-xl border-[6px] border-b-0 border-slate-700 shadow-2xl overflow-hidden shadow-black/50">
+                    <div className="absolute inset-0 bg-slate-900 overflow-hidden flex flex-col">
+                      {/* Browser header */}
+                      <div className="h-6 w-full bg-slate-800 flex items-center px-3 border-b border-slate-700">
+                        <div className="flex gap-1.5">
+                          <div className="w-2.5 h-2.5 rounded-full bg-rose-500"></div>
+                          <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+                          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
+                        </div>
+                      </div>
+                      {/* Website content slider mock */}
+                      <div className="p-4 h-full relative overflow-hidden flex flex-col">
+                        <div className="flex-1 relative w-full h-full">
+                          {MOCKUP_SLIDES.map((slide, index) => (
+                            <div 
+                              key={slide.title}
+                              className={`absolute inset-0 transition-transform duration-700 ease-in-out flex flex-col gap-4 ${
+                                activeSlide === index 
+                                  ? 'translate-x-0' 
+                                  : activeSlide > index 
+                                    ? '-translate-x-[110%]' 
+                                    : 'translate-x-[110%]'
+                              }`}
+                            >
+                              <div className={`w-full h-32 ${slide.lightBg} rounded-lg relative overflow-hidden border border-white/5`}>
+                                <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-white/5"></div>
+                                <div className="absolute bottom-3 left-3 bg-slate-900/50 backdrop-blur-sm px-3 py-1 rounded-full text-white text-xs font-semibold border border-white/10 shadow-lg">
+                                  {slide.title} Theme
+                                </div>
+                              </div>
+                              <div className="flex gap-4">
+                                <div className="flex-1 space-y-2">
+                                  <div className="h-3 w-3/4 bg-slate-700 rounded"></div>
+                                  <div className="h-2 w-full bg-slate-700 rounded"></div>
+                                  <div className="h-2 w-5/6 bg-slate-700 rounded"></div>
+                                </div>
+                                <div className={`w-24 h-16 ${slide.primaryBg} bg-opacity-20 rounded border border-white/5`}></div>
+                              </div>
+                              <div className="mt-auto flex justify-between items-center">
+                                <div className="flex gap-2">
+                                  <div className="w-6 h-6 rounded-full bg-slate-800 border border-slate-700"></div>
+                                  <div className="w-6 h-6 rounded-full bg-slate-800 border border-slate-700"></div>
+                                </div>
+                                <div className={`px-4 py-1.5 ${slide.primaryBg} text-white text-[10px] uppercase tracking-wider font-bold rounded shadow-lg opacity-90`}>Book Now</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        
+                        {/* Slider Indicators */}
+                        <div className="flex justify-center gap-2 mt-4 z-10">
+                          {MOCKUP_SLIDES.map((_, index) => (
+                            <button
+                              key={index}
+                              onClick={() => setActiveSlide(index)}
+                              className={`h-1.5 rounded-full transition-all duration-300 ${
+                                activeSlide === index ? 'w-6 bg-white' : 'w-1.5 bg-slate-600 hover:bg-slate-500'
+                              }`}
+                              aria-label={`Go to slide ${index + 1}`}
+                            />
+                          ))}
+                        </div>
                       </div>
                     </div>
-                    <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700/50">
-                      <div className="text-slate-400 text-xs mb-1">Avg. Response</div>
-                      <div className="text-2xl font-bold text-white">0.3s</div>
-                      <div className="text-blue-500 text-xs mt-1">AI Optimized</div>
-                    </div>
                   </div>
+                  {/* Laptop base */}
+                  <div className="h-4 bg-slate-600 rounded-b-xl w-[110%] -ml-[5%] relative border-t border-slate-500">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-slate-400 rounded-b-lg"></div>
+                  </div>
+                </div>
 
-                  <div className="space-y-3 pt-2">
-                    <div className="flex items-center gap-3 text-xs text-slate-400 font-mono">
-                      <Terminal className="w-3 h-3" />
-                      <span className="text-blue-400">&gt;&gt;</span> Initializing AI agent...
-                    </div>
-                    <div className="flex items-center gap-3 text-xs text-slate-400 font-mono">
-                      <Terminal className="w-3 h-3" />
-                      <span className="text-blue-400">&gt;&gt;</span> Optimization complete.
-                    </div>
-                    <div className="h-1 w-full bg-slate-800 rounded-full mt-2 overflow-hidden">
-                      <div className="h-full bg-blue-500 w-3/4 animate-pulse"></div>
+                {/* Mobile Mockup */}
+                <div className="absolute z-20 w-[140px] right-2 bottom-6 transform translate-y-8 transition-transform hover:scale-[1.05] duration-500">
+                  <div className="relative pb-[200%] bg-slate-900 rounded-[2rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden">
+                    <div className="absolute inset-0 flex flex-col items-center">
+                      {/* Notch */}
+                      <div className="w-16 h-4 bg-slate-800 rounded-b-xl absolute top-0 z-20"></div>
+                      
+                      {/* Mobile web content mock */}
+                      <div className="w-full h-full bg-[#0F172A] pt-7 flex flex-col relative overflow-hidden">
+                         {/* Header mock */}
+                         <div className="flex justify-between items-center px-3 mb-2 z-10 relative">
+                           <div className="w-10 h-2.5 bg-slate-700 rounded"></div>
+                           <div className="w-4 h-2 bg-slate-700 rounded"></div>
+                         </div>
+                         
+                         <div className="relative flex-1 w-full px-3">
+                           {MOCKUP_SLIDES.map((slide, index) => (
+                              <div 
+                                key={`mob-${slide.title}`}
+                                className={`absolute inset-x-3 inset-y-0 transition-transform duration-700 ease-in-out flex flex-col ${
+                                  activeSlide === index 
+                                    ? 'translate-x-0' 
+                                    : activeSlide > index 
+                                      ? '-translate-x-[130%]' 
+                                      : 'translate-x-[130%]'
+                                }`}
+                              >
+                               <div className={`w-full h-24 bg-gradient-to-br ${slide.gradient} rounded-lg mb-3 shadow-inner`}></div>
+                               <div className="space-y-2 mt-1">
+                                 <div className="h-2.5 w-3/4 bg-slate-700 rounded"></div>
+                                 <div className="h-2 w-full bg-slate-800 rounded"></div>
+                                 <div className="h-2 w-5/6 bg-slate-800 rounded"></div>
+                               </div>
+                               <div className={`h-8 w-full ${slide.primaryBg} rounded-md mt-4 flex items-center justify-center shadow-lg shadow-black/20`}>
+                                 <div className="h-2 w-1/2 bg-white/30 rounded"></div>
+                               </div>
+                              </div>
+                           ))}
+                         </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Floating Elements */}
-              <div className="absolute -right-6 -bottom-6 bg-slate-800 p-4 rounded-lg border border-slate-700 shadow-xl max-w-xs">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500">
-                    <Zap className="w-4 h-4" />
+                {/* Floating Pricing Badge */}
+                <div className="absolute z-30 top-12 right-[-20px] bg-white p-4 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-slate-100 flex flex-col gap-2 min-w-[200px] hover:-translate-y-1 transition-transform duration-300">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 font-black text-xl">
+                      $0
+                    </div>
+                    <div>
+                      <div className="text-slate-900 font-bold text-[15px] leading-tight">First Month</div>
+                      <div className="text-slate-500 text-xs font-medium">Full functionality</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-white text-sm font-bold">Revenue Automated</div>
-                    <div className="text-slate-400 text-xs">System saved 42hrs of manual work this week.</div>
+                  <div className="w-full h-px bg-slate-100 my-1"></div>
+                  <div className="text-slate-600 text-xs text-center font-medium">
+                    Then from <span className="text-slate-900 font-bold text-sm">$59/mo</span>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
