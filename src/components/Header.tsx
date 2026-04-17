@@ -51,6 +51,9 @@ export default function Header() {
                             <Link href="/about" className="text-slate-600 hover:text-blue-600 transition-colors font-medium text-sm">
                                 About Us
                             </Link>
+                            <Link href="/pricing" className="text-slate-600 hover:text-blue-600 transition-colors font-medium text-sm">
+                                Pricing
+                            </Link>
 
                             {/* Services Dropdown */}
                             <div
@@ -147,6 +150,7 @@ export default function Header() {
                         <div className="lg:hidden absolute top-20 left-0 right-0 bg-white border-t border-slate-200 shadow-xl p-6 space-y-4 h-[calc(100vh-5rem)] overflow-y-auto animate-slide-down">
                             <Link href="/" className="block text-slate-700 font-medium py-2" onClick={() => setMobileMenuOpen(false)}>Home</Link>
                             <Link href="/about" className="block text-slate-700 font-medium py-2" onClick={() => setMobileMenuOpen(false)}>About Us</Link>
+                            <Link href="/pricing" className="block text-slate-700 font-medium py-2" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
 
                             <div className="space-y-1">
                                 <div className="font-semibold text-slate-900 pb-2 border-b border-slate-100 mb-2">Services</div>
