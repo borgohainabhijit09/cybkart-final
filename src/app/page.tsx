@@ -20,7 +20,10 @@ import {
   Code2,
   Terminal,
   Activity,
-  Clock
+  Clock,
+  TrendingUp,
+  Banknote,
+  Frown
 } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 import BookingModal from '@/components/BookingModal';
@@ -428,150 +431,165 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 
-        PROBLEMS SECTION 
-        Style: Clean, Minimalist Grid
-      */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              The Digital Bottleneck
+      {/* ── SECTION 2 — Pain / Problem Section ────────────────── */}
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        {/* Subtle background decoration */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-4xl mx-auto text-center mb-20 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight italic uppercase">
+              Why Pay Thousands <span className="text-blue-600">Upfront</span> for a Website?
             </h2>
-            <p className="text-lg text-slate-600">
-              Most businesses are held back by disconnected tools and manual processes.
-            </p>
+            <div className="h-1.5 w-24 bg-blue-600 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid lg:grid-cols-3 gap-10 max-w-6xl mx-auto mb-20">
             {[
               {
-                icon: Layers,
-                title: "Tool Chaos",
-                desc: "Apps that don't talk to each other create data silos and confusion."
+                icon: Banknote,
+                iconBg: "bg-rose-100",
+                iconColor: "text-rose-600",
+                title: "Expensive Traditional Agencies",
+                highlight: "$3k–$10k upfront fees",
+                desc: "Most agencies demand a massive down payment before a single line of code is written. Why risk your capital on promises?",
               },
               {
                 icon: Clock,
-                title: "Manual Waste",
-                desc: "Valuable team time lost to data entry, scheduling, and repetitive tasks."
+                iconBg: "bg-amber-100",
+                iconColor: "text-amber-600",
+                title: "Slow Delivery",
+                highlight: "Weeks or months to launch",
+                desc: "In today's market, speed is everything. Waiting months for a website launch means months of lost revenue and wasted momentum.",
               },
               {
-                icon: Target,
-                title: "Missed Leads",
-                desc: "Slow response times cost you 67% of potential new business."
-              },
-              {
-                icon: Layout,
-                title: "Poor UX",
-                desc: "Confusing website designs that frustrate users and kill conversions."
+                icon: Frown,
+                iconBg: "bg-indigo-100",
+                iconColor: "text-indigo-600",
+                title: "No Ongoing Support",
+                highlight: "Pay extra every time",
+                desc: "Traditional models charge you for every small change, update, or bug fix. You end up being held hostage by your own technology.",
               }
             ].map((item, i) => (
-              <div key={i} className="group p-6 rounded-xl border border-slate-100 hover:border-slate-200 hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 bg-slate-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-50 transition-colors">
-                  <item.icon className="w-6 h-6 text-slate-700 group-hover:text-blue-600" />
+              <div key={i} className="group relative bg-white p-10 rounded-[2.5rem] border border-slate-200/60 shadow-xl shadow-slate-200/20 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 transition-all duration-500">
+                <div className={`w-16 h-16 ${item.iconBg} rounded-2xl mb-8 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                  <item.icon className={`w-8 h-8 ${item.iconColor}`} />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                <h3 className="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight leading-tight">
+                  {item.title}
+                </h3>
+                <div className={`text-lg font-bold mb-4 ${item.iconColor} italic`}>
+                  {item.highlight}
+                </div>
+                <p className="text-slate-600 leading-relaxed font-medium">
+                  {item.desc}
+                </p>
+                <div className="absolute bottom-6 right-10 opacity-0 group-hover:opacity-10 dark:text-slate-900 pointer-events-none transition-opacity">
+                   <item.icon className="w-16 h-16" />
+                </div>
               </div>
             ))}
           </div>
+
+          <div className="text-center max-w-3xl mx-auto">
+            <div className="relative inline-block px-10 py-6 rounded-3xl bg-slate-900 shadow-2xl overflow-hidden group">
+               <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+               <p className="text-2xl md:text-3xl font-black text-white italic tracking-tight leading-tight">
+                 "Your website should help your business grow — <span className="text-blue-400 font-black">not drain your budget.</span>"
+               </p>
+            </div>
+          </div>
         </div>
       </section>
-
-      {/* 
-        SOLUTIONS SECTION 
-        Style: Bento Grid
-      */}
-      <section className="py-24 bg-slate-50 border-y border-slate-200">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-            <div className="max-w-2xl">
-              <span className="text-blue-600 font-semibold tracking-wider text-sm uppercase">Our Solutions</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2">
-                Enterprise Architecture for Growth
-              </h2>
-            </div>
-            <Link href="/services" className="text-blue-600 font-semibold flex items-center gap-2 hover:translate-x-1 transition-transform">
-              Explore All Services <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr">
-
-            {/* AI Automation - Large Card */}
-            <div className="md:col-span-2 relative group overflow-hidden rounded-2xl bg-white border border-slate-200 p-8 hover:shadow-xl transition-all duration-300 min-h-[320px]">
-              <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity pointer-events-none">
-                <Brain className="w-64 h-64 text-blue-600" />
-              </div>
-              <div className="relative z-10 h-full flex flex-col justify-between">
-                <div>
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                    <Brain className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">AI Automation & Chatbots</h3>
-                  <p className="text-slate-600 max-w-md leading-relaxed">
-                    Intelligent agents that handle customer service, booking, and sales 24/7.
-                    Reduce operational costs by 60% and eliminate response delays.
-                  </p>
+      {/* ── SECTION 3 — Solution Section ────────────────────── */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-20">
+            
+            {/* Left: Copy & List */}
+            <div className="lg:w-1/2 space-y-10">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-widest">
+                  The Solution
                 </div>
-                <Link href="/services/ai-automation" className="inline-flex items-center text-blue-600 font-medium mt-8 group-hover:gap-2 transition-all">
-                  View Architecture <ChevronRight className="w-4 h-4" />
-                </Link>
+                <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter italic uppercase leading-tight">
+                  A Better Way <br />
+                  <span className="text-blue-600">To Get Online</span>
+                </h2>
+                <p className="text-xl text-slate-600 leading-relaxed font-medium max-w-xl">
+                  At <span className="text-slate-950 font-bold">Cybkart Global</span>, we build and manage your website for one affordable monthly subscription. No hidden costs, no technical headaches.
+                </p>
               </div>
-            </div>
 
-            {/* Websites - Standard Card */}
-            <div className="relative group overflow-hidden rounded-2xl bg-white border border-slate-200 p-8 hover:shadow-xl transition-all duration-300 min-h-[320px]">
-              <div className="flex flex-col h-full justify-between">
-                <div>
-                  <div className="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mb-6">
-                    <Layout className="w-6 h-6 text-cyan-600" />
+              <div className="grid gap-5">
+                {[
+                  "Professional Design",
+                  "Hosting Included",
+                  "Unlimited Peace of Mind",
+                  "Updates & Support",
+                  "Ongoing Improvements"
+                ].map((text, i) => (
+                  <div key={i} className="flex items-center gap-4 group animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>
+                    <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-600/20 group-hover:scale-110 transition-transform">
+                       <CheckIcon />
+                    </div>
+                    <span className="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors uppercase italic">{text}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Websites + Booking</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    Conversion-focused sites with integrated scheduling. Turn visitors into bookings instantly.
-                  </p>
-                </div>
-                <Link href="/services/websites-booking" className="inline-flex items-center text-cyan-600 font-medium group-hover:gap-2 transition-all">
-                  Learn More <ChevronRight className="w-4 h-4" />
-                </Link>
+                ))}
+              </div>
+
+              <div className="pt-6">
+                <button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="inline-flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-slate-800 transition-all shadow-xl cursor-pointer italic uppercase tracking-tighter"
+                >
+                  Start Your Journey
+                  <ArrowRight className="w-5 h-5 translate-x-1" />
+                </button>
               </div>
             </div>
 
-            {/* E-Commerce - Standard Card */}
-            <div className="relative group overflow-hidden rounded-2xl bg-white border border-slate-200 p-8 hover:shadow-xl transition-all duration-300 min-h-[320px]">
-              <div className="flex flex-col h-full justify-between">
-                <div>
-                  <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mb-6">
-                    <ShoppingCart className="w-6 h-6 text-emerald-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">E-Commerce</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    High-performance stores built on Shopify or custom stacks. Optimized for scale.
-                  </p>
-                </div>
-                <Link href="/services/ecommerce" className="inline-flex items-center text-emerald-600 font-medium group-hover:gap-2 transition-all">
-                  Learn More <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
+            {/* Right: Immersive Visual (Managed Stack) */}
+            <div className="lg:w-1/2 relative perspective-[2000px]">
+              <div className="relative w-full aspect-square max-w-lg mx-auto transform hover:rotate-y-12 transition-transform duration-1000">
+                
+                {/* Visual Stack Layers */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                   
+                   {/* Layer 3: Support */}
+                   <div className="absolute top-[10%] w-[80%] aspect-video bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 animate-float-slow z-30">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center"><Shield className="w-5 h-5 text-purple-600" /></div>
+                        <div className="h-2 w-24 bg-slate-100 rounded"></div>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="h-2 w-full bg-slate-50 rounded"></div>
+                        <div className="h-2 w-3/4 bg-slate-50 rounded"></div>
+                      </div>
+                      <div className="absolute bottom-6 right-6 px-3 py-1 bg-emerald-500 rounded-full text-[10px] font-bold text-white uppercase tracking-widest">24/7 Managed</div>
+                   </div>
 
-            {/* Digital Marketing - Wide Card */}
-            <div className="md:col-span-2 relative group overflow-hidden rounded-2xl bg-[#0F172A] p-8 hover:shadow-xl transition-all duration-300 text-white min-h-[320px]">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-              <div className="relative z-10 flex flex-col h-full justify-between">
-                <div>
-                  <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-6">
-                    <LineChart className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">Digital Marketing</h3>
-                  <p className="text-slate-400 max-w-lg leading-relaxed">
-                    Data-driven campaigns. We track every click, conversion, and dollar to ensure positive ROI across Google, Meta, and LinkedIn.
-                  </p>
+                   {/* Layer 2: Design */}
+                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] aspect-video bg-slate-900 rounded-2xl shadow-3xl border border-white/10 p-6 z-20 overflow-hidden transform rotate-[-2deg]">
+                      <div className="absolute inset-0 opacity-20 dark-grid-bg"></div>
+                      <div className="relative z-10 h-full flex flex-col justify-between">
+                         <div className="h-8 w-8 rounded-lg bg-blue-500/20 flex items-center justify-center border border-blue-500/20"><Globe className="w-4 h-4 text-blue-500" /></div>
+                         <div className="space-y-3">
+                           <div className="h-1 lg:h-2 w-1/2 bg-white/20 rounded"></div>
+                           <div className="h-3 lg:h-6 w-3/4 bg-white/10 rounded-sm italic font-black text-white/40 flex items-center px-2">CYBKART PRESET</div>
+                         </div>
+                      </div>
+                   </div>
+
+                   {/* Layer 1: Infrastructure */}
+                   <div className="absolute bottom-[10%] w-full aspect-video bg-blue-600 rounded-2xl shadow-xl z-10 transform scale-95 opacity-50 blur-[2px]"></div>
                 </div>
-                <Link href="/services/digital-marketing" className="inline-flex items-center text-white font-medium mt-6 group-hover:gap-2 transition-all">
-                  View Strategies <ChevronRight className="w-4 h-4" />
-                </Link>
+
+                {/* Decorative particles */}
+                <div className="absolute top-0 right-0 w-20 h-20 bg-yellow-400/20 rounded-full blur-2xl animate-pulse"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
               </div>
             </div>
 
