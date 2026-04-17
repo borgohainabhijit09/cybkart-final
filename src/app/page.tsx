@@ -23,7 +23,13 @@ import {
   Clock,
   TrendingUp,
   Banknote,
-  Frown
+  Frown,
+  MonitorDot,
+  Eye,
+  Rocket,
+  PhoneCall,
+  Star,
+  CalendarCheck
 } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 import BookingModal from '@/components/BookingModal';
@@ -32,10 +38,10 @@ const HERO_SLIDES = [
   {
     type: 'website',
     badge: 'Limited Offer: $0 Setup',
-    headline: ['Premium Design,', 'Zero Upfront', 'Investment.'],
+    headline: ['Get a Professional', 'Website for $0', 'Today'],
     highlightIndex: 1,
     highlightColor: 'text-yellow-400',
-    body: 'Stop paying thousands for a website. Get an enterprise-grade site for $0 today. We handle the design, hosting, and security while you focus on sales.',
+    body: 'Launch a high-converting website for your business with hosting, updates, support, and ongoing improvements included. Use it free for the first month and pay only if you continue.',
     primaryCta: 'Get My Free Demo',
     secondaryCta: 'See Our Work',
     secondaryHref: '/portfolio/customer-sites',
@@ -597,89 +603,175 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 
-        HOW WE WORK 
-        Style: Horizontal Process Steps
-      */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">The System Methodology</h2>
-            <p className="text-slate-600">Our engineering approach to business growth.</p>
+      {/* ── SECTION 4 — How It Works ───────────────────────── */}
+      <section className="py-32 bg-[#050B1A] relative overflow-hidden">
+        {/* Abstract Background Design */}
+        <div className="absolute inset-0 dark-grid-bg opacity-[0.05] pointer-events-none"></div>
+        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-4xl mx-auto text-center mb-24 space-y-4">
+            <span className="text-blue-500 font-black uppercase tracking-[0.3em] text-sm italic">The System</span>
+            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter italic uppercase leading-tight">
+              Simple. Fast. <span className="text-blue-500 underline underline-offset-8 decoration-white/20">Risk-Free.</span>
+            </h2>
           </div>
 
           <div className="relative">
-            {/* Connecting Line (Desktop) */}
-            <div className="hidden md:block absolute top-8 left-16 right-16 h-0.5 bg-slate-100"></div>
+            {/* Connection Line (Desktop) */}
+            <div className="hidden lg:block absolute top-[70px] left-[15%] right-[15%] h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-500 opacity-20"></div>
 
-            <div className="grid md:grid-cols-4 gap-12 relative z-10">
+            <div className="grid lg:grid-cols-3 gap-16 relative z-10">
               {[
-                { step: "01", title: "Diagnose", icon: Search, desc: "We audit your current systems, identifying bottlenecks and revenue leaks." },
-                { step: "02", title: "Design", icon: Code2, desc: "Architecting a custom solution tailored to your specific operational needs." },
-                { step: "03", title: "Build", icon: Database, desc: "Rapid deployment using enterprise-grade frameworks and best practices." },
-                { step: "04", title: "Optimize", icon: LineChart, desc: "Continuous data analysis and refinement to maximize ROI over time." }
+                { 
+                  step: "01", 
+                  title: "We Build Your Demo", 
+                  icon: MonitorDot, 
+                  desc: "We create a professional website concept for your business.",
+                  accent: "text-blue-500",
+                  bg: "bg-blue-500/10"
+                },
+                { 
+                  step: "02", 
+                  title: "You Review It", 
+                  icon: Eye, 
+                  desc: "Request edits, approve layout, ask questions.",
+                  accent: "text-purple-500",
+                  bg: "bg-purple-500/10"
+                },
+                { 
+                  step: "03", 
+                  title: "We Launch Fast", 
+                  icon: Rocket, 
+                  desc: "Go live in 3–5 days and use it free for 30 days.",
+                  accent: "text-emerald-500",
+                  bg: "bg-emerald-500/10"
+                }
               ].map((item, i) => (
-                <div key={i} className="bg-white p-6 relative pt-4 text-center">
-                  <div className="w-16 h-16 bg-white border-2 border-slate-100 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-600 shadow-sm relative z-20">
-                    <item.icon className="w-7 h-7" />
+                <div key={i} className="group relative text-center">
+                  {/* Step Number Background */}
+                  <div className="absolute -top-12 left-1/2 -translate-x-1/2 text-[10rem] font-black text-white/[0.03] pointer-events-none select-none italic tracking-tighter">
+                    {item.step}
                   </div>
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">{item.step}</div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                  
+                  {/* Icon Circle */}
+                  <div className={`relative w-28 h-28 mx-auto rounded-[2rem] ${item.bg} border border-white/10 flex items-center justify-center mb-10 group-hover:-translate-y-2 group-hover:rotate-3 transition-all duration-500 shadow-2xl`}>
+                    <item.icon className={`w-12 h-12 ${item.accent}`} />
+                    <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full bg-[#050B1A] border border-white/20 flex items-center justify-center text-white font-black italic text-sm">
+                       {item.step}
+                    </div>
+                  </div>
+
+                  {/* Text Content */}
+                  <h3 className="text-2xl font-black text-white mb-4 uppercase italic tracking-tight">{item.title}</h3>
+                  <p className="text-slate-400 font-medium leading-relaxed max-w-[280px] mx-auto text-balance">
+                    {item.desc}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
+
+          <div className="mt-24 text-center">
+             <div className="inline-flex items-center gap-6 px-8 py-4 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-xl">
+                <div className="flex -space-x-3">
+                   {[1,2,3,4].map(i => (
+                     <div key={i} className="w-10 h-10 rounded-full border-2 border-[#050B1A] bg-slate-800 overflow-hidden">
+                        <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 opacity-80"></div>
+                     </div>
+                   ))}
+                </div>
+                <div className="text-left">
+                   <div className="text-white font-black text-sm uppercase italic">200+ Businesses Live</div>
+                   <div className="text-slate-500 text-xs font-bold">Scaling with CYBKART methodology</div>
+                </div>
+             </div>
+          </div>
         </div>
       </section>
 
-      {/* 
-        PROOF & TOOL STACK
-      */}
-      <section className="py-24 bg-slate-50 border-t border-slate-200">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Built on Modern Primitives</h2>
-              <p className="text-lg text-slate-600 mb-8">
-                We leverage the most powerful technologies available to build independent, scalable systems for your business.
-              </p>
+      {/* ── SECTION 5 — Why It Benefits Your Business ───────── */}
+      <section className="py-32 bg-slate-50 relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-3xl mx-auto text-center mb-20 space-y-4">
+            <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">Real Impact</span>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight italic uppercase">
+              Built to Help <span className="text-blue-600">You Grow</span>
+            </h2>
+            <div className="h-1.5 w-20 bg-blue-600 mx-auto rounded-full"></div>
+          </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: "AI Models", val: "GPT-4 & Claude" },
-                  { label: "Framework", val: "Next.js 15" },
-                  { label: "Infrastructure", val: "Vercel / AWS" },
-                  { label: "Payments", val: "Stripe Connect" },
-                ].map((stat, i) => (
-                  <div key={i} className="border border-slate-200 bg-white p-4 rounded-lg">
-                    <div className="text-xs text-slate-400 font-semibold uppercase">{stat.label}</div>
-                    <div className="font-mono text-slate-900 font-medium mt-1">{stat.val}</div>
-                  </div>
-                ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "More Calls & Leads",
+                desc: "Convert visitors into customers with high-performance conversion funnels.",
+                icon: PhoneCall,
+                color: "text-blue-600",
+                bg: "bg-blue-600/10",
+                border: "group-hover:border-blue-500/30"
+              },
+              {
+                title: "Stronger Credibility",
+                desc: "Look professional instantly with world-class design that builds trust.",
+                icon: Star,
+                color: "text-yellow-600",
+                bg: "bg-yellow-600/10",
+                border: "group-hover:border-yellow-500/30"
+              },
+              {
+                title: "Easier Bookings",
+                desc: "Automated forms, direct calls, and booking setups integrated seamlessly.",
+                icon: CalendarCheck,
+                color: "text-emerald-600",
+                bg: "bg-emerald-600/10",
+                border: "group-hover:border-emerald-500/30"
+              },
+              {
+                title: "Grow Over Time",
+                desc: "Focus on your business while we handle continuous upgrades and improvements.",
+                icon: TrendingUp,
+                color: "text-purple-600",
+                bg: "bg-purple-600/10",
+                border: "group-hover:border-purple-500/30"
+              }
+            ].map((benefit, i) => (
+              <div key={i} className={`group bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${benefit.border}`}>
+                <div className={`w-14 h-14 ${benefit.bg} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform`}>
+                  <benefit.icon className={`w-7 h-7 ${benefit.color}`} />
+                </div>
+                <h3 className="text-xl font-black text-slate-900 mb-3 uppercase tracking-tight italic">
+                  {benefit.title}
+                </h3>
+                <p className="text-slate-600 font-medium leading-relaxed">
+                  {benefit.desc}
+                </p>
+                
+                {/* Micro-indicator */}
+                <div className="mt-8 flex items-center gap-2 text-[10px] font-black uppercase text-slate-300 group-hover:text-blue-600 transition-colors">
+                  <div className="w-8 h-px bg-slate-200 group-hover:bg-blue-600 transition-all group-hover:w-12"></div>
+                  Included
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
 
-            <div className="space-y-8">
-              <h3 className="font-bold text-slate-900 flex items-center gap-2">
-                <Globe className="w-5 h-5 text-blue-600" />
-                Industries We Serve
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {['Healthcare & Clinics', 'Legal & Professional', 'E-Commerce Brands', 'Marketing Agencies', 'SaaS Companies', 'Local Services'].map((ind, i) => (
-                  <div key={i} className="flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-sm transition-all cursor-default">
-                    <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                    <span className="text-slate-700 font-medium">{ind}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-8 border-t border-slate-200">
-                <Link href="/case-scenarios" className="text-slate-900 font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                  See Real Client Results <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
+          <div className="mt-20 p-10 rounded-[3rem] bg-slate-900 relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
+             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+                <div className="text-center md:text-left">
+                   <h3 className="text-2xl md:text-3xl font-black text-white italic uppercase tracking-tighter mb-2">Ready to see the difference?</h3>
+                   <p className="text-slate-400 font-medium">Get your free custom website demo in 48 hours.</p>
+                </div>
+                <button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="px-10 py-5 bg-white text-slate-950 rounded-2xl font-black text-lg hover:bg-blue-50 transition-all shadow-xl italic uppercase cursor-pointer flex items-center gap-3"
+                >
+                   Claim My Free Demo
+                   <ArrowRight className="w-5 h-5" />
+                </button>
+             </div>
           </div>
         </div>
       </section>
