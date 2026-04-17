@@ -25,258 +25,406 @@ import {
 import CTASection from '@/components/CTASection';
 import BookingModal from '@/components/BookingModal';
 
-const MOCKUP_SLIDES = [
+const HERO_SLIDES = [
   {
-    title: 'Auto Spa',
-    primaryBg: 'bg-blue-500',
-    lightBg: 'bg-blue-500/20',
-    gradient: 'from-blue-500/30 to-blue-600/30',
+    type: 'website',
+    badge: 'Limited Offer: $0 Setup',
+    headline: ['Premium Design,', 'Zero Upfront', 'Investment.'],
+    highlightIndex: 1,
+    highlightColor: 'text-yellow-400',
+    body: 'Stop paying thousands for a website. Get an enterprise-grade site for $0 today. We handle the design, hosting, and security while you focus on sales.',
+    primaryCta: 'Get My Free Demo',
+    secondaryCta: 'See Our Work',
+    secondaryHref: '/portfolio/customer-sites',
+    visual: {
+      slides: [
+        { label: 'Auto Spa',    bg: 'bg-blue-500/10',    btn: 'bg-blue-500',    grad: 'from-blue-600/30 to-blue-400/10' },
+        { label: 'Clinic',      bg: 'bg-indigo-500/10',  btn: 'bg-indigo-500',  grad: 'from-indigo-600/30 to-purple-400/10' },
+        { label: 'Legal',       bg: 'bg-slate-500/10',   btn: 'bg-slate-700',   grad: 'from-slate-600/30 to-slate-400/10' },
+      ],
+      badge: { amount: '$0', label: 'First Month', sub: 'No hidden fees' },
+    },
   },
   {
-    title: 'Landscaping',
-    primaryBg: 'bg-emerald-500',
-    lightBg: 'bg-emerald-500/20',
-    gradient: 'from-emerald-500/30 to-emerald-600/30',
+    type: 'analytics',
+    badge: 'Growth Focused',
+    headline: ['Go Live Fast.', 'Scale Even', 'Faster.'],
+    highlightIndex: 2,
+    highlightColor: 'text-cyan-400',
+    body: 'Launch in just 3-5 days. Our sites are engineered for speed and conversion, helping you capture more leads and outpace your competition instantly.',
+    primaryCta: 'Start My Project',
+    secondaryCta: 'Growth Services',
+    secondaryHref: '/services',
+    visual: {
+      slides: [
+        { label: 'Conversions', bg: 'bg-cyan-500/10',    btn: 'bg-cyan-500',    grad: 'from-cyan-600/30 to-blue-400/10', val: '+124%' },
+        { label: 'Traffic',     bg: 'bg-emerald-500/10', btn: 'bg-emerald-500', grad: 'from-emerald-600/30 to-teal-400/10', val: '4.2k' },
+        { label: 'Leads',       bg: 'bg-blue-500/10',    btn: 'bg-blue-500',    grad: 'from-blue-600/30 to-cyan-400/10', val: '86' },
+      ],
+      badge: { amount: '3-5', label: 'Days Live', sub: 'Rapid deployment' },
+    },
   },
   {
-    title: 'Plumbing',
-    primaryBg: 'bg-cyan-500',
-    lightBg: 'bg-cyan-500/20',
-    gradient: 'from-cyan-500/30 to-cyan-600/30',
+    type: 'managed',
+    badge: 'Fully Managed',
+    headline: ['Zero Friction.', '100% Peace', 'of Mind.'],
+    highlightIndex: 1,
+    highlightColor: 'text-purple-400',
+    body: 'Never worry about updates, bugs, or hosting again. Our team manages your entire digital ecosystem 24/7, so your business never misses a beat.',
+    primaryCta: 'Book Free Audit',
+    secondaryCta: 'Learn Support',
+    secondaryHref: '/services',
+    visual: {
+      slides: [
+        { label: 'Security',    bg: 'bg-purple-500/10',  btn: 'bg-purple-500',  grad: 'from-purple-600/30 to-violet-400/10', status: 'Active' },
+        { label: 'Support',     bg: 'bg-rose-500/10',    btn: 'bg-rose-500',    grad: 'from-rose-600/30 to-pink-400/10', status: 'Online' },
+        { label: 'Uptime',      bg: 'bg-emerald-500/10', btn: 'bg-emerald-500', grad: 'from-emerald-600/30 to-green-400/10', status: '99.9%' },
+      ],
+      badge: { amount: '24/7', label: 'Monitoring', sub: 'Always optimized' },
+    },
   },
-  {
-    title: 'Clinic',
-    primaryBg: 'bg-indigo-500',
-    lightBg: 'bg-indigo-500/20',
-    gradient: 'from-indigo-500/30 to-purple-500/30',
-  }
 ];
+
+const TRUST_ITEMS = [
+  'Free Demo',
+  '3-5 Day Launch',
+  '24/7 Support',
+  'Cancel Anytime',
+];
+
+function CheckIcon() {
+  return (
+    <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 12 12" fill="none">
+      <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [heroSlide, setHeroSlide]     = useState(0);
+  const [mockSlide, setMockSlide]     = useState(0);
+  const [animating, setAnimating]     = useState(false);
 
+  /* Auto-advance hero every 6 s */
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % MOCKUP_SLIDES.length);
-    }, 3500);
-    return () => clearInterval(timer);
-  }, []);
+    const t = setInterval(() => goTo((heroSlide + 1) % HERO_SLIDES.length), 6000);
+    return () => clearInterval(t);
+  }, [heroSlide, animating]);
+
+  /* Auto-advance inner mockup every 2.5 s */
+  useEffect(() => {
+    const current = HERO_SLIDES[heroSlide];
+    const t = setInterval(() => setMockSlide(p => (p + 1) % current.visual.slides.length), 2500);
+    return () => clearInterval(t);
+  }, [heroSlide]);
+
+  function goTo(index: number) {
+    if (animating || index === heroSlide) return;
+    setAnimating(true);
+    setHeroSlide(index);
+    setMockSlide(0);
+    setTimeout(() => setAnimating(false), 700);
+  }
 
   return (
     <>
       <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
-      {/* 
-        HERO SECTION 
-        Style: Dark Enterprise Tech
-        Purpose: Immediate Authority
-      */}
-      <section className="relative bg-[#0F172A] pt-32 pb-24 overflow-hidden border-b border-gray-800">
+      {/* ══════════════════════════════════════════
+          HERO SECTION — 3-slide full-section carousel
+         ══════════════════════════════════════════ */}
+      <section className="relative bg-[#0F172A] overflow-hidden border-b border-slate-800" style={{ minHeight: '90vh' }}>
         {/* Animated Background Grid */}
-        <div className="absolute inset-0 dark-grid-bg opacity-30 pointer-events-none"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0F172A]/80 to-[#0F172A] pointer-events-none"></div>
+        <div className="absolute inset-0 dark-grid-bg opacity-20 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0F172A]/70 to-[#0F172A] pointer-events-none"></div>
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        {/* ── Slide track ─────────────────────────── */}
+        <div className="relative w-full h-full" style={{ minHeight: '90vh' }}>
+          {HERO_SLIDES.map((slide, si) => {
+            const vis = slide.visual;
+            const isActive = heroSlide === si;
+            return (
+              <div
+                key={si}
+                aria-hidden={!isActive}
+                className={`absolute inset-0 flex flex-col justify-center transition-all duration-700 ease-in-out
+                  ${isActive ? 'opacity-100 translate-x-0 pointer-events-auto' : si < heroSlide ? 'opacity-0 -translate-x-full pointer-events-none' : 'opacity-0 translate-x-full pointer-events-none'}`}
+              >
+                {/* Coloured radial glow */}
+                <div
+                  className={`absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none transition-opacity duration-700
+                    ${isActive ? 'opacity-10' : 'opacity-0'}
+                    ${si === 0 ? 'bg-yellow-500' : si === 1 ? 'bg-cyan-500' : 'bg-purple-500'}`}
+                ></div>
 
-            {/* Left Content */}
-            <div className="space-y-8 max-w-2xl">
+                <div className="container mx-auto px-6 pt-32 pb-24 relative z-10">
+                  <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-              <h1 className="text-5xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1]">
-                Get a Professional Website for <span className="text-yellow-400">$0</span> Today
-              </h1>
+                    {/* ── LEFT — copy ─────────────────── */}
+                    <div className="space-y-8 max-w-xl">
 
-              <p className="text-xl text-slate-400 leading-relaxed max-w-lg">
-                Launch a high-converting website for your business with hosting, updates, support, and ongoing improvements included. Use it free for the first month and pay only if you continue.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="inline-flex items-center justify-center gap-2 bg-yellow-500 text-slate-900 px-8 py-4 rounded-lg font-bold hover:bg-yellow-400 transition-all shadow-lg shadow-yellow-500/20 cursor-pointer"
-                >
-                  <span className="text-lg">Get My Free Website Demo</span>
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-                <Link href="#pricing" className="inline-flex items-center justify-center gap-2 bg-transparent text-white border border-slate-600 px-8 py-4 rounded-lg font-semibold hover:bg-white/5 hover:border-white transition-all">
-                  View Pricing Plans
-                </Link>
-              </div>
-
-              {/* Trust Strip */}
-              <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-slate-300 font-medium">
-                <span className="flex items-center gap-2">
-                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                    <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </div>
-                  No Upfront Cost
-                </span>
-                <span className="flex items-center gap-2">
-                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                    <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </div>
-                  Live in 3–5 Days
-                </span>
-                <span className="flex items-center gap-2">
-                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                    <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </div>
-                  Fully Managed
-                </span>
-                <span className="flex items-center gap-2">
-                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                    <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </div>
-                  Cancel Anytime
-                </span>
-              </div>
-            </div>
-
-            {/* Right Visual - Device Mockups & Pricing Badge */}
-            <div className="relative xl:block lg:flex flex-col items-center mt-12 lg:mt-0">
-              <div className="relative h-[400px] sm:h-[500px] lg:h-[550px] w-full flex items-center justify-center cursor-default scale-[0.65] sm:scale-90 lg:scale-100 origin-center transform transition-transform">
-                
-                {/* Background glow */}
-                <div className="absolute inset-0 bg-blue-500/10 blur-[60px] lg:blur-[100px] rounded-full pointer-events-none"></div>
-
-                {/* Laptop Mockup */}
-                <div className="absolute z-10 w-[500px] transform -translate-x-4 lg:-translate-x-8 -translate-y-4 transition-transform hover:scale-[1.02] duration-500">
-                  <div className="relative pb-[62.5%] bg-slate-800 rounded-t-xl border-[6px] border-b-0 border-slate-700 shadow-2xl overflow-hidden shadow-black/50">
-                    <div className="absolute inset-0 bg-slate-900 overflow-hidden flex flex-col">
-                      {/* Browser header */}
-                      <div className="h-6 w-full bg-slate-800 flex items-center px-3 border-b border-slate-700">
-                        <div className="flex gap-1.5">
-                          <div className="w-2.5 h-2.5 rounded-full bg-rose-500"></div>
-                          <div className="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
-                          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
-                        </div>
+                      {/* Badge */}
+                      <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border
+                        ${si === 0 ? 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400'
+                          : si === 1 ? 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400'
+                          : 'bg-purple-500/10 border-purple-500/30 text-purple-400'}`}>
+                        <span className={`w-2 h-2 rounded-full animate-pulse
+                          ${si === 0 ? 'bg-yellow-400' : si === 1 ? 'bg-cyan-400' : 'bg-purple-400'}`}></span>
+                        {slide.badge}
                       </div>
-                      {/* Website content slider mock */}
-                      <div className="p-4 h-full relative overflow-hidden flex flex-col">
-                        <div className="flex-1 relative w-full h-full">
-                          {MOCKUP_SLIDES.map((slide, index) => (
-                            <div 
-                              key={slide.title}
-                              className={`absolute inset-0 transition-transform duration-700 ease-in-out flex flex-col gap-4 ${
-                                activeSlide === index 
-                                  ? 'translate-x-0' 
-                                  : activeSlide > index 
-                                    ? '-translate-x-[110%]' 
-                                    : 'translate-x-[110%]'
-                              }`}
-                            >
-                              <div className={`w-full h-32 ${slide.lightBg} rounded-lg relative overflow-hidden border border-white/5`}>
-                                <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-white/5"></div>
-                                <div className="absolute bottom-3 left-3 bg-slate-900/50 backdrop-blur-sm px-3 py-1 rounded-full text-white text-xs font-semibold border border-white/10 shadow-lg">
-                                  {slide.title} Theme
+
+                      {/* Headline */}
+                      <h1 className="text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.07]">
+                        {slide.headline.map((line, li) => (
+                          <span key={li} className={`block ${li === slide.highlightIndex ? slide.highlightColor : ''}`}>{line}</span>
+                        ))}
+                      </h1>
+
+                      {/* Body */}
+                      <p className="text-lg text-slate-400 leading-relaxed">{slide.body}</p>
+
+                      {/* CTAs */}
+                      <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                        <button
+                          onClick={() => setIsModalOpen(true)}
+                          className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-base transition-all shadow-lg cursor-pointer
+                            ${si === 0 ? 'bg-yellow-500 text-slate-900 hover:bg-yellow-400 shadow-yellow-500/25'
+                              : si === 1 ? 'bg-cyan-500 text-slate-900 hover:bg-cyan-400 shadow-cyan-500/25'
+                              : 'bg-purple-600 text-white hover:bg-purple-500 shadow-purple-500/25'}`}
+                        >
+                          {slide.primaryCta}
+                          <ArrowRight className="w-5 h-5" />
+                        </button>
+                        <Link
+                          href={slide.secondaryHref}
+                          className="inline-flex items-center justify-center gap-2 bg-white/5 text-white border border-slate-600 px-8 py-4 rounded-xl font-semibold hover:bg-white/10 hover:border-white/40 transition-all"
+                        >
+                          {slide.secondaryCta}
+                        </Link>
+                      </div>
+
+                      {/* Trust strip */}
+                      <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm text-slate-300 font-medium">
+                        {TRUST_ITEMS.map((item) => (
+                          <span key={item} className="flex items-center gap-2">
+                            <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                              <CheckIcon />
+                            </div>
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* ── RIGHT — device mockups ───────── */}
+                    <div className="relative flex items-center justify-center mt-10 lg:mt-0">
+                      <div className="relative w-full h-[400px] sm:h-[480px] lg:h-[540px] scale-90 sm:scale-100">
+
+                        {/* Glow */}
+                        <div className={`absolute inset-0 blur-[80px] rounded-full pointer-events-none opacity-40
+                          ${si === 0 ? 'bg-yellow-500/10' : si === 1 ? 'bg-cyan-500/10' : 'bg-purple-500/10'}`}></div>
+
+                        {/* ── Laptop frame ──────────── */}
+                        <div className="absolute z-10 w-[440px] lg:w-[480px] left-0 top-6 hover:scale-[1.01] transition-transform duration-500">
+                          <div className="relative bg-slate-800 rounded-t-xl border-[5px] border-b-0 border-slate-700 shadow-2xl shadow-black/60 overflow-hidden" style={{ paddingBottom: '62%' }}>
+                            <div className="absolute inset-0 bg-slate-900 flex flex-col">
+                              {/* Browser chrome */}
+                              <div className="h-7 bg-slate-800 flex items-center px-3 gap-3 border-b border-slate-700/80 flex-shrink-0">
+                                <div className="flex gap-1.5">
+                                  <div className="w-2 h-2 rounded-full bg-rose-500"></div>
+                                  <div className="w-2 h-2 rounded-full bg-amber-400"></div>
+                                  <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
                                 </div>
+                                <div className="flex-1 h-3.5 bg-slate-700/60 rounded-md"></div>
                               </div>
-                              <div className="flex gap-4">
-                                <div className="flex-1 space-y-2">
-                                  <div className="h-3 w-3/4 bg-slate-700 rounded"></div>
-                                  <div className="h-2 w-full bg-slate-700 rounded"></div>
-                                  <div className="h-2 w-5/6 bg-slate-700 rounded"></div>
-                                </div>
-                                <div className={`w-24 h-16 ${slide.primaryBg} bg-opacity-20 rounded border border-white/5`}></div>
-                              </div>
-                              <div className="mt-auto flex justify-between items-center">
-                                <div className="flex gap-2">
-                                  <div className="w-6 h-6 rounded-full bg-slate-800 border border-slate-700"></div>
-                                  <div className="w-6 h-6 rounded-full bg-slate-800 border border-slate-700"></div>
-                                </div>
-                                <div className={`px-4 py-1.5 ${slide.primaryBg} text-white text-[10px] uppercase tracking-wider font-bold rounded shadow-lg opacity-90`}>Book Now</div>
+                              {/* Slide content - BRANCHED BY TYPE */}
+                              <div className="flex-1 relative overflow-hidden p-3 pt-4">
+                                {isActive && vis.slides.map((vs: any, vi: number) => (
+                                  <div key={vi} className={`absolute inset-3 transition-transform duration-700 ease-in-out flex flex-col gap-3
+                                    ${mockSlide === vi ? 'translate-x-0' : mockSlide > vi ? '-translate-x-[110%]' : 'translate-x-[110%]'}`}>
+                                    
+                                    {/* WEBSITE TYPE */}
+                                    {slide.type === 'website' && (
+                                      <>
+                                        <div className={`w-full rounded-lg relative overflow-hidden border border-white/5 flex-[2.5] ${vs.bg}`}>
+                                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-white/5"></div>
+                                          <div className="absolute inset-0 flex items-center justify-center">
+                                            <Globe className="w-12 h-12 text-white/10" />
+                                          </div>
+                                          <div className="absolute bottom-2 left-2 bg-slate-900/60 backdrop-blur-sm px-2.5 py-1 rounded-full text-white text-[10px] font-bold border border-white/10 tracking-wide uppercase">
+                                            {vs.label}
+                                          </div>
+                                        </div>
+                                        <div className="flex gap-3 flex-[1]">
+                                          <div className="flex-1 space-y-2">
+                                            <div className="h-2.5 w-3/4 bg-slate-700 rounded-full"></div>
+                                            <div className="h-2 w-full bg-slate-700/60 rounded-full"></div>
+                                          </div>
+                                          <div className={`w-16 rounded-lg ${vs.bg} border border-white/5`}></div>
+                                        </div>
+                                        <div className="flex items-center justify-between flex-shrink-0">
+                                          <div className="flex gap-1.5">
+                                            <div className="w-4 h-4 rounded-full bg-slate-700"></div>
+                                            <div className="w-4 h-4 rounded-full bg-slate-700"></div>
+                                          </div>
+                                          <div className={`px-4 py-1.5 ${vs.btn} text-white text-[9px] font-bold uppercase tracking-wider rounded-md shadow-lg`}>View Site</div>
+                                        </div>
+                                      </>
+                                    )}
+
+                                    {/* ANALYTICS TYPE */}
+                                    {slide.type === 'analytics' && (
+                                      <>
+                                        <div className="flex-1 grid grid-cols-2 gap-3">
+                                          <div className="bg-slate-800/80 rounded-lg p-3 border border-slate-700 flex flex-col justify-center">
+                                            <div className="text-[10px] text-slate-500 mb-1">{vs.label}</div>
+                                            <div className="text-xl font-bold text-white transition-all">{vs.val}</div>
+                                            <div className={`h-1 w-full rounded-full mt-2 bg-slate-700 overflow-hidden`}>
+                                              <div className={`h-full ${vs.btn} w-[70%]`}></div>
+                                            </div>
+                                          </div>
+                                          <div className="bg-slate-800/80 rounded-lg p-3 border border-slate-700 flex items-center justify-center">
+                                            <Activity className={`w-8 h-8 ${vs.btn.replace('bg-', 'text-')}`} />
+                                          </div>
+                                        </div>
+                                        <div className="h-24 bg-slate-800/50 rounded-lg border border-slate-700 p-3 flex flex-col gap-2">
+                                          <div className="flex justify-between items-center">
+                                            <div className="h-2 w-16 bg-slate-600 rounded"></div>
+                                            <div className="h-2 w-10 bg-slate-700 rounded"></div>
+                                          </div>
+                                          <div className="flex-1 flex items-end gap-1 px-1">
+                                            {[30, 60, 45, 75, 50, 90, 65].map((h, i) => (
+                                              <div key={i} className={`flex-1 ${vs.btn} opacity-40 rounded-t-sm`} style={{ height: `${h}%` }}></div>
+                                            ))}
+                                          </div>
+                                        </div>
+                                      </>
+                                    )}
+
+                                    {/* MANAGED TYPE */}
+                                    {slide.type === 'managed' && (
+                                      <>
+                                        <div className="flex-1 flex flex-col gap-2">
+                                          {[1, 2, 3].map((item) => (
+                                            <div key={item} className="bg-slate-800/80 rounded-lg px-3 py-2 border border-slate-700 flex items-center justify-between">
+                                              <div className="flex items-center gap-2">
+                                                <div className={`w-6 h-6 rounded-lg ${vs.bg} flex items-center justify-center`}>
+                                                   <Shield className={`w-3 h-3 ${vs.btn.replace('bg-', 'text-')}`} />
+                                                </div>
+                                                <div className="h-2 w-20 bg-slate-600 rounded"></div>
+                                              </div>
+                                              <div className={`px-2 py-0.5 rounded-full text-[8px] font-bold ${vs.btn} text-white`}>{vs.status}</div>
+                                            </div>
+                                          ))}
+                                        </div>
+                                        <div className="h-20 bg-slate-800/50 rounded-lg border border-slate-700 p-3 flex items-start gap-3">
+                                          <div className="w-8 h-8 rounded-full bg-slate-700 flex-shrink-0"></div>
+                                          <div className="space-y-2 flex-1">
+                                            <div className="h-2.5 w-1/3 bg-slate-600 rounded"></div>
+                                            <div className="h-2 w-full bg-slate-700 rounded"></div>
+                                          </div>
+                                        </div>
+                                      </>
+                                    )}
+
+                                  </div>
+                                ))}
                               </div>
                             </div>
-                          ))}
+                          </div>
+                          {/* Laptop base */}
+                          <div className="h-3 bg-slate-700 w-[108%] -ml-[4%] rounded-b-xl border-t border-slate-500/60 relative">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-slate-400/50 rounded-b"></div>
+                          </div>
                         </div>
-                        
-                        {/* Slider Indicators */}
-                        <div className="flex justify-center gap-2 mt-4 z-10">
-                          {MOCKUP_SLIDES.map((_, index) => (
-                            <button
-                              key={index}
-                              onClick={() => setActiveSlide(index)}
-                              className={`h-1.5 rounded-full transition-all duration-300 ${
-                                activeSlide === index ? 'w-6 bg-white' : 'w-1.5 bg-slate-600 hover:bg-slate-500'
-                              }`}
-                              aria-label={`Go to slide ${index + 1}`}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* Laptop base */}
-                  <div className="h-4 bg-slate-600 rounded-b-xl w-[110%] -ml-[5%] relative border-t border-slate-500">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-slate-400 rounded-b-lg"></div>
-                  </div>
-                </div>
 
-                {/* Mobile Mockup */}
-                <div className="absolute z-20 w-[140px] right-2 bottom-6 transform translate-y-8 transition-transform hover:scale-[1.05] duration-500">
-                  <div className="relative pb-[200%] bg-slate-900 rounded-[2rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden">
-                    <div className="absolute inset-0 flex flex-col items-center">
-                      {/* Notch */}
-                      <div className="w-16 h-4 bg-slate-800 rounded-b-xl absolute top-0 z-20"></div>
-                      
-                      {/* Mobile web content mock */}
-                      <div className="w-full h-full bg-[#0F172A] pt-7 flex flex-col relative overflow-hidden">
-                         {/* Header mock */}
-                         <div className="flex justify-between items-center px-3 mb-2 z-10 relative">
-                           <div className="w-10 h-2.5 bg-slate-700 rounded"></div>
-                           <div className="w-4 h-2 bg-slate-700 rounded"></div>
-                         </div>
-                         
-                         <div className="relative flex-1 w-full px-3">
-                           {MOCKUP_SLIDES.map((slide, index) => (
-                              <div 
-                                key={`mob-${slide.title}`}
-                                className={`absolute inset-x-3 inset-y-0 transition-transform duration-700 ease-in-out flex flex-col ${
-                                  activeSlide === index 
-                                    ? 'translate-x-0' 
-                                    : activeSlide > index 
-                                      ? '-translate-x-[130%]' 
-                                      : 'translate-x-[130%]'
-                                }`}
-                              >
-                               <div className={`w-full h-24 bg-gradient-to-br ${slide.gradient} rounded-lg mb-3 shadow-inner`}></div>
-                               <div className="space-y-2 mt-1">
-                                 <div className="h-2.5 w-3/4 bg-slate-700 rounded"></div>
-                                 <div className="h-2 w-full bg-slate-800 rounded"></div>
-                                 <div className="h-2 w-5/6 bg-slate-800 rounded"></div>
-                               </div>
-                               <div className={`h-8 w-full ${slide.primaryBg} rounded-md mt-4 flex items-center justify-center shadow-lg shadow-black/20`}>
-                                 <div className="h-2 w-1/2 bg-white/30 rounded"></div>
-                               </div>
+                        {/* ── Phone frame ───────────── */}
+                        <div className="absolute z-20 w-[120px] lg:w-[130px] right-2 bottom-0 top-auto hover:scale-[1.03] transition-transform duration-500">
+                          <div className="relative bg-slate-900 rounded-[2rem] border-[5px] border-slate-800 shadow-2xl overflow-hidden" style={{ paddingBottom: '210%' }}>
+                            <div className="absolute inset-0">
+                              {/* Notch */}
+                              <div className="w-14 h-3.5 bg-slate-800 rounded-b-xl absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
+                              <div className="w-full h-full bg-[#0B1121] pt-6 flex flex-col overflow-hidden">
+                                <div className="relative flex-1 overflow-hidden px-2.5 mt-2">
+                                  {isActive && vis.slides.map((vs: any, vi: number) => (
+                                    <div key={vi} className={`absolute inset-x-2 transition-transform duration-700 ease-in-out flex flex-col gap-3
+                                      ${mockSlide === vi ? 'translate-x-0' : mockSlide > vi ? '-translate-x-[110%]' : 'translate-x-[110%]'}`}>
+                                      
+                                      {/* Phone content variations based on type */}
+                                      <div className={`w-full h-24 rounded-xl bg-gradient-to-br ${vs.grad} shadow-inner flex items-center justify-center`}>
+                                        {slide.type === 'website' && <Zap className="w-8 h-8 text-white/20" />}
+                                        {slide.type === 'analytics' && <BarChart3 className="w-8 h-8 text-white/20" />}
+                                        {slide.type === 'managed' && <Shield className="w-8 h-8 text-white/20" />}
+                                      </div>
+                                      <div className="space-y-2">
+                                        <div className="h-2 w-3/4 bg-slate-700 rounded-full"></div>
+                                        <div className="h-1.5 w-full bg-slate-800 rounded-full"></div>
+                                      </div>
+                                      <div className={`h-8 w-full ${vs.btn} rounded-lg flex items-center justify-center shadow-lg`}>
+                                        <div className="h-1.5 w-2/5 bg-white/20 rounded-full"></div>
+                                      </div>
+                                      {slide.type === 'managed' && (
+                                        <div className="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
+                                           <div className={`h-1 w-full ${vs.btn} rounded-full`}></div>
+                                        </div>
+                                      )}
+                                    </div>
+                                  ))}
+                                </div>
                               </div>
-                           ))}
-                         </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* ── Pricing badge ─────────── */}
+
+                        <div className="absolute z-30 top-4 right-[-10px] bg-white p-4 rounded-2xl shadow-2xl border border-slate-100 flex flex-col gap-2 w-[190px] hover:translate-x-1 transition-transform duration-300">
+                          <div className="flex items-center gap-3">
+                            <div className={`w-12 h-12 rounded-full flex items-center justify-center font-black text-xl flex-shrink-0
+                              ${si === 0 ? 'bg-yellow-100 text-yellow-600' : si === 1 ? 'bg-cyan-100 text-cyan-700' : 'bg-purple-100 text-purple-700'}`}>
+                              {vis.badge.amount}
+                            </div>
+                            <div>
+                              <div className="text-slate-900 font-bold text-sm leading-tight">{vis.badge.label}</div>
+                              <div className="text-slate-500 text-[11px] font-medium">{vis.badge.sub}</div>
+                            </div>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
+
                   </div>
                 </div>
-
-                {/* Floating Pricing Badge */}
-                <div className="absolute z-30 top-12 right-[-20px] bg-white p-4 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-slate-100 flex flex-col gap-2 min-w-[200px] hover:-translate-y-1 transition-transform duration-300">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 font-black text-xl">
-                      $0
-                    </div>
-                    <div>
-                      <div className="text-slate-900 font-bold text-[15px] leading-tight">First Month</div>
-                      <div className="text-slate-500 text-xs font-medium">Full functionality</div>
-                    </div>
-                  </div>
-                  <div className="w-full h-px bg-slate-100 my-1"></div>
-                  <div className="text-slate-600 text-xs text-center font-medium">
-                    Then from <span className="text-slate-900 font-bold text-sm">$59/mo</span>
-                  </div>
-                </div>
-
               </div>
-            </div>
-          </div>
+            );
+          })}
+        </div>
+
+        {/* ── Arrows ──────────────────── */}
+        <button
+          onClick={() => goTo((heroSlide - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
+          className="absolute left-6 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-all backdrop-blur-md hidden md:flex"
+        >
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <button
+          onClick={() => goTo((heroSlide + 1) % HERO_SLIDES.length)}
+          className="absolute right-6 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-all backdrop-blur-md hidden md:flex"
+        >
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+        </button>
+
+        {/* ── Indicators ────────────────── */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-40 flex items-center gap-4">
+          {HERO_SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className={`transition-all duration-500 rounded-full ${heroSlide === i ? 'w-10 h-2 bg-white' : 'w-2 h-2 bg-slate-500 hover:bg-slate-300'}`}
+            />
+          ))}
         </div>
       </section>
 
