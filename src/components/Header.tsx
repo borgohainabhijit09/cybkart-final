@@ -126,6 +126,10 @@ export default function Header() {
                                 Knowledge Hub
                             </Link>
 
+                            <Link href="/pricing" className="text-slate-600 hover:text-blue-600 transition-colors font-medium text-sm">
+                                Pricing
+                            </Link>
+
                             <button
                                 onClick={() => setIsModalOpen(true)}
                                 className="bg-[#0F172A] text-white px-5 py-2.5 rounded-lg font-medium text-sm hover:bg-slate-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer"
@@ -168,6 +172,7 @@ export default function Header() {
 
                             <Link href="/case-scenarios" className="block text-slate-700 font-medium py-2" onClick={() => setMobileMenuOpen(false)}>Case Scenarios</Link>
                             <Link href="/knowledge-hub" className="block text-slate-700 font-medium py-2" onClick={() => setMobileMenuOpen(false)}>Knowledge Hub</Link>
+                            <Link href="/pricing" className="block text-slate-700 font-medium py-2" onClick={() => setMobileMenuOpen(false)}>Pricing</Link>
 
                             <div className="pt-4">
                                 <div className="pt-4">
