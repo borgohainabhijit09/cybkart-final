@@ -777,14 +777,250 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 
-        FINAL CTA 
-      */}
-      <CTASection
-        title="Stop Leaking Revenue."
-        description="Book a free diagnosis. We'll identify your system bottlenecks and propose a custom automation roadmap."
-        buttonText="Book Diagnosis Call"
-      />
+
+      {/* ── SECTION 6 — Why Choose Cybkart Global ────────── */}
+      <section className="py-32 bg-slate-900 relative overflow-hidden">
+        {/* Cinematic background elements */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] bg-blue-600/5 blur-[120px] pointer-events-none"></div>
+        <div className="absolute inset-0 dark-grid-bg opacity-[0.03] pointer-events-none"></div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-4xl mx-auto text-center mb-24">
+            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter italic uppercase mb-6">
+              Why Businesses <span className="text-blue-500">Choose Us</span>
+            </h2>
+            <div className="h-1.5 w-24 bg-blue-600 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "No large upfront cost",
+                desc: "Keep your capital. Launch with $0 setup and predictable monthly scaling.",
+                icon: Banknote,
+                color: "text-emerald-400",
+                bg: "bg-emerald-400/10"
+              },
+              {
+                title: "Agency quality, minus the price",
+                desc: "Enterprise-grade design and engineering without the traditional $10k+ price tag.",
+                icon: Layout,
+                color: "text-blue-400",
+                bg: "bg-blue-400/10"
+              },
+              {
+                title: "Fast Delivery",
+                desc: "We don't do 'months'. We launch high-performance systems in 3-5 business days.",
+                icon: Zap,
+                color: "text-yellow-400",
+                bg: "bg-yellow-400/10"
+              },
+              {
+                title: "AI-forward systems",
+                desc: "Every project is built to leverage modern AI for automation and lead capture.",
+                icon: Brain,
+                color: "text-purple-400",
+                bg: "bg-purple-400/10"
+              },
+              {
+                title: "Friendly ongoing support",
+                desc: "Real humans, 24/7 monitoring, and unlimited updates included in your sub.",
+                icon: Clock,
+                color: "text-cyan-400",
+                bg: "bg-cyan-400/10"
+              },
+              {
+                title: "US & Canada Standards",
+                desc: "Compliance, speed, and design standards specifically architected for North America.",
+                icon: Globe,
+                color: "text-rose-400",
+                bg: "bg-rose-400/10"
+              }
+            ].map((item, i) => (
+              <div key={i} className="group p-10 rounded-[2rem] bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] hover:border-blue-500/30 transition-all duration-500 flex flex-col gap-6">
+                <div className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform`}>
+                  <item.icon className={`w-7 h-7 ${item.color}`} />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-3 uppercase italic tracking-tight">{item.title}</h3>
+                  <p className="text-slate-400 font-medium leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-10">
+            <div className="flex items-center gap-8 opacity-40 grayscale">
+               <div className="flex items-center gap-2">
+                 <span className="text-2xl">🇺🇸</span>
+                 <span className="text-white font-black text-xs uppercase tracking-widest">USA Operations</span>
+               </div>
+               <div className="flex items-center gap-2">
+                 <span className="text-2xl">🇨🇦</span>
+                 <span className="text-white font-black text-xs uppercase tracking-widest">Canada HQ</span>
+               </div>
+            </div>
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="px-10 py-5 bg-blue-600 text-white rounded-2xl font-black text-lg hover:bg-blue-500 transition-all shadow-2xl italic uppercase cursor-pointer"
+            >
+               Join the Ecosystem
+            </button>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ── SECTION 7 — Testimonials ─────────────────────── */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-3xl mx-auto text-center mb-20 space-y-4">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight italic uppercase">
+              What <span className="text-blue-600">Clients Say</span>
+            </h2>
+            <div className="h-1.5 w-20 bg-blue-600 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            {[
+              {
+                quote: "Professional, fast, and easy to work with. They took our vision and turned it into a high-performance site in days, not months.",
+                author: "Business Owner",
+                role: "Local Service Industry",
+                stars: 5
+              },
+              {
+                quote: "Our new website brought in leads quickly. The subscription model is a game-changer for businesses that want to skip the massive upfront costs.",
+                author: "Marketing Director",
+                role: "Retail & E-Commerce",
+                stars: 5
+              }
+            ].map((testimonial, i) => (
+              <div key={i} className="relative p-10 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 group">
+                {/* Quote Mark */}
+                <div className="absolute top-8 right-10 text-blue-600/10 group-hover:text-blue-600/20 transition-colors">
+                  <svg className="w-20 h-20 fill-current" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V12C14.017 12.5523 13.5693 13 13.017 13H11.017C10.4647 13 10.017 12.5523 10.017 12V9C10.017 7.89543 10.9124 7 12.017 7H19.017C20.1216 7 21.017 7.89543 21.017 9V15C21.017 17.2091 19.2261 19 17.017 19H14.017V21H14.017ZM5.017 21L5.017 18C5.017 16.8954 5.91243 16 7.017 16H10.017C10.5693 16 11.017 15.5523 11.017 15V9C11.017 8.44772 10.5693 8 10.017 8H6.017C5.46472 8 5.017 8.44772 5.017 9V12C5.017 12.5523 4.56929 13 4.017 13H2.017C1.46472 13 1.017 12.5523 1.017 12V9C1.017 7.89543 1.91243 7 3.017 7H10.017C11.1216 7 12.017 7.89543 12.017 9V15C12.017 17.2091 10.2261 19 8.017 19H5.017V21H5.017Z"/></svg>
+                </div>
+                
+                {/* Stars */}
+                <div className="flex gap-1 mb-6">
+                  {[...Array(testimonial.stars)].map((_, si) => (
+                    <Star key={si} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+
+                <p className="text-xl font-medium text-slate-800 leading-relaxed mb-10 relative z-10 italic">
+                  "{testimonial.quote}"
+                </p>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-black text-xs italic">
+                    CB
+                  </div>
+                  <div>
+                    <div className="font-black text-slate-900 uppercase italic tracking-tight">{testimonial.author}</div>
+                    <div className="text-slate-500 text-xs font-bold uppercase tracking-widest">{testimonial.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-20 text-center">
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-blue-50 rounded-full border border-blue-100 text-blue-600 text-sm font-bold animate-pulse">
+              <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+              Join the hundreds levelled up by CYBKART
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ── SECTION 8 — Scarcity & Urgency ──────────────── */}
+      <section className="py-24 bg-slate-100 relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="relative bg-[#050B1A] rounded-[3rem] p-12 md:p-20 overflow-hidden shadow-3xl text-center">
+            {/* Background Effects */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-yellow-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+            <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 via-transparent to-transparent`}></div>
+
+            <div className="relative z-10 max-w-3xl mx-auto space-y-8">
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs font-black uppercase tracking-[0.2em] animate-pulse">
+                <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
+                Limited Capacity Available
+              </div>
+
+              <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter italic uppercase leading-none">
+                Limited <span className="text-yellow-500">Free First-Month</span> Spots Available
+              </h2>
+
+              <p className="text-xl text-slate-400 font-medium">
+                We only onboard a limited number of businesses monthly to maintain quality delivery. Don't let your competition scale while you're still waiting.
+              </p>
+
+              <div className="pt-8 flex flex-col items-center gap-6">
+                <button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="px-12 py-6 bg-yellow-500 text-slate-950 rounded-2xl font-black text-xl hover:bg-yellow-400 transition-all shadow-[0_20px_50px_rgba(234,179,8,0.3)] italic uppercase cursor-pointer flex items-center gap-3 group"
+                >
+                  <span className="text-2xl">🟡</span>
+                  Claim My Free Website
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                </button>
+                
+                <div className="flex items-center gap-4 text-slate-500 font-bold text-xs uppercase tracking-widest">
+                  <div className="flex -space-x-2">
+                    {[1,2,3].map(i => (
+                      <div key={i} className="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center overflow-hidden">
+                        <div className="w-full h-full bg-blue-500/20"></div>
+                      </div>
+                    ))}
+                  </div>
+                  <span>Join 7 other businesses starting this week</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ── SECTION 9 — Final CTA ────────────────────────── */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center space-y-10">
+            <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter italic uppercase leading-none">
+              Ready to Launch <br />
+              <span className="text-blue-600">a Better Website?</span>
+            </h2>
+            
+            <p className="text-xl md:text-2xl text-slate-600 font-medium max-w-2xl mx-auto">
+              Start today with <span className="text-slate-900 font-bold">$0 upfront</span> and a website built to grow your business.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="w-full sm:w-auto px-12 py-6 bg-yellow-500 text-slate-950 rounded-2xl font-black text-xl hover:bg-yellow-400 transition-all shadow-xl italic uppercase cursor-pointer flex items-center justify-center gap-3 group"
+              >
+                <span className="text-2xl">🟡</span>
+                Get My Free Demo
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="w-full sm:w-auto px-12 py-6 bg-white text-slate-900 border-2 border-slate-200 rounded-2xl font-black text-xl hover:bg-slate-50 transition-all shadow-md italic uppercase cursor-pointer flex items-center justify-center gap-3"
+              >
+                <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-slate-300"></div>
+                Book a Quick Call
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
