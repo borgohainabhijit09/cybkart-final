@@ -29,7 +29,7 @@ export default function Footer() {
                 { name: 'Pricing Plans', href: '/pricing' },
                 { name: 'Case Scenarios', href: '/case-scenarios' },
                 { name: 'Knowledge Hub', href: '/knowledge-hub' },
-                { name: 'Portfolio', href: '/portfolio/customer-sites' },
+                { name: 'Demos', href: '/demos' },
             ]
         }
     ];

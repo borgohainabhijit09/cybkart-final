@@ -138,14 +138,13 @@ export default function Home() {
                       : `opacity-0 ${direction >= 0 ? 'translate-y-8' : '-translate-y-8'} invisible pointer-events-none`}`}
                 >
                   <div className="space-y-8">
-                    {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-50 border border-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] italic">
-                      <div className={`w-1.5 h-1.5 rounded-full ${s.id === 'risk-free' ? 'bg-blue-500' : 'bg-emerald-500'}`}></div>
+                    {/* Label */}
+                    <div className="text-blue-600 font-bold uppercase tracking-widest text-sm">
                       {s.badge}
                     </div>
 
                     {/* Headline */}
-                    <h1 className="text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter leading-[1.05] italic uppercase">
+                    <h1 className="text-5xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-tight">
                       {s.headline.split(' ').map((word, wi) => (
                          <span key={wi} className="inline-block mr-3">
                            {word === 'Risk' || word === 'Build.' || word === '$29/month' || word === '$3,000' 
@@ -164,7 +163,7 @@ export default function Home() {
                     <div className="flex flex-wrap gap-4 pt-4">
                        <button 
                         onClick={() => setIsModalOpen(true)}
-                        className="px-10 py-5 bg-yellow-500 text-slate-950 rounded-2xl font-black text-lg hover:bg-yellow-400 transition-all shadow-xl shadow-yellow-500/20 italic uppercase cursor-pointer flex items-center gap-3 transform hover:scale-[1.02] active:scale-[0.98]"
+                        className="px-10 py-5 bg-yellow-500 text-slate-900 rounded-2xl font-bold text-lg hover:bg-yellow-400 transition-all shadow-xl shadow-yellow-500/20 uppercase cursor-pointer flex items-center gap-3 transform hover:scale-[1.02] active:scale-[0.98]"
                        >
                          {s.primaryCTA}
                          <ArrowRight className="w-5 h-5" />
@@ -172,7 +171,7 @@ export default function Home() {
                        {s.secondaryCTA && (
                          <button 
                           onClick={() => setIsModalOpen(true)}
-                          className="px-10 py-5 bg-white text-slate-900 border-2 border-slate-100 rounded-2xl font-black text-lg hover:bg-slate-50 transition-all italic uppercase"
+                          className="px-10 py-5 bg-white text-slate-900 border-2 border-slate-100 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all uppercase"
                          >
                            {s.secondaryCTA}
                          </button>
@@ -206,7 +205,7 @@ export default function Home() {
                           <div className="h-10 w-full bg-slate-900 rounded-xl flex items-center justify-center"><div className="h-1 w-12 bg-white/20 rounded"></div></div>
                        </div>
                        {/* Floating UI Elements */}
-                       <div className="absolute -top-4 -right-4 bg-emerald-500 text-white p-3 rounded-2xl shadow-xl font-black text-[10px] tracking-widest uppercase italic">Verified</div>
+                       <div className="absolute -top-4 -right-4 bg-emerald-500 text-white p-3 rounded-2xl shadow-xl font-bold text-[10px] tracking-widest uppercase">Verified</div>
                     </div>
                   )}
 
@@ -223,8 +222,8 @@ export default function Home() {
                                <step.icon className="w-6 h-6" />
                             </div>
                             <div className="flex-1">
-                               <div className="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">Step {step.id}</div>
-                               <div className="text-slate-900 font-black italic uppercase tracking-tighter text-lg">{step.label}</div>
+                               <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">Step {step.id}</div>
+                               <div className="text-slate-900 font-bold uppercase tracking-tight text-lg">{step.label}</div>
                             </div>
                             <ArrowRight className="w-5 h-5 text-slate-200 group-hover:text-slate-900 transition-colors" />
                          </div>
@@ -236,9 +235,9 @@ export default function Home() {
                   {s.visualType === 'pricing' && (
                     <div className="relative w-full max-w-sm bg-slate-900 rounded-[3rem] p-10 shadow-3xl transform rotate-1">
                        <div className="space-y-8">
-                          <div className="inline-flex items-center gap-2 text-emerald-400 text-[10px] font-black uppercase tracking-widest italic border border-emerald-400/20 px-3 py-1 rounded-full bg-emerald-400/5">Starter Plan</div>
+                          <div className="inline-flex items-center gap-2 text-emerald-400 text-[10px] font-bold uppercase tracking-widest border border-emerald-400/20 px-3 py-1 rounded-full bg-emerald-400/5">Starter Plan</div>
                           <div className="flex items-baseline gap-2">
-                             <span className="text-white font-black text-6xl italic">$29</span>
+                             <span className="text-white font-extrabold text-6xl">$29</span>
                              <span className="text-slate-500 font-bold">/Month</span>
                           </div>
                           <div className="space-y-4">
@@ -258,8 +257,8 @@ export default function Home() {
                   {s.visualType === 'comparison' && (
                     <div className="w-full max-w-md bg-white rounded-[3rem] border border-slate-100 shadow-2xl p-10 space-y-8 transform -rotate-2">
                        <div className="flex items-center justify-between border-b border-slate-50 pb-6">
-                          <div className="text-slate-400 font-black text-xs uppercase tracking-tighter italic">Conventional</div>
-                          <div className="text-blue-600 font-black text-xs uppercase tracking-tighter italic">CYBKART</div>
+                          <div className="text-slate-400 font-bold text-xs uppercase tracking-tight">Conventional</div>
+                          <div className="text-blue-600 font-bold text-xs uppercase tracking-tight">CYBKART</div>
                        </div>
                        <div className="space-y-6">
                           {[
@@ -271,13 +270,13 @@ export default function Home() {
                                <div className="text-slate-800 font-bold text-sm tracking-tight">{item.label}</div>
                                <div className="flex items-center gap-4">
                                   <span className="text-slate-400 line-through text-xs font-bold">{item.old}</span>
-                                  <span className="text-emerald-500 font-black italic tracking-tighter text-lg">{item.new}</span>
+                                  <span className="text-emerald-500 font-extrabold tracking-tight text-lg">{item.new}</span>
                                </div>
                             </div>
                           ))}
                        </div>
                        <div className="pt-4 h-12 w-full bg-blue-50 rounded-2xl border border-blue-100 flex items-center justify-center">
-                          <span className="text-blue-600 font-black text-[10px] uppercase tracking-widest italic">Save $3k+ Instantly</span>
+                          <span className="text-blue-600 font-bold text-[10px] uppercase tracking-widest">Save $3k+ Instantly</span>
                        </div>
                     </div>
                   )}
@@ -300,7 +299,7 @@ export default function Home() {
                     />
                   ))}
                </div>
-               <div className="hidden sm:block text-[10px] text-slate-300 font-black uppercase tracking-[0.3em] italic">
+               <div className="hidden sm:block text-[10px] text-slate-300 font-bold uppercase tracking-[0.3em]">
                   Level {currentSlide + 1} / 4 Strategy
                </div>
             </div>
@@ -332,10 +331,10 @@ export default function Home() {
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center mb-20 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight italic uppercase">
+            <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">Pain Points</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mt-2 tracking-tight">
               Why Pay Thousands <span className="text-blue-600">Upfront</span> for a Website?
             </h2>
-            <div className="h-1.5 w-24 bg-blue-600 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-10 max-w-6xl mx-auto mb-20">
@@ -369,10 +368,10 @@ export default function Home() {
                 <div className={`w-16 h-16 ${item.iconBg} rounded-2xl mb-8 flex items-center justify-center group-hover:scale-110 transition-transform`}>
                   <item.icon className={`w-8 h-8 ${item.iconColor}`} />
                 </div>
-                <h3 className="text-xl font-black text-slate-900 mb-2 uppercase tracking-tight leading-tight">
+                <h3 className="text-xl font-bold text-slate-900 mb-2 uppercase tracking-tight leading-tight">
                   {item.title}
                 </h3>
-                <div className={`text-lg font-bold mb-4 ${item.iconColor} italic`}>
+                <div className={`text-lg font-bold mb-4 ${item.iconColor}`}>
                   {item.highlight}
                 </div>
                 <p className="text-slate-600 leading-relaxed font-medium">
@@ -388,8 +387,8 @@ export default function Home() {
           <div className="text-center max-w-3xl mx-auto">
             <div className="relative inline-block px-10 py-6 rounded-3xl bg-slate-900 shadow-2xl overflow-hidden group">
                <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity"></div>
-               <p className="text-2xl md:text-3xl font-black text-white italic tracking-tight leading-tight">
-                 "Your website should help your business grow — <span className="text-blue-400 font-black">not drain your budget.</span>"
+               <p className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
+                 "Your website should help your business grow — <span className="text-blue-400 font-bold">not drain your budget.</span>"
                </p>
             </div>
           </div>
@@ -404,10 +403,8 @@ export default function Home() {
             {/* Left: Copy & List */}
             <div className="lg:w-1/2 space-y-10">
               <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-widest">
-                  The Solution
-                </div>
-                <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter italic uppercase leading-tight">
+                <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">The Solution</span>
+                <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mt-2 tracking-tight leading-tight">
                   A Better Way <br />
                   <span className="text-blue-600">To Get Online</span>
                 </h2>
@@ -428,7 +425,7 @@ export default function Home() {
                     <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-600/20 group-hover:scale-110 transition-transform">
                        <CheckIcon />
                     </div>
-                    <span className="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors uppercase italic">{text}</span>
+                    <span className="text-lg font-bold text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors uppercase">{text}</span>
                   </div>
                 ))}
               </div>
@@ -436,7 +433,7 @@ export default function Home() {
               <div className="pt-6">
                 <button 
                   onClick={() => setIsModalOpen(true)}
-                  className="inline-flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-slate-800 transition-all shadow-xl cursor-pointer italic uppercase tracking-tighter"
+                  className="inline-flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all shadow-xl cursor-pointer uppercase tracking-tight"
                 >
                   Start Your Journey
                   <ArrowRight className="w-5 h-5 translate-x-1" />
@@ -471,7 +468,7 @@ export default function Home() {
                          <div className="h-8 w-8 rounded-lg bg-blue-500/20 flex items-center justify-center border border-blue-500/20"><Globe className="w-4 h-4 text-blue-500" /></div>
                          <div className="space-y-3">
                            <div className="h-1 lg:h-2 w-1/2 bg-white/20 rounded"></div>
-                           <div className="h-3 lg:h-6 w-3/4 bg-white/10 rounded-sm italic font-black text-white/40 flex items-center px-2">CYBKART PRESET</div>
+                           <div className="h-3 lg:h-6 w-3/4 bg-white/10 rounded-sm font-bold text-white/40 flex items-center px-2">CYBKART PRESET</div>
                          </div>
                       </div>
                    </div>
@@ -498,9 +495,9 @@ export default function Home() {
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center mb-24 space-y-4">
-            <span className="text-blue-500 font-black uppercase tracking-[0.3em] text-sm italic">The System</span>
-            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter italic uppercase leading-tight">
+          <div className="max-w-4xl mx-auto text-center mb-24">
+            <span className="text-blue-500 font-bold uppercase tracking-widest text-sm">Process</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mt-2 tracking-tight leading-tight">
               Simple. Fast. <span className="text-blue-500 underline underline-offset-8 decoration-white/20">Risk-Free.</span>
             </h2>
           </div>
@@ -538,20 +535,20 @@ export default function Home() {
               ].map((item, i) => (
                 <div key={i} className="group relative text-center">
                   {/* Step Number Background */}
-                  <div className="absolute -top-12 left-1/2 -translate-x-1/2 text-[10rem] font-black text-white/[0.03] pointer-events-none select-none italic tracking-tighter">
+                  <div className="absolute -top-12 left-1/2 -translate-x-1/2 text-[10rem] font-extrabold text-white/[0.03] pointer-events-none select-none tracking-tight">
                     {item.step}
                   </div>
                   
                   {/* Icon Circle */}
                   <div className={`relative w-28 h-28 mx-auto rounded-[2rem] ${item.bg} border border-white/10 flex items-center justify-center mb-10 group-hover:-translate-y-2 group-hover:rotate-3 transition-all duration-500 shadow-2xl`}>
                     <item.icon className={`w-12 h-12 ${item.accent}`} />
-                    <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full bg-[#050B1A] border border-white/20 flex items-center justify-center text-white font-black italic text-sm">
+                    <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-full bg-[#050B1A] border border-white/20 flex items-center justify-center text-white font-bold text-sm">
                        {item.step}
                     </div>
                   </div>
 
                   {/* Text Content */}
-                  <h3 className="text-2xl font-black text-white mb-4 uppercase italic tracking-tight">{item.title}</h3>
+                  <h3 className="text-2xl font-bold text-white mb-4 uppercase tracking-tight">{item.title}</h3>
                   <p className="text-slate-400 font-medium leading-relaxed max-w-[280px] mx-auto text-balance">
                     {item.desc}
                   </p>
@@ -570,7 +567,7 @@ export default function Home() {
                    ))}
                 </div>
                 <div className="text-left">
-                   <div className="text-white font-black text-sm uppercase italic">200+ Businesses Live</div>
+                   <div className="text-white font-bold text-sm uppercase">200+ Businesses Live</div>
                    <div className="text-slate-500 text-xs font-bold">Scaling with CYBKART methodology</div>
                 </div>
              </div>
@@ -581,12 +578,11 @@ export default function Home() {
       {/* ── SECTION 5 — Why It Benefits Your Business ───────── */}
       <section className="py-32 bg-slate-50 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl mx-auto text-center mb-20 space-y-4">
-            <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">Real Impact</span>
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight italic uppercase">
+          <div className="max-w-3xl mx-auto text-center mb-20">
+            <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">Benefits</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mt-2 tracking-tight">
               Built to Help <span className="text-blue-600">You Grow</span>
             </h2>
-            <div className="h-1.5 w-20 bg-blue-600 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -628,7 +624,7 @@ export default function Home() {
                 <div className={`w-14 h-14 ${benefit.bg} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform`}>
                   <benefit.icon className={`w-7 h-7 ${benefit.color}`} />
                 </div>
-                <h3 className="text-xl font-black text-slate-900 mb-3 uppercase tracking-tight italic">
+                <h3 className="text-xl font-bold text-slate-900 mb-3 uppercase tracking-tight">
                   {benefit.title}
                 </h3>
                 <p className="text-slate-600 font-medium leading-relaxed">
@@ -636,7 +632,7 @@ export default function Home() {
                 </p>
                 
                 {/* Micro-indicator */}
-                <div className="mt-8 flex items-center gap-2 text-[10px] font-black uppercase text-slate-300 group-hover:text-blue-600 transition-colors">
+                <div className="mt-8 flex items-center gap-2 text-[10px] font-bold uppercase text-slate-300 group-hover:text-blue-600 transition-colors">
                   <div className="w-8 h-px bg-slate-200 group-hover:bg-blue-600 transition-all group-hover:w-12"></div>
                   Included
                 </div>
@@ -648,12 +644,12 @@ export default function Home() {
              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
                 <div className="text-center md:text-left">
-                   <h3 className="text-2xl md:text-3xl font-black text-white italic uppercase tracking-tighter mb-2">Ready to see the difference?</h3>
+                   <h3 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-tight mb-2">Ready to see the difference?</h3>
                    <p className="text-slate-400 font-medium">Get your free custom website demo in 48 hours.</p>
                 </div>
                 <button 
                   onClick={() => setIsModalOpen(true)}
-                  className="px-10 py-5 bg-white text-slate-950 rounded-2xl font-black text-lg hover:bg-blue-50 transition-all shadow-xl italic uppercase cursor-pointer flex items-center gap-3"
+                  className="px-10 py-5 bg-white text-slate-950 rounded-2xl font-bold text-lg hover:bg-blue-50 transition-all shadow-xl uppercase cursor-pointer flex items-center gap-3"
                 >
                    Claim My Free Demo
                    <ArrowRight className="w-5 h-5" />
@@ -672,10 +668,10 @@ export default function Home() {
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center mb-24">
-            <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter italic uppercase mb-6">
+            <span className="text-blue-500 font-bold uppercase tracking-widest text-sm">Value Proposition</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mt-2 tracking-tight">
               Why Businesses <span className="text-blue-500">Choose Us</span>
             </h2>
-            <div className="h-1.5 w-24 bg-blue-600 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -728,7 +724,7 @@ export default function Home() {
                   <item.icon className={`w-7 h-7 ${item.color}`} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-3 uppercase italic tracking-tight">{item.title}</h3>
+                  <h3 className="text-xl font-bold text-white mb-3 uppercase tracking-tight">{item.title}</h3>
                   <p className="text-slate-400 font-medium leading-relaxed">
                     {item.desc}
                   </p>
@@ -741,16 +737,16 @@ export default function Home() {
             <div className="flex items-center gap-8 opacity-40 grayscale">
                <div className="flex items-center gap-2">
                  <span className="text-2xl">🇺🇸</span>
-                 <span className="text-white font-black text-xs uppercase tracking-widest">USA Operations</span>
+                 <span className="text-white font-bold text-xs uppercase tracking-widest">USA Operations</span>
                </div>
                <div className="flex items-center gap-2">
                  <span className="text-2xl">🇨🇦</span>
-                 <span className="text-white font-black text-xs uppercase tracking-widest">Canada HQ</span>
+                 <span className="text-white font-bold text-xs uppercase tracking-widest">Canada HQ</span>
                </div>
             </div>
             <button 
               onClick={() => setIsModalOpen(true)}
-              className="px-10 py-5 bg-blue-600 text-white rounded-2xl font-black text-lg hover:bg-blue-500 transition-all shadow-2xl italic uppercase cursor-pointer"
+              className="px-10 py-5 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:bg-blue-500 transition-all shadow-2xl uppercase cursor-pointer"
             >
                Join the Ecosystem
             </button>
@@ -762,11 +758,11 @@ export default function Home() {
       {/* ── SECTION 7 — Testimonials ─────────────────────── */}
       <section className="py-32 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl mx-auto text-center mb-20 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight italic uppercase">
-              What <span className="text-blue-600">Clients Say</span>
+          <div className="max-w-3xl mx-auto text-center mb-20">
+            <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">Decision Matrix</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mt-2 tracking-tight">
+              What <span className="text-blue-600">Our Clients</span> Say
             </h2>
-            <div className="h-1.5 w-20 bg-blue-600 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
@@ -797,16 +793,16 @@ export default function Home() {
                   ))}
                 </div>
 
-                <p className="text-xl font-medium text-slate-800 leading-relaxed mb-10 relative z-10 italic">
+                <p className="text-xl font-medium text-slate-800 leading-relaxed mb-10 relative z-10">
                   "{testimonial.quote}"
                 </p>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-black text-xs italic">
+                  <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
                     CB
                   </div>
                   <div>
-                    <div className="font-black text-slate-900 uppercase italic tracking-tight">{testimonial.author}</div>
+                    <div className="font-bold text-slate-900 uppercase tracking-tight">{testimonial.author}</div>
                     <div className="text-slate-500 text-xs font-bold uppercase tracking-widest">{testimonial.role}</div>
                   </div>
                 </div>
@@ -833,12 +829,12 @@ export default function Home() {
             <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 via-transparent to-transparent`}></div>
 
             <div className="relative z-10 max-w-3xl mx-auto space-y-8">
-              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs font-black uppercase tracking-[0.2em] animate-pulse">
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs font-bold uppercase tracking-wider animate-pulse">
                 <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
                 Limited Capacity Available
               </div>
 
-              <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter italic uppercase leading-none">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
                 Limited <span className="text-yellow-500">Free First-Month</span> Spots Available
               </h2>
 
@@ -849,7 +845,7 @@ export default function Home() {
               <div className="pt-8 flex flex-col items-center gap-6">
                 <button 
                   onClick={() => setIsModalOpen(true)}
-                  className="px-12 py-6 bg-yellow-500 text-slate-950 rounded-2xl font-black text-xl hover:bg-yellow-400 transition-all shadow-[0_20px_50px_rgba(234,179,8,0.3)] italic uppercase cursor-pointer flex items-center gap-3 group"
+                  className="px-12 py-6 bg-yellow-500 text-slate-950 rounded-2xl font-extrabold text-xl hover:bg-yellow-400 transition-all shadow-[0_20px_50px_rgba(234,179,8,0.3)] uppercase cursor-pointer flex items-center gap-3 group"
                 >
                   <span className="text-2xl">🟡</span>
                   Claim My Free Website
@@ -877,7 +873,7 @@ export default function Home() {
       <section className="py-32 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center space-y-10">
-            <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter italic uppercase leading-none">
+            <h2 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-tight">
               Ready to Launch <br />
               <span className="text-blue-600">a Better Website?</span>
             </h2>
@@ -889,7 +885,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
               <button 
                 onClick={() => setIsModalOpen(true)}
-                className="w-full sm:w-auto px-12 py-6 bg-yellow-500 text-slate-950 rounded-2xl font-black text-xl hover:bg-yellow-400 transition-all shadow-xl italic uppercase cursor-pointer flex items-center justify-center gap-3 group"
+                className="w-full sm:w-auto px-12 py-6 bg-yellow-500 text-slate-950 rounded-2xl font-extrabold text-xl hover:bg-yellow-400 transition-all shadow-xl uppercase cursor-pointer flex items-center justify-center gap-3 group"
               >
                 <span className="text-2xl">🟡</span>
                 Get My Free Demo
@@ -898,7 +894,7 @@ export default function Home() {
 
               <button 
                 onClick={() => setIsModalOpen(true)}
-                className="w-full sm:w-auto px-12 py-6 bg-white text-slate-900 border-2 border-slate-200 rounded-2xl font-black text-xl hover:bg-slate-50 transition-all shadow-md italic uppercase cursor-pointer flex items-center justify-center gap-3"
+                className="w-full sm:w-auto px-12 py-6 bg-white text-slate-900 border-2 border-slate-200 rounded-2xl font-extrabold text-xl hover:bg-slate-50 transition-all shadow-md uppercase cursor-pointer flex items-center justify-center gap-3"
               >
                 <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-slate-300"></div>
                 Book a Quick Call
