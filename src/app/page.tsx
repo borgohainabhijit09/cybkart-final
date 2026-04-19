@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import {
   ArrowRight,
+  ArrowLeft,
   Brain,
   Globe,
   ShoppingCart,
@@ -34,66 +35,6 @@ import {
 import CTASection from '@/components/CTASection';
 import BookingModal from '@/components/BookingModal';
 
-const HERO_SLIDES = [
-  {
-    type: 'website',
-    badge: 'Limited Offer: $0 Setup',
-    headline: ['Get a Professional', 'Website for $0', 'Today'],
-    highlightIndex: 1,
-    highlightColor: 'text-yellow-400',
-    body: 'Launch a high-converting website for your business with hosting, updates, support, and ongoing improvements included. Use it free for the first month and pay only if you continue.',
-    primaryCta: 'Get My Free Demo',
-    secondaryCta: 'See Our Work',
-    secondaryHref: '/portfolio/customer-sites',
-    visual: {
-      slides: [
-        { label: 'Auto Spa',    bg: 'bg-blue-500/10',    btn: 'bg-blue-500',    grad: 'from-blue-600/30 to-blue-400/10' },
-        { label: 'Clinic',      bg: 'bg-indigo-500/10',  btn: 'bg-indigo-500',  grad: 'from-indigo-600/30 to-purple-400/10' },
-        { label: 'Legal',       bg: 'bg-slate-500/10',   btn: 'bg-slate-700',   grad: 'from-slate-600/30 to-slate-400/10' },
-      ],
-      badge: { amount: '$0', label: 'First Month', sub: 'No hidden fees' },
-    },
-  },
-  {
-    type: 'analytics',
-    badge: 'Growth Focused',
-    headline: ['Go Live Fast.', 'Scale Even', 'Faster.'],
-    highlightIndex: 2,
-    highlightColor: 'text-cyan-400',
-    body: 'Launch in just 3-5 days. Our sites are engineered for speed and conversion, helping you capture more leads and outpace your competition instantly.',
-    primaryCta: 'Start My Project',
-    secondaryCta: 'Growth Services',
-    secondaryHref: '/services',
-    visual: {
-      slides: [
-        { label: 'Conversions', bg: 'bg-cyan-500/10',    btn: 'bg-cyan-500',    grad: 'from-cyan-600/30 to-blue-400/10', val: '+124%' },
-        { label: 'Traffic',     bg: 'bg-emerald-500/10', btn: 'bg-emerald-500', grad: 'from-emerald-600/30 to-teal-400/10', val: '4.2k' },
-        { label: 'Leads',       bg: 'bg-blue-500/10',    btn: 'bg-blue-500',    grad: 'from-blue-600/30 to-cyan-400/10', val: '86' },
-      ],
-      badge: { amount: '3-5', label: 'Days Live', sub: 'Rapid deployment' },
-    },
-  },
-  {
-    type: 'managed',
-    badge: 'Fully Managed',
-    headline: ['Zero Friction.', '100% Peace', 'of Mind.'],
-    highlightIndex: 1,
-    highlightColor: 'text-purple-400',
-    body: 'Never worry about updates, bugs, or hosting again. Our team manages your entire digital ecosystem 24/7, so your business never misses a beat.',
-    primaryCta: 'Book Free Audit',
-    secondaryCta: 'Learn Support',
-    secondaryHref: '/services',
-    visual: {
-      slides: [
-        { label: 'Security',    bg: 'bg-purple-500/10',  btn: 'bg-purple-500',  grad: 'from-purple-600/30 to-violet-400/10', status: 'Active' },
-        { label: 'Support',     bg: 'bg-rose-500/10',    btn: 'bg-rose-500',    grad: 'from-rose-600/30 to-pink-400/10', status: 'Online' },
-        { label: 'Uptime',      bg: 'bg-emerald-500/10', btn: 'bg-emerald-500', grad: 'from-emerald-600/30 to-green-400/10', status: '99.9%' },
-      ],
-      badge: { amount: '24/7', label: 'Monitoring', sub: 'Always optimized' },
-    },
-  },
-];
-
 const TRUST_ITEMS = [
   'Free Demo',
   '3-5 Day Launch',
@@ -109,331 +50,276 @@ function CheckIcon() {
   );
 }
 
+const FUNNEL_SLIDES = [
+  {
+    id: 'risk-free',
+    badge: 'Limited Priority Access',
+    headline: 'Launch Your Business Website — Risk Free',
+    subtext: 'No upfront cost. Try your website for 30 days before paying a single cent.',
+    primaryCTA: 'Start Free Trial',
+    secondaryCTA: 'View Demo',
+    visualType: 'mockup',
+    accentColor: 'blue'
+  },
+  {
+    id: 'process',
+    badge: 'Zero Friction',
+    headline: 'We Build. You Try. You Decide.',
+    subtext: 'We design your website, you test it live for 30 days, then continue only if you love it.',
+    primaryCTA: 'See How It Works',
+    visualType: 'process',
+    accentColor: 'indigo'
+  },
+  {
+    id: 'pricing',
+    badge: 'Transparent Scaling',
+    headline: 'Continue from Just $29/month',
+    subtext: 'Everything included: Hosting, security updates, expert support, and lead capture tools.',
+    primaryCTA: 'Start Free Trial',
+    visualType: 'pricing',
+    accentColor: 'emerald'
+  },
+  {
+    id: 'value',
+    badge: 'Strategic Growth',
+    headline: 'Premium Websites Without the $3,000 Price Tag',
+    subtext: 'Built for small businesses that want real results and revenue, not complexity.',
+    primaryCTA: 'Book Free Demo',
+    visualType: 'comparison',
+    accentColor: 'amber'
+  }
+];
+
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [heroSlide, setHeroSlide]     = useState(0);
-  const [mockSlide, setMockSlide]     = useState(0);
-  const [animating, setAnimating]     = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [direction, setDirection] = useState(0); // 1 for next, -1 for prev
 
-  /* Auto-advance hero every 6 s */
-  useEffect(() => {
-    const t = setInterval(() => goTo((heroSlide + 1) % HERO_SLIDES.length), 6000);
-    return () => clearInterval(t);
-  }, [heroSlide, animating]);
+  const nextSlide = () => {
+    setDirection(1);
+    setCurrentSlide((prev) => (prev + 1) % FUNNEL_SLIDES.length);
+  };
 
-  /* Auto-advance inner mockup every 2.5 s */
-  useEffect(() => {
-    const current = HERO_SLIDES[heroSlide];
-    const t = setInterval(() => setMockSlide(p => (p + 1) % current.visual.slides.length), 2500);
-    return () => clearInterval(t);
-  }, [heroSlide]);
+  const prevSlide = () => {
+    setDirection(-1);
+    setCurrentSlide((prev) => (prev - 1 + FUNNEL_SLIDES.length) % FUNNEL_SLIDES.length);
+  };
 
-  function goTo(index: number) {
-    if (animating || index === heroSlide) return;
-    setAnimating(true);
-    setHeroSlide(index);
-    setMockSlide(0);
-    setTimeout(() => setAnimating(false), 700);
-  }
+  const slide = FUNNEL_SLIDES[currentSlide];
 
   return (
     <>
       <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       {/* ────────────────────────────────────────────────────────
-          HERO SECTION — 3-slide full-section carousel
+          SALES FUNNEL HERO SLIDER
       ──────────────────────────────────────────────────────────── */}
-      <section className="relative bg-[#0F172A] overflow-hidden border-b border-slate-800" style={{ minHeight: '90vh' }}>
-        {/* Animated Background Grid */}
-        <div className="absolute inset-0 dark-grid-bg opacity-20 pointer-events-none"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0F172A]/70 to-[#0F172A] pointer-events-none"></div>
-
-        {/* ── Slide track ─────────────────────────── */}
-        <div className="relative w-full h-full" style={{ minHeight: '90vh' }}>
-          {HERO_SLIDES.map((slide, si) => {
-            const vis = slide.visual;
-            const isActive = heroSlide === si;
-            return (
-              <div
-                key={si}
-                aria-hidden={!isActive}
-                className={`absolute inset-0 flex flex-col justify-center transition-all duration-700 ease-in-out
-                  ${isActive ? 'opacity-100 translate-x-0 pointer-events-auto' : si < heroSlide ? 'opacity-0 -translate-x-full pointer-events-none' : 'opacity-0 translate-x-full pointer-events-none'}`}
-              >
-                {/* Coloured radial glow */}
-                <div
-                  className={`absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none transition-opacity duration-700
-                    ${isActive ? 'opacity-10' : 'opacity-0'}
-                    ${si === 0 ? 'bg-yellow-500' : si === 1 ? 'bg-cyan-500' : 'bg-purple-500'}`}
-                ></div>
-
-                <div className="container mx-auto px-6 pt-32 pb-24 relative z-10">
-                  <div className="grid lg:grid-cols-2 gap-16 items-center">
-
-                    {/* ── LEFT — copy ───────────────────── */}
-                    <div className="space-y-8 max-w-xl">
-
-                      {/* Badge */}
-                      <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border
-                        ${si === 0 ? 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400'
-                          : si === 1 ? 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400'
-                          : 'bg-purple-500/10 border-purple-500/30 text-purple-400'}`}>
-                        <span className={`w-2 h-2 rounded-full animate-pulse
-                          ${si === 0 ? 'bg-yellow-400' : si === 1 ? 'bg-cyan-400' : 'bg-purple-400'}`}></span>
-                        {slide.badge}
-                      </div>
-
-                      {/* Headline */}
-                      <h1 className="text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.07]">
-                        {slide.headline.map((line, li) => (
-                          <span key={li} className={`block ${li === slide.highlightIndex ? slide.highlightColor : ''}`}>{line}</span>
-                        ))}
-                      </h1>
-
-                      {/* Body */}
-                      <p className="text-lg text-slate-400 leading-relaxed">{slide.body}</p>
-
-                      {/* CTAs */}
-                      <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                        <button
-                          onClick={() => setIsModalOpen(true)}
-                          className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-base transition-all shadow-lg cursor-pointer
-                            ${si === 0 ? 'bg-yellow-500 text-slate-900 hover:bg-yellow-400 shadow-yellow-500/25'
-                              : si === 1 ? 'bg-cyan-500 text-slate-900 hover:bg-cyan-400 shadow-cyan-500/25'
-                              : 'bg-purple-600 text-white hover:bg-purple-500 shadow-purple-500/25'}`}
-                        >
-                          {slide.primaryCta}
-                          <ArrowRight className="w-5 h-5" />
-                        </button>
-                        <Link
-                          href={slide.secondaryHref}
-                          className="inline-flex items-center justify-center gap-2 bg-white/5 text-white border border-slate-600 px-8 py-4 rounded-xl font-semibold hover:bg-white/10 hover:border-white/40 transition-all"
-                        >
-                          {slide.secondaryCta}
-                        </Link>
-                      </div>
-
-                      {/* Trust strip */}
-                      <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm text-slate-300 font-medium">
-                        {TRUST_ITEMS.map((item) => (
-                          <span key={item} className="flex items-center gap-2">
-                            <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                              <CheckIcon />
-                            </div>
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* ── RIGHT — device mockups ───────── */}
-                    <div className="relative flex items-center justify-center mt-10 lg:mt-0">
-                      <div className="relative w-full h-[400px] sm:h-[480px] lg:h-[540px] scale-90 sm:scale-100">
-
-                        {/* Glow */}
-                        <div className={`absolute inset-0 blur-[80px] rounded-full pointer-events-none opacity-40
-                          ${si === 0 ? 'bg-yellow-500/10' : si === 1 ? 'bg-cyan-500/10' : 'bg-purple-500/10'}`}></div>
-
-                        {/* ── Laptop frame ──────────── */}
-                        <div className="absolute z-10 w-[440px] lg:w-[480px] left-0 top-6 hover:scale-[1.01] transition-transform duration-500">
-                          <div className="relative bg-slate-800 rounded-t-xl border-[5px] border-b-0 border-slate-700 shadow-2xl shadow-black/60 overflow-hidden" style={{ paddingBottom: '62%' }}>
-                            <div className="absolute inset-0 bg-slate-900 flex flex-col">
-                              {/* Browser chrome */}
-                              <div className="h-7 bg-slate-800 flex items-center px-3 gap-3 border-b border-slate-700/80 flex-shrink-0">
-                                <div className="flex gap-1.5">
-                                  <div className="w-2 h-2 rounded-full bg-rose-500"></div>
-                                  <div className="w-2 h-2 rounded-full bg-amber-400"></div>
-                                  <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
-                                </div>
-                                <div className="flex-1 h-3.5 bg-slate-700/60 rounded-md"></div>
-                              </div>
-                              {/* Slide content - BRANCHED BY TYPE */}
-                              <div className="flex-1 relative overflow-hidden p-3 pt-4">
-                                {isActive && vis.slides.map((vs: any, vi: number) => (
-                                  <div key={vi} className={`absolute inset-3 transition-transform duration-700 ease-in-out flex flex-col gap-3
-                                    ${mockSlide === vi ? 'translate-x-0' : mockSlide > vi ? '-translate-x-[110%]' : 'translate-x-[110%]'}`}>
-                                    
-                                    {/* WEBSITE TYPE */}
-                                    {slide.type === 'website' && (
-                                      <>
-                                        <div className={`w-full rounded-lg relative overflow-hidden border border-white/5 flex-[2.5] ${vs.bg}`}>
-                                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent to-white/5"></div>
-                                          <div className="absolute inset-0 flex items-center justify-center">
-                                            <Globe className="w-12 h-12 text-white/10" />
-                                          </div>
-                                          <div className="absolute bottom-2 left-2 bg-slate-900/60 backdrop-blur-sm px-2.5 py-1 rounded-full text-white text-[10px] font-bold border border-white/10 tracking-wide uppercase">
-                                            {vs.label}
-                                          </div>
-                                        </div>
-                                        <div className="flex gap-3 flex-[1]">
-                                          <div className="flex-1 space-y-2">
-                                            <div className="h-2.5 w-3/4 bg-slate-700 rounded-full"></div>
-                                            <div className="h-2 w-full bg-slate-700/60 rounded-full"></div>
-                                          </div>
-                                          <div className={`w-16 rounded-lg ${vs.bg} border border-white/5`}></div>
-                                        </div>
-                                        <div className="flex items-center justify-between flex-shrink-0">
-                                          <div className="flex gap-1.5">
-                                            <div className="w-4 h-4 rounded-full bg-slate-700"></div>
-                                            <div className="w-4 h-4 rounded-full bg-slate-700"></div>
-                                          </div>
-                                          <div className={`px-4 py-1.5 ${vs.btn} text-white text-[9px] font-bold uppercase tracking-wider rounded-md shadow-lg`}>View Site</div>
-                                        </div>
-                                      </>
-                                    )}
-
-                                    {/* ANALYTICS TYPE */}
-                                    {slide.type === 'analytics' && (
-                                      <>
-                                        <div className="flex-1 grid grid-cols-2 gap-3">
-                                          <div className="bg-slate-800/80 rounded-lg p-3 border border-slate-700 flex flex-col justify-center">
-                                            <div className="text-[10px] text-slate-500 mb-1">{vs.label}</div>
-                                            <div className="text-xl font-bold text-white transition-all">{vs.val}</div>
-                                            <div className={`h-1 w-full rounded-full mt-2 bg-slate-700 overflow-hidden`}>
-                                              <div className={`h-full ${vs.btn} w-[70%]`}></div>
-                                            </div>
-                                          </div>
-                                          <div className="bg-slate-800/80 rounded-lg p-3 border border-slate-700 flex items-center justify-center">
-                                            <Activity className={`w-8 h-8 ${vs.btn.replace('bg-', 'text-')}`} />
-                                          </div>
-                                        </div>
-                                        <div className="h-24 bg-slate-800/50 rounded-lg border border-slate-700 p-3 flex flex-col gap-2">
-                                          <div className="flex justify-between items-center">
-                                            <div className="h-2 w-16 bg-slate-600 rounded"></div>
-                                            <div className="h-2 w-10 bg-slate-700 rounded"></div>
-                                          </div>
-                                          <div className="flex-1 flex items-end gap-1 px-1">
-                                            {[30, 60, 45, 75, 50, 90, 65].map((h, i) => (
-                                              <div key={i} className={`flex-1 ${vs.btn} opacity-40 rounded-t-sm`} style={{ height: `${h}%` }}></div>
-                                            ))}
-                                          </div>
-                                        </div>
-                                      </>
-                                    )}
-
-                                    {/* MANAGED TYPE */}
-                                    {slide.type === 'managed' && (
-                                      <>
-                                        <div className="flex-1 flex flex-col gap-2">
-                                          {[1, 2, 3].map((item) => (
-                                            <div key={item} className="bg-slate-800/80 rounded-lg px-3 py-2 border border-slate-700 flex items-center justify-between">
-                                              <div className="flex items-center gap-2">
-                                                <div className={`w-6 h-6 rounded-lg ${vs.bg} flex items-center justify-center`}>
-                                                   <Shield className={`w-3 h-3 ${vs.btn.replace('bg-', 'text-')}`} />
-                                                </div>
-                                                <div className="h-2 w-20 bg-slate-600 rounded"></div>
-                                              </div>
-                                              <div className={`px-2 py-0.5 rounded-full text-[8px] font-bold ${vs.btn} text-white`}>{vs.status}</div>
-                                            </div>
-                                          ))}
-                                        </div>
-                                        <div className="h-20 bg-slate-800/50 rounded-lg border border-slate-700 p-3 flex items-start gap-3">
-                                          <div className="w-8 h-8 rounded-full bg-slate-700 flex-shrink-0"></div>
-                                          <div className="space-y-2 flex-1">
-                                            <div className="h-2.5 w-1/3 bg-slate-600 rounded"></div>
-                                            <div className="h-2 w-full bg-slate-700 rounded"></div>
-                                          </div>
-                                        </div>
-                                      </>
-                                    )}
-
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                          {/* Laptop base */}
-                          <div className="h-3 bg-slate-700 w-[108%] -ml-[4%] rounded-b-xl border-t border-slate-500/60 relative">
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-slate-400/50 rounded-b"></div>
-                          </div>
-                        </div>
-
-                        {/* ── Phone frame ───────────── */}
-                        <div className="absolute z-20 w-[120px] lg:w-[130px] right-2 bottom-0 top-auto hover:scale-[1.03] transition-transform duration-500">
-                          <div className="relative bg-slate-900 rounded-[2rem] border-[5px] border-slate-800 shadow-2xl overflow-hidden" style={{ paddingBottom: '210%' }}>
-                            <div className="absolute inset-0">
-                              {/* Notch */}
-                              <div className="w-14 h-3.5 bg-slate-800 rounded-b-xl absolute top-0 left-1/2 -translate-x-1/2 z-20"></div>
-                              <div className="w-full h-full bg-[#0B1121] pt-6 flex flex-col overflow-hidden">
-                                <div className="relative flex-1 overflow-hidden px-2.5 mt-2">
-                                  {isActive && vis.slides.map((vs: any, vi: number) => (
-                                    <div key={vi} className={`absolute inset-x-2 transition-transform duration-700 ease-in-out flex flex-col gap-3
-                                      ${mockSlide === vi ? 'translate-x-0' : mockSlide > vi ? '-translate-x-[110%]' : 'translate-x-[110%]'}`}>
-                                      
-                                      {/* Phone content variations based on type */}
-                                      <div className={`w-full h-24 rounded-xl bg-gradient-to-br ${vs.grad} shadow-inner flex items-center justify-center`}>
-                                        {slide.type === 'website' && <Zap className="w-8 h-8 text-white/20" />}
-                                        {slide.type === 'analytics' && <BarChart3 className="w-8 h-8 text-white/20" />}
-                                        {slide.type === 'managed' && <Shield className="w-8 h-8 text-white/20" />}
-                                      </div>
-                                      <div className="space-y-2">
-                                        <div className="h-2 w-3/4 bg-slate-700 rounded-full"></div>
-                                        <div className="h-1.5 w-full bg-slate-800 rounded-full"></div>
-                                      </div>
-                                      <div className={`h-8 w-full ${vs.btn} rounded-lg flex items-center justify-center shadow-lg`}>
-                                        <div className="h-1.5 w-2/5 bg-white/20 rounded-full"></div>
-                                      </div>
-                                      {slide.type === 'managed' && (
-                                        <div className="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
-                                           <div className={`h-1 w-full ${vs.btn} rounded-full`}></div>
-                                        </div>
-                                      )}
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* ── Pricing badge ─────────── */}
-
-                        <div className="absolute z-30 top-4 right-[-10px] bg-white p-4 rounded-2xl shadow-2xl border border-slate-100 flex flex-col gap-2 w-[190px] hover:translate-x-1 transition-transform duration-300">
-                          <div className="flex items-center gap-3">
-                            <div className={`w-12 h-12 rounded-full flex items-center justify-center font-black text-xl flex-shrink-0
-                              ${si === 0 ? 'bg-yellow-100 text-yellow-600' : si === 1 ? 'bg-cyan-100 text-cyan-700' : 'bg-purple-100 text-purple-700'}`}>
-                              {vis.badge.amount}
-                            </div>
-                            <div>
-                              <div className="text-slate-900 font-bold text-sm leading-tight">{vis.badge.label}</div>
-                              <div className="text-slate-500 text-[11px] font-medium">{vis.badge.sub}</div>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+      <section className="relative bg-white pt-20 overflow-hidden" style={{ minHeight: '85vh' }}>
+        
+        {/* Subtle Background Elements (Parallax potential) */}
+        <div className="absolute inset-0 z-0">
+           <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[60%] bg-blue-50/40 rounded-full blur-[120px] animate-pulse"></div>
+           <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[60%] bg-indigo-50/40 rounded-full blur-[120px]"></div>
+           {/* Grid Pattern */}
+           <div className="absolute inset-0 opacity-[0.02] dark-grid-bg"></div>
         </div>
 
-        {/* ── Arrows ──────────────────── */}
-        <button
-          onClick={() => goTo((heroSlide - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
-          className="absolute left-6 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-all backdrop-blur-md hidden md:flex"
-        >
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-        </button>
-        <button
-          onClick={() => goTo((heroSlide + 1) % HERO_SLIDES.length)}
-          className="absolute right-6 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white transition-all backdrop-blur-md hidden md:flex"
-        >
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-        </button>
+        <div className="container mx-auto px-6 h-full flex flex-col relative z-10 pt-16">
+          <div className="flex-1 grid lg:grid-cols-2 gap-16 items-center">
+            
+            {/* ── LEFT: Strategic Content ─────────────────── */}
+            <div className="relative h-[480px] flex flex-col justify-center">
+              {FUNNEL_SLIDES.map((s, i) => (
+                <div 
+                  key={s.id}
+                  className={`absolute inset-0 flex flex-col justify-center transition-all duration-1000 ease-out
+                    ${currentSlide === i 
+                      ? 'opacity-100 translate-y-0 visible pointer-events-auto' 
+                      : `opacity-0 ${direction >= 0 ? 'translate-y-8' : '-translate-y-8'} invisible pointer-events-none`}`}
+                >
+                  <div className="space-y-8">
+                    {/* Badge */}
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-50 border border-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] italic">
+                      <div className={`w-1.5 h-1.5 rounded-full ${s.id === 'risk-free' ? 'bg-blue-500' : 'bg-emerald-500'}`}></div>
+                      {s.badge}
+                    </div>
 
-        {/* ── Indicators ────────────────── */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-40 flex items-center gap-4">
-          {HERO_SLIDES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              className={`transition-all duration-500 rounded-full ${heroSlide === i ? 'w-10 h-2 bg-white' : 'w-2 h-2 bg-slate-500 hover:bg-slate-300'}`}
-            />
-          ))}
+                    {/* Headline */}
+                    <h1 className="text-5xl lg:text-7xl font-black text-slate-900 tracking-tighter leading-[1.05] italic uppercase">
+                      {s.headline.split(' ').map((word, wi) => (
+                         <span key={wi} className="inline-block mr-3">
+                           {word === 'Risk' || word === 'Build.' || word === '$29/month' || word === '$3,000' 
+                             ? <span className="text-blue-600 underline underline-offset-8 decoration-slate-200">{word}</span> 
+                             : word}
+                         </span>
+                      ))}
+                    </h1>
+
+                    {/* Subtext */}
+                    <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-lg">
+                      {s.subtext}
+                    </p>
+
+                    {/* CTAs */}
+                    <div className="flex flex-wrap gap-4 pt-4">
+                       <button 
+                        onClick={() => setIsModalOpen(true)}
+                        className="px-10 py-5 bg-yellow-500 text-slate-950 rounded-2xl font-black text-lg hover:bg-yellow-400 transition-all shadow-xl shadow-yellow-500/20 italic uppercase cursor-pointer flex items-center gap-3 transform hover:scale-[1.02] active:scale-[0.98]"
+                       >
+                         {s.primaryCTA}
+                         <ArrowRight className="w-5 h-5" />
+                       </button>
+                       {s.secondaryCTA && (
+                         <button 
+                          onClick={() => setIsModalOpen(true)}
+                          className="px-10 py-5 bg-white text-slate-900 border-2 border-slate-100 rounded-2xl font-black text-lg hover:bg-slate-50 transition-all italic uppercase"
+                         >
+                           {s.secondaryCTA}
+                         </button>
+                       )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* ── RIGHT: Visual Funnel Elements ──────────── */}
+            <div className="relative h-[400px] lg:h-[600px] flex items-center justify-center">
+              {FUNNEL_SLIDES.map((s, i) => (
+                <div 
+                  key={s.id}
+                  className={`absolute inset-0 flex items-center justify-center transition-all duration-1000 ease-out delay-100
+                    ${currentSlide === i 
+                      ? 'opacity-100 scale-100 translate-x-0 visible pointer-events-auto' 
+                      : `opacity-0 scale-95 ${direction >= 0 ? 'translate-x-20' : '-translate-x-20'} invisible pointer-events-none`}`}
+                >
+                  {/* Visual: Mockup (Slide 1) */}
+                  {s.visualType === 'mockup' && (
+                    <div className="relative w-full max-w-md aspect-square bg-white rounded-[3rem] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] border border-slate-50 p-8 transform rotate-2 animate-float">
+                       <div className="h-full border-2 border-dashed border-slate-100 rounded-[2rem] flex flex-col p-6 space-y-6">
+                          <div className="flex items-center justify-between"><div className="w-16 h-4 bg-slate-50 rounded"></div><div className="w-6 h-6 rounded-full bg-slate-50"></div></div>
+                          <div className="flex-1 flex flex-col items-center justify-center gap-4">
+                             <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center"><Globe className="w-6 h-6 text-blue-600" /></div>
+                             <div className="h-2 w-32 bg-slate-100 rounded-full"></div>
+                             <div className="h-1.5 w-24 bg-slate-50 rounded-full"></div>
+                          </div>
+                          <div className="h-10 w-full bg-slate-900 rounded-xl flex items-center justify-center"><div className="h-1 w-12 bg-white/20 rounded"></div></div>
+                       </div>
+                       {/* Floating UI Elements */}
+                       <div className="absolute -top-4 -right-4 bg-emerald-500 text-white p-3 rounded-2xl shadow-xl font-black text-[10px] tracking-widest uppercase italic">Verified</div>
+                    </div>
+                  )}
+
+                  {/* Visual: Process (Slide 2) */}
+                  {s.visualType === 'process' && (
+                    <div className="w-full max-w-md space-y-6 transform -rotate-1">
+                       {[
+                         { id: 1, label: 'BUILD', icon: Code2, bg: 'bg-blue-500' },
+                         { id: 2, label: 'TRY', icon: Eye, bg: 'bg-indigo-500' },
+                         { id: 3, label: 'DECIDE', icon: Target, bg: 'bg-emerald-500' }
+                       ].map((step) => (
+                         <div key={step.id} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl flex items-center gap-6 group hover:translate-x-2 transition-transform">
+                            <div className={`w-14 h-14 ${step.bg} rounded-2xl flex items-center justify-center text-white shadow-lg`}>
+                               <step.icon className="w-6 h-6" />
+                            </div>
+                            <div className="flex-1">
+                               <div className="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">Step {step.id}</div>
+                               <div className="text-slate-900 font-black italic uppercase tracking-tighter text-lg">{step.label}</div>
+                            </div>
+                            <ArrowRight className="w-5 h-5 text-slate-200 group-hover:text-slate-900 transition-colors" />
+                         </div>
+                       ))}
+                    </div>
+                  )}
+
+                  {/* Visual: Pricing (Slide 3) */}
+                  {s.visualType === 'pricing' && (
+                    <div className="relative w-full max-w-sm bg-slate-900 rounded-[3rem] p-10 shadow-3xl transform rotate-1">
+                       <div className="space-y-8">
+                          <div className="inline-flex items-center gap-2 text-emerald-400 text-[10px] font-black uppercase tracking-widest italic border border-emerald-400/20 px-3 py-1 rounded-full bg-emerald-400/5">Starter Plan</div>
+                          <div className="flex items-baseline gap-2">
+                             <span className="text-white font-black text-6xl italic">$29</span>
+                             <span className="text-slate-500 font-bold">/Month</span>
+                          </div>
+                          <div className="space-y-4">
+                             {[1,2,3].map(i => (
+                               <div key={i} className="flex items-center gap-3">
+                                  <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center"><CheckIcon /></div>
+                                  <div className="h-2 w-3/4 bg-white/5 rounded-full"></div>
+                               </div>
+                             ))}
+                          </div>
+                          <div className="h-12 w-full bg-white/10 rounded-2xl border border-white/5"></div>
+                       </div>
+                    </div>
+                  )}
+
+                  {/* Visual: Comparison (Slide 4) */}
+                  {s.visualType === 'comparison' && (
+                    <div className="w-full max-w-md bg-white rounded-[3rem] border border-slate-100 shadow-2xl p-10 space-y-8 transform -rotate-2">
+                       <div className="flex items-center justify-between border-b border-slate-50 pb-6">
+                          <div className="text-slate-400 font-black text-xs uppercase tracking-tighter italic">Conventional</div>
+                          <div className="text-blue-600 font-black text-xs uppercase tracking-tighter italic">CYBKART</div>
+                       </div>
+                       <div className="space-y-6">
+                          {[
+                            { label: 'Setup Fee', old: '$3,500+', new: '$0' },
+                            { label: 'Time', old: '3 Months', new: '48 Hours' },
+                            { label: 'Risk', old: 'High Upfront', new: '30-Day Free' }
+                          ].map((item, i) => (
+                            <div key={i} className="flex items-center justify-between">
+                               <div className="text-slate-800 font-bold text-sm tracking-tight">{item.label}</div>
+                               <div className="flex items-center gap-4">
+                                  <span className="text-slate-400 line-through text-xs font-bold">{item.old}</span>
+                                  <span className="text-emerald-500 font-black italic tracking-tighter text-lg">{item.new}</span>
+                               </div>
+                            </div>
+                          ))}
+                       </div>
+                       <div className="pt-4 h-12 w-full bg-blue-50 rounded-2xl border border-blue-100 flex items-center justify-center">
+                          <span className="text-blue-600 font-black text-[10px] uppercase tracking-widest italic">Save $3k+ Instantly</span>
+                       </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+          {/* ── FOOTER: Control Navigation ───────────── */}
+          <div className="py-12 flex items-center justify-between border-t border-slate-50 mt-auto">
+            <div className="flex items-center gap-12">
+               {/* Slide Indicators */}
+               <div className="flex items-center gap-3">
+                  {FUNNEL_SLIDES.map((_, i) => (
+                    <button 
+                      key={i}
+                      onClick={() => { setDirection(i > currentSlide ? 1 : -1); setCurrentSlide(i); }}
+                      className={`h-1.5 transition-all duration-500 rounded-full ${currentSlide === i ? 'w-12 bg-blue-600' : 'w-4 bg-slate-100 hover:bg-slate-200'}`}
+                    />
+                  ))}
+               </div>
+               <div className="hidden sm:block text-[10px] text-slate-300 font-black uppercase tracking-[0.3em] italic">
+                  Level {currentSlide + 1} / 4 Strategy
+               </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+               <button 
+                onClick={prevSlide}
+                className="w-14 h-14 rounded-2xl border-2 border-slate-100 flex items-center justify-center text-slate-300 hover:text-slate-900 hover:border-slate-900 transition-all active:scale-95"
+               >
+                 <ArrowLeft className="w-6 h-6" />
+               </button>
+               <button 
+                onClick={nextSlide}
+                className="w-14 h-14 rounded-2xl bg-slate-900 flex items-center justify-center text-white hover:bg-blue-600 transition-all active:scale-95 shadow-xl"
+               >
+                 <ArrowRight className="w-6 h-6" />
+               </button>
+            </div>
+          </div>
         </div>
       </section>
 
