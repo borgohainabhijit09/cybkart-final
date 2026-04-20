@@ -330,9 +330,9 @@ export default function Home() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
 
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center mb-20 animate-fade-in-up">
-            <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">Pain Points</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mt-2 tracking-tight">
+          <div className="max-w-4xl mb-20">
+            <span className="text-blue-600 font-bold uppercase tracking-wider text-sm">Pain Points</span>
+            <h2 className="text-3xl font-bold text-slate-900 mt-2 mb-6 tracking-tight">
               Why Pay Thousands <span className="text-blue-600">Upfront</span> for a Website?
             </h2>
           </div>
@@ -403,8 +403,8 @@ export default function Home() {
             {/* Left: Copy & List */}
             <div className="lg:w-1/2 space-y-10">
               <div className="space-y-6">
-                <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">The Solution</span>
-                <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mt-2 tracking-tight leading-tight">
+                <span className="text-blue-600 font-bold uppercase tracking-wider text-sm">The Solution</span>
+                <h2 className="text-3xl font-bold text-slate-900 mt-2 mb-6 tracking-tight leading-tight">
                   A Better Way <br />
                   <span className="text-blue-600">To Get Online</span>
                 </h2>
@@ -495,9 +495,9 @@ export default function Home() {
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center mb-24">
-            <span className="text-blue-500 font-bold uppercase tracking-widest text-sm">Process</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mt-2 tracking-tight leading-tight">
+          <div className="max-w-4xl mb-24">
+            <span className="text-blue-500 font-bold uppercase tracking-wider text-sm">Process</span>
+            <h2 className="text-3xl font-bold text-white mt-2 mb-6 tracking-tight leading-tight">
               Simple. Fast. <span className="text-blue-500 underline underline-offset-8 decoration-white/20">Risk-Free.</span>
             </h2>
           </div>
@@ -578,9 +578,9 @@ export default function Home() {
       {/* ── SECTION 5 — Why It Benefits Your Business ───────── */}
       <section className="py-32 bg-slate-50 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl mx-auto text-center mb-20">
-            <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">Benefits</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mt-2 tracking-tight">
+          <div className="max-w-3xl mb-20">
+            <span className="text-blue-600 font-bold uppercase tracking-wider text-sm">Benefits</span>
+            <h2 className="text-3xl font-bold text-slate-900 mt-2 mb-6 tracking-tight">
               Built to Help <span className="text-blue-600">You Grow</span>
             </h2>
           </div>
@@ -667,9 +667,9 @@ export default function Home() {
         <div className="absolute inset-0 dark-grid-bg opacity-[0.03] pointer-events-none"></div>
         
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center mb-24">
-            <span className="text-blue-500 font-bold uppercase tracking-widest text-sm">Value Proposition</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white mt-2 tracking-tight">
+          <div className="max-w-4xl mb-24">
+            <span className="text-blue-500 font-bold uppercase tracking-wider text-sm">Value Proposition</span>
+            <h2 className="text-3xl font-bold text-white mt-2 mb-6 tracking-tight">
               Why Businesses <span className="text-blue-500">Choose Us</span>
             </h2>
           </div>
@@ -758,9 +758,9 @@ export default function Home() {
       {/* ── SECTION 7 — Testimonials ─────────────────────── */}
       <section className="py-32 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl mx-auto text-center mb-20">
-            <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">Decision Matrix</span>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mt-2 tracking-tight">
+          <div className="max-w-3xl mb-20">
+            <span className="text-blue-600 font-bold uppercase tracking-wider text-sm">Decision Matrix</span>
+            <h2 className="text-3xl font-bold text-slate-900 mt-2 mb-6 tracking-tight">
               What <span className="text-blue-600">Our Clients</span> Say
             </h2>
           </div>
@@ -829,14 +829,12 @@ export default function Home() {
             <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-500 via-transparent to-transparent`}></div>
 
             <div className="relative z-10 max-w-3xl mx-auto space-y-8">
-              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs font-bold uppercase tracking-wider animate-pulse">
-                <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
-                Limited Capacity Available
+              <div className="max-w-3xl mb-12">
+                <span className="text-yellow-500 font-bold uppercase tracking-wider text-sm">Availability</span>
+                <h2 className="text-3xl font-bold text-white mt-2 mb-6 tracking-tight">
+                  Limited <span className="text-yellow-500">Free First-Month</span> Spots Available
+                </h2>
               </div>
-
-              <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">
-                Limited <span className="text-yellow-500">Free First-Month</span> Spots Available
-              </h2>
 
               <p className="text-xl text-slate-400 font-medium">
                 We only onboard a limited number of businesses monthly to maintain quality delivery. Don't let your competition scale while you're still waiting.
@@ -872,11 +870,13 @@ export default function Home() {
       {/* ── SECTION 9 — Final CTA ────────────────────────── */}
       <section className="py-32 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center space-y-10">
-            <h2 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          <div className="max-w-4xl space-y-4">
+            <span className="text-blue-600 font-bold uppercase tracking-wider text-sm">Get Started</span>
+            <h2 className="text-4xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
               Ready to Launch <br />
               <span className="text-blue-600">a Better Website?</span>
             </h2>
+          </div>
             
             <p className="text-xl md:text-2xl text-slate-600 font-medium max-w-2xl mx-auto">
               Start today with <span className="text-slate-900 font-bold">$0 upfront</span> and a website built to grow your business.
