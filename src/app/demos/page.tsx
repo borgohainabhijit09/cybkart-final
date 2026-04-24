@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Zap,
   Shield,
@@ -11,6 +12,7 @@ import {
   PhoneCall,
   CheckCircle,
   Sparkles,
+  ExternalLink
 } from 'lucide-react';
 import BookingModal from '@/components/BookingModal';
 
@@ -18,10 +20,12 @@ import BookingModal from '@/components/BookingModal';
 
 const DEMOS = [
   {
-    title: 'Auto Spa Demo',
-    description: 'Luxury detailing website with online booking, tiered service packages, and automated SMS reminders.',
-    industry: 'Luxury Auto Detailing',
-    accent: { from: 'from-blue-500', to: 'to-cyan-500', text: 'text-blue-400', border: 'hover:border-blue-500/40', glow: 'group-hover:shadow-blue-500/20' },
+    title: 'Precision Auto Spa',
+    description: 'High-end luxury detailing website featuring a sleek aesthetic, integrated online booking, and tiered service packages.',
+    industry: 'Auto Detailing',
+    image: '/images/demos/auto-spa.jpg',
+    link: 'https://precision-auto-spa.vercel.app/',
+    accent: { from: 'from-blue-600', to: 'to-cyan-400', text: 'text-blue-500', border: 'hover:border-blue-500/50', glow: 'group-hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)]' },
     icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
@@ -32,28 +36,30 @@ const DEMOS = [
     ),
   },
   {
-    title: 'Mobile Detailing Demo',
-    description: 'On-demand mobile detailing van site with zip-code availability check, live scheduling, and Stripe payments.',
-    industry: 'Mobile Car Detailing',
-    accent: { from: 'from-emerald-500', to: 'to-teal-500', text: 'text-emerald-400', border: 'hover:border-emerald-500/40', glow: 'group-hover:shadow-emerald-500/20' },
+    title: 'Pest Control Elite',
+    description: 'Lead-generation powerhouse tailored for pest control services, featuring instant quote forms, trust badges, and service area checks.',
+    industry: 'Pest Control',
+    image: '/images/demos/pest-control.jpg',
+    link: 'https://pest-control.cybkartglobal.com/',
+    accent: { from: 'from-emerald-500', to: 'to-teal-400', text: 'text-emerald-500', border: 'hover:border-emerald-500/50', glow: 'group-hover:shadow-[0_0_40px_-10px_rgba(16,185,129,0.3)]' },
     icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="1" y="3" width="15" height="13" rx="2" />
-        <path d="M16 8h4l3 5v3h-7V8z" />
-        <circle cx="5.5" cy="18.5" r="2.5" />
-        <circle cx="18.5" cy="18.5" r="2.5" />
+        <path d="M5 12h14" />
+        <path d="M12 5v14" />
       </svg>
     ),
   },
   {
-    title: 'Ceramic Coating Demo',
-    description: 'High-end paint protection specialist site with before/after gallery, tiered pricing, and a lead qualification funnel.',
-    industry: 'Paint Protection',
-    accent: { from: 'from-violet-500', to: 'to-purple-500', text: 'text-violet-400', border: 'hover:border-violet-500/40', glow: 'group-hover:shadow-violet-500/20' },
+    title: 'AC Repair Pro',
+    description: 'Conversion-focused HVAC template with emergency call-to-actions, service grids, and built-in trust signals for immediate lead capture.',
+    industry: 'HVAC Services',
+    image: '/images/demos/ac-repair.jpg',
+    link: 'https://acrepair-demo.cybkartglobal.com/',
+    accent: { from: 'from-orange-500', to: 'to-amber-400', text: 'text-orange-500', border: 'hover:border-orange-500/50', glow: 'group-hover:shadow-[0_0_40px_-10px_rgba(249,115,22,0.3)]' },
     icon: (props: React.SVGProps<SVGSVGElement>) => (
       <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="m9 12 2 2 4-4" />
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+        <path d="M12 6v6l4.25 2.5" />
       </svg>
     ),
   },
@@ -150,62 +156,116 @@ export default function DemosPage() {
         <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-violet-500/5 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+          <div className="flex flex-col gap-24 pb-12">
             {DEMOS.map((demo, i) => (
-              <div key={i} className={`group relative bg-white/[0.03] border border-white/8 ${demo.accent.border} rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${demo.accent.glow} flex flex-col`}>
-                {/* Preview Area */}
-                <div className="relative aspect-[16/10] bg-slate-900 overflow-hidden">
-                  <div className="absolute inset-0 flex flex-col">
-                    {/* Fake browser chrome */}
-                    <div className="flex items-center gap-1.5 px-4 py-3 bg-slate-800/80 border-b border-white/5">
-                      <div className="w-2.5 h-2.5 rounded-full bg-rose-500/60" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
-                      <div className="flex-1 mx-3 h-4 rounded bg-white/5 flex items-center px-2">
-                        <div className={`w-1.5 h-1.5 rounded-full ${demo.accent.text.replace('text-', 'bg-')} mr-1.5`} />
-                        <div className="h-1 w-16 bg-white/10 rounded" />
-                      </div>
-                    </div>
-                    {/* Content placeholder */}
-                    <div className="flex-1 relative flex items-center justify-center p-6">
-                      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(15,23,42,0.8) 0%, rgba(30,41,59,0.4) 100%)' }} />
-                      <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${demo.accent.from} ${demo.accent.to} bg-opacity-10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-xl`}
-                        style={{ background: 'rgba(255,255,255,0.05)' }}>
-                        <demo.icon className={`w-8 h-8 ${demo.accent.text}`} />
-                      </div>
-                      {/* Skeleton lines */}
-                      <div className="absolute bottom-4 left-4 right-4 space-y-1.5">
-                        <div className="h-1.5 w-3/4 bg-white/5 rounded" />
-                        <div className="h-1.5 w-1/2 bg-white/5 rounded" />
-                      </div>
-                    </div>
-                  </div>
-                  {/* Industry chip */}
-                  <div className="absolute top-12 left-4 px-3 py-1 rounded-lg bg-black/50 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest border border-white/8" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                    {demo.industry}
-                  </div>
-                </div>
+              <div 
+                key={i} 
+                className={`group relative w-full rounded-[2.5rem] bg-white/[0.015] border border-white/5 overflow-hidden flex flex-col xl:flex-row shadow-2xl transition-all duration-700 hover:border-white/15 hover:shadow-[0_20px_80px_-20px_rgba(0,0,0,0.8)]`}
+              >
+                 
+                 {/* Content Pane */}
+                 <div className="xl:w-[45%] flex flex-col justify-center p-10 lg:p-16 relative z-20">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
+                    <div className={`absolute top-0 right-0 w-80 h-80 bg-gradient-to-br ${demo.accent.from} ${demo.accent.to} opacity-[0.07] blur-3xl -z-10 group-hover:opacity-20 transition-opacity duration-700`} />
 
-                {/* Info */}
-                <div className="p-8 space-y-5 flex-1 flex flex-col">
-                  <div>
-                    <h3 className={`text-xl font-extrabold text-white mb-2 tracking-tight group-hover:${demo.accent.text} transition-colors`}>
-                      {demo.title}
-                    </h3>
-                    <p className="text-slate-400 text-sm leading-relaxed font-medium">{demo.description}</p>
-                  </div>
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                    className={`mt-auto w-full py-3.5 rounded-2xl font-bold text-sm uppercase tracking-wider border transition-all duration-300 cursor-pointer flex items-center justify-center gap-2
-                      bg-white/[0.03] border-white/8 text-slate-300
-                      group-hover:bg-gradient-to-r group-hover:${demo.accent.from} group-hover:${demo.accent.to}
-                      group-hover:text-white group-hover:border-transparent group-hover:shadow-lg`}
-                  >
-                    Preview Demo
-                    <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
-                  </button>
-                </div>
+                    <div>
+                      <div className="mb-8">
+                        <span className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl border border-white/10 bg-white/5 text-xs font-bold uppercase tracking-widest text-slate-300 backdrop-blur-md`}>
+                          <span className={`w-2 h-2 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.4)] bg-gradient-to-br ${demo.accent.from} ${demo.accent.to}`} />
+                          {demo.industry}
+                        </span>
+                      </div>
+                      
+                      <h3 className="text-4xl lg:text-5xl font-black text-white mb-6 tracking-tight leading-[1.1]">
+                        {demo.title}
+                      </h3>
+                      <p className="text-lg text-slate-400 font-medium leading-relaxed mb-10 xl:pr-8">
+                        {demo.description}
+                      </p>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-4">
+                        {['High Conversion Rate', 'Premium Design', 'SEO Optimized', 'Mobile First'].map((feature, idx) => (
+                           <div key={idx} className="flex items-center gap-3">
+                             <div className={`w-1 h-5 rounded-full bg-gradient-to-b ${demo.accent.from} ${demo.accent.to}`} />
+                             <span className="text-sm font-semibold text-slate-300">{feature}</span>
+                           </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-12 flex flex-col sm:flex-row gap-4 relative z-50">
+                      <a
+                        href={demo.link ?? '#'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`relative overflow-hidden inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-white shadow-xl transition-all duration-300 hover:-translate-y-1`}
+                        style={{ boxShadow: '0 10px 40px -10px rgba(0,0,0,0.5)' }}
+                      >
+                         {/* Button fill gradient */}
+                         <div className={`absolute inset-0 bg-gradient-to-r ${demo.accent.from} ${demo.accent.to} opacity-90 group-hover:opacity-100 transition-opacity`} />
+                         {/* Border sheen top */}
+                         <div className="absolute inset-0 rounded-xl border border-white/20 pointer-events-none" />
+                         
+                         <span className="relative z-10 flex items-center gap-2">
+                           Live Preview <ExternalLink className="w-4 h-4 ml-1" />
+                         </span>
+                      </a>
+                      <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-slate-300 border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:text-white"
+                      >
+                        Claim Design
+                      </button>
+                    </div>
+                 </div>
+
+                 {/* Mockup Pane Visuals */}
+                 <div className="xl:w-[55%] relative min-h-[400px] xl:min-h-[600px] bg-[#050B14] border-t xl:border-t-0 xl:border-l border-white/5 overflow-hidden flex items-center justify-center p-8 lg:p-14">
+                    {/* Atmospheric Lighting inside mockup pane */}
+                    <div className={`absolute inset-0 bg-gradient-to-bl ${demo.accent.from} ${demo.accent.to} opacity-[0.02] group-hover:opacity-[0.06] transition-opacity duration-1000 ease-in-out`} />
+                    <div className="absolute top-0 right-0 w-full h-[50%] bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
+                    
+                    {/* Floating Browser Mockup */}
+                    <div className="w-full relative shadow-[0_20px_50px_-20px_rgba(0,0,0,0.8)] rounded-2xl overflow-hidden border border-white/10 group-hover:-translate-y-3 group-hover:-translate-x-1 transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-transform">
+                       
+                       {/* Browser Chrome Header */}
+                       <div className="flex items-center px-4 py-3.5 bg-[#0F1523] border-b border-white/5 relative z-10">
+                         <div className="flex gap-2">
+                           <div className="w-3 h-3 rounded-full bg-slate-700/50 group-hover:bg-rose-500 transition-colors duration-500 delay-[100ms]" />
+                           <div className="w-3 h-3 rounded-full bg-slate-700/50 group-hover:bg-amber-500 transition-colors duration-500 delay-[200ms]" />
+                           <div className="w-3 h-3 rounded-full bg-slate-700/50 group-hover:bg-emerald-500 transition-colors duration-500 delay-[300ms]" />
+                         </div>
+                         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-6 w-1/3 bg-slate-900/50 border border-white/5 rounded-md flex items-center justify-center px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
+                           <div className="h-1.5 w-16 bg-white/10 rounded-full" />
+                         </div>
+                       </div>
+                       
+                       {/* Browser Viewport with native aspect ratio */}
+                       <div className="relative w-full aspect-[4/3] bg-slate-900">
+                          {demo.image ? (
+                            <>
+                              <Image 
+                                src={demo.image} 
+                                alt={demo.title} 
+                                fill 
+                                className="object-cover object-top transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                                priority={i === 0} 
+                              />
+                              <div className="absolute inset-0 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)] pointer-events-none" />
+                            </>
+                          ) : (
+                             <div className="absolute inset-0 flex items-center justify-center flex-col">
+                                <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${demo.accent.from} ${demo.accent.to} bg-opacity-10 flex items-center justify-center mb-6`}>
+                                   <demo.icon className={`w-10 h-10 ${demo.accent.text}`} />
+                                </div>
+                                <div className="w-32 h-2 bg-white/5 rounded-full" />
+                             </div>
+                          )}
+                       </div>
+                    </div>
+                 </div>
+
               </div>
             ))}
           </div>
