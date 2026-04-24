@@ -119,16 +119,16 @@ export default function Footer() {
                                 <ul className="space-y-6">
                                     <li className="group">
                                         <a href="mailto:info@cybkartglobal.com" className="flex items-center gap-4">
-                                            <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/10 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                                                <Mail className="w-4 h-4" />
+                                            <div className="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center border border-blue-500/20 group-hover:bg-blue-500 transition-all">
+                                                <Mail className="w-4 h-4 text-blue-400 group-hover:text-white transition-colors" />
                                             </div>
                                             <span className="text-slate-400 group-hover:text-white text-sm font-medium transition-colors">info@cybkartglobal.com</span>
                                         </a>
                                     </li>
                                     <li className="group">
                                         <a href="tel:8446991255" className="flex items-center gap-4">
-                                            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/10 group-hover:bg-emerald-500 group-hover:text-white transition-all">
-                                                <Phone className="w-4 h-4" />
+                                            <div className="w-10 h-10 rounded-xl bg-emerald-500/15 flex items-center justify-center border border-emerald-500/20 group-hover:bg-emerald-500 transition-all">
+                                                <Phone className="w-4 h-4 text-emerald-400 group-hover:text-white transition-colors" />
                                             </div>
                                             <span className="text-slate-400 group-hover:text-white text-sm font-medium transition-colors">844-699-1255</span>
                                         </a>
