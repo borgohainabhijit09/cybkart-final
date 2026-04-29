@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import {
   ArrowRight,
   ArrowLeft,
@@ -64,8 +65,8 @@ const FUNNEL_SLIDES = [
   {
     id: 'value',
     badge: 'Strategic Growth',
-    headline: 'Premium Websites Without',
-    headlineAccent: 'the $3,000 Price Tag',
+    headline: 'Websites Without',
+    headlineAccent: '$3,000 Price Tag',
     subtext: 'Built for small businesses that want real results and revenue, not complexity.',
     primaryCTA: 'Book Free Demo',
     secondaryCTA: null,
@@ -233,7 +234,7 @@ const TESTIMONIALS = [
 function CheckIcon() {
   return (
     <svg className="w-3 h-3 text-emerald-400" viewBox="0 0 12 12" fill="none">
-      <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -295,16 +296,36 @@ export default function Home() {
       <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       {/* ══════════════════════════════════════════════════════════════
+          FLASH MESSAGE / ANNOUNCEMENT
+      ═══════════════════════════════════════════════════════════════ */}
+      <div className="bg-rose-600 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20" 
+             style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }} />
+        <div className="container mx-auto px-6 py-2.5 relative z-10 flex items-center justify-center gap-4">
+          <div className="flex items-center gap-2 text-white font-black text-xs uppercase tracking-[0.2em]">
+            <Sparkles className="w-4 h-4 animate-pulse" />
+            <span>Introductory Offer:</span>
+          </div>
+          <p className="text-white text-sm font-bold">
+            Launch your Single Page Website for just <span className="underline decoration-2 underline-offset-4 decoration-rose-300">$29</span> today!
+          </p>
+          <Link href="/pricing" className="bg-white text-rose-600 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-rose-50 transition-all hover:scale-105 active:scale-95">
+            Claim Now
+          </Link>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════════════════════
           HERO — Cinematic Dark with Animated Slides
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen bg-[#030712] overflow-hidden flex flex-col" style={{ paddingTop: '80px' }}>
-        
+      <section className="relative min-h-screen bg-[#030712] overflow-hidden flex flex-col">
+
         {/* Abstract Background Orbs */}
         <div className="absolute inset-0 pointer-events-none z-0">
           <div className="absolute top-[-20%] left-[-10%] w-[700px] h-[700px] rounded-full bg-blue-600/20 blur-[120px] animate-glow-pulse" />
           <div className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-violet-600/15 blur-[100px] animate-glow-pulse" style={{ animationDelay: '1.5s' }} />
           <div className="absolute top-[40%] left-[40%] w-[400px] h-[400px] rounded-full bg-cyan-600/10 blur-[80px] animate-glow-pulse" style={{ animationDelay: '3s' }} />
-          
+
           {/* Grid Overlay */}
           <div
             className="absolute inset-0 opacity-[0.04]"
@@ -391,11 +412,10 @@ export default function Home() {
                     <button
                       key={i}
                       onClick={() => handleSlideClick(i)}
-                      className={`transition-all duration-500 rounded-full ${
-                        currentSlide === i
-                          ? 'w-10 h-2 bg-blue-500'
-                          : 'w-2 h-2 bg-white/20 hover:bg-white/40'
-                      }`}
+                      className={`transition-all duration-500 rounded-full ${currentSlide === i
+                        ? 'w-10 h-2 bg-blue-500'
+                        : 'w-2 h-2 bg-white/20 hover:bg-white/40'
+                        }`}
                     />
                   ))}
                 </div>

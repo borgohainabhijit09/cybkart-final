@@ -231,6 +231,46 @@ export default function PricingPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════
+          SPECIAL OFFER CALLOUT
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-12 bg-[#030712] relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="relative group overflow-hidden rounded-[2rem] p-1 border border-white/10 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 backdrop-blur-xl">
+            <div className="absolute inset-0 bg-[#030712]/80 rounded-[1.9rem]" />
+            <div className="relative z-10 px-8 py-10 md:px-12 md:py-12 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="flex-1 text-center md:text-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-[10px] font-black uppercase tracking-widest mb-4">
+                  <Sparkles className="w-3 h-3" /> Limited Time Deal
+                </div>
+                <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+                  Launch Your Presence for just <span className="text-rose-400">$29</span>
+                </h2>
+                <p className="text-slate-400 font-medium max-w-xl leading-relaxed">
+                  Our Micro Plan is perfect for startups and individuals who need a high-impact, single-page website without the long-term commitment. Get everything you need to go live today.
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-4">
+                <div className="text-center">
+                  <div className="text-white font-black text-4xl tracking-tight">$29<span className="text-slate-500 text-lg">/mo</span></div>
+                  <div className="text-rose-400 text-xs font-bold uppercase tracking-widest mt-1">Introductory Price</div>
+                </div>
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="px-10 py-4 rounded-2xl font-black text-lg text-white transition-all hover:scale-[1.05] active:scale-[0.95] shadow-2xl shadow-rose-500/20"
+                  style={{ background: 'linear-gradient(135deg, #f43f5e, #e11d48)' }}
+                >
+                  Claim Offer Now
+                </button>
+              </div>
+            </div>
+            {/* Decorative background element */}
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-rose-600/10 blur-[80px] rounded-full group-hover:bg-rose-600/20 transition-all duration-700" />
+            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-600/10 blur-[80px] rounded-full group-hover:bg-blue-600/20 transition-all duration-700" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════
           WHY CHOOSE US
       ═══════════════════════════════════════════════════════════════ */}
       <section className="py-28 bg-white relative overflow-hidden">
