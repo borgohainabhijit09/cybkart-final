@@ -85,11 +85,11 @@ export default function Header() {
                             </div>
 
                             <Link href="/demos" className="text-slate-600 hover:text-blue-600 transition-colors font-medium text-sm">
-                                Demos
+                                Demo
                             </Link>
 
                             <Link href="/case-scenarios" className="text-slate-600 hover:text-blue-600 transition-colors font-medium text-sm">
-                                Case Scenarios
+                                Case Studies
                             </Link>
 
                             <Link href="/knowledge-hub" className="text-slate-600 hover:text-blue-600 transition-colors font-medium text-sm">
